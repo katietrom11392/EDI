@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include <windownewcompany.h>
 #include <databaseconnection.h>
+#include <windowmaincontainer.h>
 #include <QtSql>
 #include <QSqlDatabase>
 #include <QSqlQuery>
@@ -32,6 +33,7 @@ private:
     Ui::WindowLogin *ui;
     QSqlDatabase db;
     WindowNewCompany *windownewcompany;
+    WindowMainContainer *windowmaincontainer;
 
 };
 #endif // WINDOWLOGIN_H

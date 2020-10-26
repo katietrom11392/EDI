@@ -98,17 +98,17 @@
      <string>Verify Password</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="lineEdit">
+   <widget class="QLineEdit" name="lineEdit_company_name">
     <property name="geometry">
      <rect>
       <x>172</x>
       <y>140</y>
-      <width>141</width>
+      <width>131</width>
       <height>21</height>
      </rect>
     </property>
    </widget>
-   <widget class="QLineEdit" name="lineEdit_2">
+   <widget class="QLineEdit" name="lineEdit_verify_password">
     <property name="geometry">
      <rect>
       <x>172</x>
@@ -118,7 +118,7 @@
      </rect>
     </property>
    </widget>
-   <widget class="QLineEdit" name="lineEdit_3">
+   <widget class="QLineEdit" name="lineEdit_password">
     <property name="geometry">
      <rect>
       <x>172</x>
@@ -128,7 +128,7 @@
      </rect>
     </property>
    </widget>
-   <widget class="QLineEdit" name="lineEdit_4">
+   <widget class="QLineEdit" name="lineEdit_new_username">
     <property name="geometry">
      <rect>
       <x>172</x>
@@ -190,7 +190,7 @@
      <string>SSN</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="lineEdit_5">
+   <widget class="QLineEdit" name="lineEdit_ssn">
     <property name="geometry">
      <rect>
       <x>500</x>
@@ -200,7 +200,7 @@
      </rect>
     </property>
    </widget>
-   <widget class="QLineEdit" name="lineEdit_6">
+   <widget class="QLineEdit" name="lineEdit_designation">
     <property name="geometry">
      <rect>
       <x>500</x>
@@ -210,7 +210,7 @@
      </rect>
     </property>
    </widget>
-   <widget class="QLineEdit" name="lineEdit_7">
+   <widget class="QLineEdit" name="lineEdit_last_name">
     <property name="geometry">
      <rect>
       <x>500</x>
@@ -220,7 +220,7 @@
      </rect>
     </property>
    </widget>
-   <widget class="QLineEdit" name="lineEdit_8">
+   <widget class="QLineEdit" name="lineEdit_first_name">
     <property name="geometry">
      <rect>
       <x>500</x>

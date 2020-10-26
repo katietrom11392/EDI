@@ -5,6 +5,9 @@
 #include <QSqlDatabase>
 #include <QtSql>
 #include <QSqlQuery>
+#include <QString>
+#include <QMessageBox>
+#include <QDebug>
 
 
 namespace Ui {
@@ -22,6 +25,8 @@ public:
 
 private slots:
     void on_pushButtonNewCompanyDone_clicked();
+
+    void on_pushButton_clicked();
 
 private:
     Ui::WindowNewCompany *ui;

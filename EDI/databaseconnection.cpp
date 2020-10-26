@@ -1,8 +1,4 @@
 #include "databaseconnection.h"
-#include <QDir>
-#include <QMessageBox>
-#include <QSql>
-#include <QSqlQuery>
 
 DatabaseConnection::DatabaseConnection(QWidget *parent) : QMainWindow(parent)
 {
@@ -10,7 +6,7 @@ DatabaseConnection::DatabaseConnection(QWidget *parent) : QMainWindow(parent)
 }
 
 QSqlDatabase DatabaseConnection::establishConnection(){
-    QSqlDatabase db = QSqlDatabase::addDatabase("QMYSQL");
+    db = QSqlDatabase::addDatabase("QMYSQL");
     db.setHostName("");
     db.setUserName("ediCEO370");
     db.setPassword("miguelCEO370");
@@ -22,6 +18,11 @@ QSqlDatabase DatabaseConnection::establishConnection(){
          QMessageBox::information(this, "Connection", "Invalid Username or Password");
     }
      return db;
+}
+
+void DatabaseConnection::destroyDbConnection(){
+    db.close();
+    db.removeDatabase("QMYSQL");
 }
 
 

@@ -12,18 +12,18 @@ SOURCES += \
     databaseconnection.cpp \
     main.cpp \
     windowlogin.cpp \
-    windownewcompany.cpp \
+    windowmaincontainer.cpp \
     windownewcompany.cpp
 
 HEADERS += \
     databaseconnection.h \
     windowlogin.h \
-    windownewcompany.h \
+    windowmaincontainer.h \
     windownewcompany.h
 
 FORMS += \
     windowlogin.ui \
-    windownewcompany.ui \
+    windowmaincontainer.ui \
     windownewcompany.ui
 
 # Default rules for deployment.

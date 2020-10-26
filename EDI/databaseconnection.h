@@ -8,6 +8,9 @@
 #include <QProcess>
 #include <QDebug>
 #include <QByteArray>
+#include <QDir>
+#include <QSql>
+#include <QSqlQuery>
 
 class DatabaseConnection : public QMainWindow
 {
@@ -15,6 +18,9 @@ class DatabaseConnection : public QMainWindow
 public:
     explicit DatabaseConnection(QWidget *parent = nullptr);
     QSqlDatabase establishConnection();
+    void destroyDbConnection();
+private:
+    QSqlDatabase db;
 signals:
 
 };
