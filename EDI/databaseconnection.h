@@ -5,6 +5,9 @@
 #include <QtSql>
 #include <QSqlDatabase>
 #include <QMessageBox>
+#include <QProcess>
+#include <QDebug>
+#include <QByteArray>
 
 class DatabaseConnection : public QMainWindow
 {

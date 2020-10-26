@@ -11,14 +11,20 @@ CONFIG += c++11
 SOURCES += \
     databaseconnection.cpp \
     main.cpp \
-    windowlogin.cpp
+    windowlogin.cpp \
+    windownewcompany.cpp \
+    windownewcompany.cpp
 
 HEADERS += \
     databaseconnection.h \
-    windowlogin.h
+    windowlogin.h \
+    windownewcompany.h \
+    windownewcompany.h
 
 FORMS += \
-    windowlogin.ui
+    windowlogin.ui \
+    windownewcompany.ui \
+    windownewcompany.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
@@ -27,3 +33,6 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 RESOURCES += \
     logo.qrc
+
+DISTFILES += \
+    sshConnectionCode

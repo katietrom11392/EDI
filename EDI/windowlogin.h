@@ -2,10 +2,11 @@
 #define WINDOWLOGIN_H
 
 #include <QMainWindow>
-//#include <newcompanywindow.h>
+#include <windownewcompany.h>
 #include <databaseconnection.h>
 #include <QtSql>
 #include <QSqlDatabase>
+#include <QSqlQuery>
 #include <QMessageBox>
 
 QT_BEGIN_NAMESPACE
@@ -22,9 +23,15 @@ public:
 
 private slots:
     void on_pushButtonSignIn_clicked();
+    //void on_pushButtonNewCompany_clicked();
+
+
+    void on_pushButtonNewCompany_clicked();
 
 private:
     Ui::WindowLogin *ui;
     QSqlDatabase db;
+    WindowNewCompany *windownewcompany;
+
 };
 #endif // WINDOWLOGIN_H

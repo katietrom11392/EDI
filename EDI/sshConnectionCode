@@ -1,0 +1,82 @@
+/*
+    QStringList myTables;
+    myTables= db.tables(QSql::Tables);
+    QString l = "";
+    for (int i = 0; i < myTables.size(); i++)
+            l.append(myTables.at(i).toLocal8Bit().constData());
+    QMessageBox::information(this, "Tables", l);
+
+    QSqlQuery query;
+    query.exec("SHOW Tables");
+    QString tableName = "";
+    while (query.next()) {
+        tableName.append(query.value(0).toString());
+    }
+    QMessageBox::information(this, "Tables", tableName);
+
+// program = "/bin/bash";
+// args << "../../../../ssh_connect";
+QProcess *SSH = new QProcess();
+QString SSH_program;
+QStringList SSH_args;
+SSH_program = "ssh";
+SSH_args << "-T" << "-i" << "../../../../.ssh/qtc_id" << "trombetta@blue.cs.sonoma.edu";
+SSH->start(SSH_program, SSH_args);
+SSH->waitForFinished();
+QString SSH_output(SSH->readAllStandardOutput());
+qDebug() << SSH_output;
+SSH_output = SSH->readAllStandardError();
+qDebug() << SSH_output;
+
+QProcess *mysql = new QProcess(SSH);
+QString mysql_program;
+mysql_program = "mysql";
+QStringList mysql_args;
+mysql_args << "-u" << "ktrombet_cs355fl20" <<  "-p";
+mysql->setProcessChannelMode(QProcess::ForwardedChannels);
+mysql->start(mysql_program, mysql_args);
+mysql->waitForFinished();
+QByteArray mysql_output(mysql->readAllStandardOutput());
+qDebug() << mysql_output;
+mysql_output = mysql->readAllStandardError();
+qDebug() << mysql_output;
+
+
+
+mysql->write("tr7615654\n");
+mysql->waitForFinished();
+mysql_output = mysql->readAllStandardOutput();
+qDebug() << mysql_output;
+mysql_output = mysql->readAllStandardError();
+qDebug() << mysql_output;
+
+mysql->write("SHOW Databases;\n");
+mysql->waitForFinished();
+mysql_output = mysql->readAllStandardOutput();
+qDebug() << mysql_output;
+mysql_output = mysql->readAllStandardError();
+qDebug() << mysql_output;
+
+QProcess *process2 = new QProcess();
+process2->setProcessChannelMode(QProcess::MergedChannels);
+process2->start("cmd", QStringList() << "ls");
+
+// Get the output
+QString output2;
+if (process2->waitForStarted(-1)) {
+   while(process2->waitForReadyRead(-1)) {
+       output2 += process2->readAll();
+   }
+}
+process2->waitForFinished();
+
+
+process->write("ls");
+output = process->readAllStandardOutput();
+qDebug() << output;
+// QDir dir;
+//qDebug() << dir.absolutePath();
+QStringList args2;
+args2 << "trombetta@blue.cs.sonoma.edu";
+QProcess::startDetached("ssh", args2);
+*/
