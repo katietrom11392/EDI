@@ -6,6 +6,7 @@
 #include <QSqlDatabase>
 #include <QSqlQuery>
 #include <QMessageBox>
+#include <controltab_vieweditemployee.h>
 
 namespace Ui {
 class WindowMainContainer;
@@ -23,10 +24,12 @@ private slots:
 
     void on_tabWidget_currentChanged(int index);
 
-    void on_pushButton_addEmployee();
+    void on_pushButton_viewEdit_clicked();
 
 private:
     Ui::WindowMainContainer *ui;
+    ControlTab_ViewEditEmployee *viewEditEmployeeWindow;
+
 };
 
 #endif // WINDOWMAINCONTAINER_H

@@ -1,12 +1,12 @@
 #include "windowmaincontainer.h"
 #include "ui_windowmaincontainer.h"
-#include <QCryptographicHash> // can be used to encrypt QStrings
 
 WindowMainContainer::WindowMainContainer(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::WindowMainContainer)
 {
     ui->setupUi(this);
+    viewEditEmployeeWindow = new ControlTab_ViewEditEmployee();
 }
 
 WindowMainContainer::~WindowMainContainer()
@@ -18,20 +18,14 @@ WindowMainContainer::~WindowMainContainer()
 void WindowMainContainer::on_tabWidget_currentChanged(int index)
 {
     ui->tableWidget_db->setRowCount(0);
-
-    //ui->tableWidget_db->clear();
-    //ui->tableWidget_db->close();
-    //ui->tableWidget_db->reset();
-
     QSqlQuery query_numEmployees;
     QSqlQuery query_getEmployeeRow;
     QString employeeRowSqlString;
     query_numEmployees.exec("SELECT COUNT(*) FROM Employee");
-
-
     employeeRowSqlString = "SELECT * FROM Employee";
     query_getEmployeeRow.exec(employeeRowSqlString);
     int col = 0;
+
     while (query_getEmployeeRow.next()) {
         ui->tableWidget_db->insertRow ( ui->tableWidget_db->rowCount() );
         int row = ui->tableWidget_db->rowCount()-1;
@@ -42,14 +36,6 @@ void WindowMainContainer::on_tabWidget_currentChanged(int index)
         ui->tableWidget_db->setItem( row, 4, new QTableWidgetItem(query_getEmployeeRow.value(4).toString()));
         ui->tableWidget_db->setItem( row, 5, new QTableWidgetItem(query_getEmployeeRow.value(5).toString()));
         ui->tableWidget_db->setItem( row, 6, new QTableWidgetItem(query_getEmployeeRow.value(6).toString()));
-        /*
-        QCryptographicHash hasher(QCryptographicHash::Sha1);
-        hasher.addData(query_getEmployeeRow.value(7).toByteArray());
-        QByteArray encryptedPasswordByteArray = hasher.result();
-        QString encryptedPassword = "";
-        for(auto i : encryptedPasswordByteArray){
-            encryptedPassword.append(i);
-        }*/
 
         QString password = query_getEmployeeRow.value(7).toString();
         QString encryptedPassword = "";
@@ -61,8 +47,8 @@ void WindowMainContainer::on_tabWidget_currentChanged(int index)
     }
 }
 
-
-void WindowMainContainer::on_pushButton_addEmployee()
+void WindowMainContainer::on_pushButton_viewEdit_clicked()
 {
+    viewEditEmployeeWindow->show();
 
 }
