@@ -3,6 +3,6 @@
         <file>logo.png</file>
     </qresource>
     <qresource prefix="/new/prefix2">
-        <file>EDI Logout.png</file>
+        <file>EDI_Logout-removebg-preview.png</file>
     </qresource>
 </RCC>
