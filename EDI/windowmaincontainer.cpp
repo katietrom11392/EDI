@@ -47,7 +47,7 @@ void WindowMainContainer::on_tabWidget_currentChanged(int index)
     }
 }
 
-void WindowMainContainer::on_pushButtonLogOut_clicked()
+void WindowMainContainer::on_pushButton_LogOut_clicked()
 {
     QMessageBox::information(
         this,

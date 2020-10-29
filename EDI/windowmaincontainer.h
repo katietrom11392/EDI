@@ -23,7 +23,7 @@ public:
 private slots:
 
     void on_tabWidget_currentChanged(int index);
-    void on_pushButtonLogOut_clicked();
+    void on_pushButton_LogOut_clicked();
     void on_pushButton_viewEdit_clicked();
 
 private:
