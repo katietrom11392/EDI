@@ -383,6 +383,19 @@
      <string>Log Out</string>
     </property>
    </widget>
+   <widget class="QLabel" name="label_LogOutLogo">
+    <property name="geometry">
+     <rect>
+      <x>456</x>
+      <y>13</y>
+      <width>161</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>EDI logout logo HERE</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
