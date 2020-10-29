@@ -58,6 +58,9 @@
     <property name="text">
      <string>Company Name</string>
     </property>
+    <property name="alignment">
+     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+    </property>
    </widget>
    <widget class="QLabel" name="label_3">
     <property name="geometry">
@@ -70,6 +73,9 @@
     </property>
     <property name="text">
      <string>New Username</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
     </property>
    </widget>
    <widget class="QLabel" name="label_4">
@@ -84,6 +90,9 @@
     <property name="text">
      <string>Password</string>
     </property>
+    <property name="alignment">
+     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+    </property>
    </widget>
    <widget class="QLabel" name="label_5">
     <property name="geometry">
@@ -97,15 +106,21 @@
     <property name="text">
      <string>Verify Password</string>
     </property>
+    <property name="alignment">
+     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+    </property>
    </widget>
    <widget class="QLineEdit" name="lineEdit_company_name">
     <property name="geometry">
      <rect>
       <x>172</x>
       <y>140</y>
-      <width>131</width>
+      <width>141</width>
       <height>21</height>
      </rect>
+    </property>
+    <property name="maxLength">
+     <number>30</number>
     </property>
    </widget>
    <widget class="QLineEdit" name="lineEdit_verify_password">
@@ -117,6 +132,15 @@
       <height>21</height>
      </rect>
     </property>
+    <property name="inputMethodHints">
+     <set>Qt::ImhHiddenText|Qt::ImhNoAutoUppercase|Qt::ImhNoPredictiveText|Qt::ImhSensitiveData</set>
+    </property>
+    <property name="maxLength">
+     <number>20</number>
+    </property>
+    <property name="echoMode">
+     <enum>QLineEdit::Password</enum>
+    </property>
    </widget>
    <widget class="QLineEdit" name="lineEdit_password">
     <property name="geometry">
@@ -127,6 +151,15 @@
       <height>21</height>
      </rect>
     </property>
+    <property name="inputMethodHints">
+     <set>Qt::ImhHiddenText|Qt::ImhNoAutoUppercase|Qt::ImhNoPredictiveText|Qt::ImhSensitiveData</set>
+    </property>
+    <property name="maxLength">
+     <number>20</number>
+    </property>
+    <property name="echoMode">
+     <enum>QLineEdit::Password</enum>
+    </property>
    </widget>
    <widget class="QLineEdit" name="lineEdit_new_username">
     <property name="geometry">
@@ -136,6 +169,9 @@
       <width>141</width>
       <height>21</height>
      </rect>
+    </property>
+    <property name="maxLength">
+     <number>20</number>
     </property>
    </widget>
    <widget class="QLabel" name="label_6">
@@ -150,6 +186,9 @@
     <property name="text">
      <string>First Name</string>
     </property>
+    <property name="alignment">
+     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+    </property>
    </widget>
    <widget class="QLabel" name="label_7">
     <property name="geometry">
@@ -163,25 +202,15 @@
     <property name="text">
      <string>Last Name</string>
     </property>
-   </widget>
-   <widget class="QLabel" name="label_8">
-    <property name="geometry">
-     <rect>
-      <x>410</x>
-      <y>260</y>
-      <width>71</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Designation</string>
+    <property name="alignment">
+     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
     </property>
    </widget>
    <widget class="QLabel" name="label_9">
     <property name="geometry">
      <rect>
       <x>460</x>
-      <y>320</y>
+      <y>260</y>
       <width>31</width>
       <height>20</height>
      </rect>
@@ -189,18 +218,11 @@
     <property name="text">
      <string>SSN</string>
     </property>
-   </widget>
-   <widget class="QLineEdit" name="lineEdit_ssn">
-    <property name="geometry">
-     <rect>
-      <x>500</x>
-      <y>320</y>
-      <width>141</width>
-      <height>21</height>
-     </rect>
+    <property name="alignment">
+     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
     </property>
    </widget>
-   <widget class="QLineEdit" name="lineEdit_designation">
+   <widget class="QLineEdit" name="lineEdit_ssn">
     <property name="geometry">
      <rect>
       <x>500</x>
@@ -208,6 +230,12 @@
       <width>141</width>
       <height>21</height>
      </rect>
+    </property>
+    <property name="maxLength">
+     <number>11</number>
+    </property>
+    <property name="placeholderText">
+     <string>###-##-####</string>
     </property>
    </widget>
    <widget class="QLineEdit" name="lineEdit_last_name">
@@ -219,6 +247,9 @@
       <height>21</height>
      </rect>
     </property>
+    <property name="maxLength">
+     <number>30</number>
+    </property>
    </widget>
    <widget class="QLineEdit" name="lineEdit_first_name">
     <property name="geometry">
@@ -228,6 +259,9 @@
       <width>141</width>
       <height>21</height>
      </rect>
+    </property>
+    <property name="maxLength">
+     <number>30</number>
     </property>
    </widget>
    <widget class="QPushButton" name="pushButton">
@@ -243,6 +277,43 @@
      <string>Back</string>
     </property>
    </widget>
+   <widget class="QLabel" name="label_8">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>10</y>
+      <width>61</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap resource="logo.qrc">:/new/prefix1/logo.png</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <zorder>label</zorder>
+   <zorder>pushButtonNewCompanyDone</zorder>
+   <zorder>label_2</zorder>
+   <zorder>label_3</zorder>
+   <zorder>label_4</zorder>
+   <zorder>label_5</zorder>
+   <zorder>lineEdit_company_name</zorder>
+   <zorder>lineEdit_verify_password</zorder>
+   <zorder>lineEdit_password</zorder>
+   <zorder>label_6</zorder>
+   <zorder>label_7</zorder>
+   <zorder>label_9</zorder>
+   <zorder>lineEdit_ssn</zorder>
+   <zorder>lineEdit_last_name</zorder>
+   <zorder>lineEdit_first_name</zorder>
+   <zorder>pushButton</zorder>
+   <zorder>label_8</zorder>
+   <zorder>lineEdit_new_username</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
@@ -250,12 +321,25 @@
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>22</height>
+     <height>21</height>
     </rect>
    </property>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
- <resources/>
+ <tabstops>
+  <tabstop>lineEdit_company_name</tabstop>
+  <tabstop>lineEdit_new_username</tabstop>
+  <tabstop>lineEdit_password</tabstop>
+  <tabstop>lineEdit_verify_password</tabstop>
+  <tabstop>lineEdit_first_name</tabstop>
+  <tabstop>lineEdit_last_name</tabstop>
+  <tabstop>lineEdit_ssn</tabstop>
+  <tabstop>pushButtonNewCompanyDone</tabstop>
+  <tabstop>pushButton</tabstop>
+ </tabstops>
+ <resources>
+  <include location="logo.qrc"/>
+ </resources>
  <connections/>
 </ui>

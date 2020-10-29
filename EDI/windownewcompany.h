@@ -31,6 +31,13 @@ private slots:
 private:
     Ui::WindowNewCompany *ui;
     QSqlDatabase db;
+
+    const static QString SSN_WITH_DASHES;
+    const static QString SSN_WITHOUT_DASHES;
+
+    void clear_all_fields();
+
+    bool check_ssn_format(QString ssn);
 };
 
 #endif // WINDOWNEWCOMPANY_H
