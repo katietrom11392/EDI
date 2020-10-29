@@ -17,7 +17,7 @@ class DatabaseConnection : public QMainWindow
     Q_OBJECT
 public:
     explicit DatabaseConnection(QWidget *parent = nullptr);
-    QSqlDatabase establishConnection();
+    QSqlDatabase establishConnection(QString connectionName);
     void destroyDbConnection();
 private:
     QSqlDatabase db;

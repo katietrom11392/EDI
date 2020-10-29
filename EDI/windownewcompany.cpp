@@ -79,15 +79,10 @@ WindowNewCompany::WindowNewCompany(QWidget *parent) :
     ui(new Ui::WindowNewCompany)
 {
     ui->setupUi(this);
+    DatabaseConnection *dbc = new DatabaseConnection(this);
+    db2 = dbc->establishConnection("two");
 }
 
-
-
-void WindowNewCompany::setDB(QSqlDatabase db){
-
-    this->db = db;
-
-}
 
 
 WindowNewCompany::~WindowNewCompany() {
@@ -98,19 +93,6 @@ WindowNewCompany::~WindowNewCompany() {
 
 void WindowNewCompany::on_pushButtonNewCompanyDone_clicked()
 {
-    //This is where we will grab the values from the various text fields entered in from the window (new company name, new user name, password, verfiy password)
-    // Then we will query using QSqlQuery to insert the information into the EDI database.
-
-    //The following code was written before reading full documentation and has errors
-    /*QSqlQuery query;
-    QString companyname = ui->companynamelineeditinputhere->get
-    q.prepare("INSERT INTO Company (name) VALUES (:companyname)");
-    q.bindValue(":companyname", companyname);
-    q.exec();
-    while (q.next()) {
-     QString title = q.value(0).toString();
-    }
-  */
     QString lineEdit_company_name = ui -> lineEdit_company_name -> text();
     QString lineEdit_new_username = ui -> lineEdit_new_username -> text();
     QString lineEdit_password = ui -> lineEdit_password -> text();
@@ -158,11 +140,6 @@ void WindowNewCompany::on_pushButtonNewCompanyDone_clicked()
             fieldError = true;
         }
 
-
-        /*Insert code here to query the database.
-         * You can create a QString and assign it a sql string that inserts the above qstring values into the table.
-            Then you can use a QSqlQuery object to .exec(insert qstring name here)*/
-
         if (!fieldError) {
             QString companyName = ui -> lineEdit_company_name -> text();
             QString newUsername = ui -> lineEdit_new_username -> text();
@@ -172,7 +149,8 @@ void WindowNewCompany::on_pushButtonNewCompanyDone_clicked()
             QString lastName = ui -> lineEdit_last_name -> text();
             QString ssn = ui -> lineEdit_ssn -> text();
 
-            QSqlQuery query;
+            QSqlQuery query(QSqlDatabase::database("two"));
+
             query.prepare("INSERT INTO Company (CompanyName) VALUES (:companyName)");
             query.bindValue(":companyName", companyName);
             query.exec();
@@ -189,11 +167,11 @@ void WindowNewCompany::on_pushButtonNewCompanyDone_clicked()
             query.bindValue(":position", "C");
             query.exec();
 
-            query.prepare("INSERT INTO (Name_First) VALUES (:nameFirst)");
+            query.prepare("INSERT INTO Employee (Name_First) VALUES (:nameFirst)");
             query.bindValue(":nameFirst", firstName);
             query.exec();
 
-            query.prepare("INSERT INTO (Name_Last) VALUES (:nameLast)");
+            query.prepare("INSERT INTO Employee (Name_Last) VALUES (:nameLast)");
             query.bindValue(":nameLast", lastName);
             query.exec();
 
@@ -203,7 +181,7 @@ void WindowNewCompany::on_pushButtonNewCompanyDone_clicked()
                 ssn.remove(QRegularExpression("-"));
             }
 
-            query.prepare("INSERT INTO (SSN) VALUES (:ssn)");
+            query.prepare("INSERT INTO Employee (SSN) VALUES (:ssn)");
             query.bindValue(":ssn", ssn);
             query.exec();
 

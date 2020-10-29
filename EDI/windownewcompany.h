@@ -8,6 +8,8 @@
 #include <QString>
 #include <QMessageBox>
 #include <QDebug>
+#include <databaseconnection.h>
+
 
 
 namespace Ui {
@@ -20,7 +22,6 @@ class WindowNewCompany : public QMainWindow
 
 public:
     explicit WindowNewCompany(QWidget *parent = nullptr);
-    void setDB(QSqlDatabase);
     ~WindowNewCompany();
 
 private slots:
@@ -30,7 +31,6 @@ private slots:
 
 private:
     Ui::WindowNewCompany *ui;
-    QSqlDatabase db;
 
     const static QString SSN_WITH_DASHES;
     const static QString SSN_WITHOUT_DASHES;
@@ -38,6 +38,8 @@ private:
     void clear_all_fields();
 
     bool check_ssn_format(QString ssn);
+
+    QSqlDatabase db2;
 };
 
 #endif // WINDOWNEWCOMPANY_H

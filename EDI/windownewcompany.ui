@@ -296,6 +296,19 @@
      <bool>true</bool>
     </property>
    </widget>
+   <widget class="QPushButton" name="pushButton_2">
+    <property name="geometry">
+     <rect>
+      <x>630</x>
+      <y>350</y>
+      <width>112</width>
+      <height>32</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>PushButton</string>
+    </property>
+   </widget>
    <zorder>label</zorder>
    <zorder>pushButtonNewCompanyDone</zorder>
    <zorder>label_2</zorder>
@@ -314,6 +327,7 @@
    <zorder>pushButton</zorder>
    <zorder>label_8</zorder>
    <zorder>lineEdit_new_username</zorder>
+   <zorder>pushButton_2</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
@@ -321,7 +335,7 @@
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>21</height>
+     <height>22</height>
     </rect>
    </property>
   </widget>
