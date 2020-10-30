@@ -3,7 +3,6 @@ QT       += core gui sql
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 CONFIG += c++11
-
 CONFIG -= debug_and_release debug_and_release_target
 
 # You can make your code fail to compile if it uses deprecated APIs.
@@ -11,6 +10,7 @@ CONFIG -= debug_and_release debug_and_release_target
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    controltab_vieweditemployee.cpp \
     databaseconnection.cpp \
     main.cpp \
     windowlogin.cpp \
@@ -18,12 +18,14 @@ SOURCES += \
     windownewcompany.cpp
 
 HEADERS += \
+    controltab_vieweditemployee.h \
     databaseconnection.h \
     windowlogin.h \
     windowmaincontainer.h \
     windownewcompany.h
 
 FORMS += \
+    controltab_vieweditemployee.ui \
     windowlogin.ui \
     windowmaincontainer.ui \
     windownewcompany.ui
@@ -34,7 +36,8 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 RESOURCES += \
-    logo.qrc
+    logo.qrc \
+    resourceExample.qrc
 
 DISTFILES += \
     sshConnectionCode
