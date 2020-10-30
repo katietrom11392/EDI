@@ -151,7 +151,8 @@ void WindowNewCompany::on_pushButtonNewCompanyDone_clicked()
             }
 
             // Insert Employee Values
-            query.prepare("INSERT INTO Employee (Name_Last, Name_First, SSN, Position_Code, Username, Password) VALUES (:nameLast, :nameFirst, :ssn, :position, :username, :password)");
+            query.prepare("INSERT INTO Employee (EmployeeID, Name_Last, Name_First, SSN, Position_Code, Username, Password) VALUES (:employeeID, :nameLast, :nameFirst, :ssn, :position, :username, :password)");
+            query.bindValue(":employeeID", employeeID);
             query.bindValue(":nameLast", lastName);
             query.bindValue(":nameFirst", firstName);
             query.bindValue(":ssn", ssn);
