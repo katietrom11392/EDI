@@ -5,19 +5,13 @@ DatabaseConnection::DatabaseConnection(QWidget *parent) : QMainWindow(parent)
 
 }
 
-QSqlDatabase DatabaseConnection::establishConnection(){
-    db = QSqlDatabase::addDatabase("QMYSQL");
+QSqlDatabase DatabaseConnection::establishConnection(QString connectionName){
+    db = QSqlDatabase::addDatabase("QMYSQL", connectionName);
     db.setHostName("");
     db.setUserName("ediCEO370");
     db.setPassword("miguelCEO370");
     db.setDatabaseName("EDI");
-    if(db.open()){
-         QMessageBox::information(this, "Connection", "Searching database for login info...");
-     }
-     else{
-         QMessageBox::information(this, "Connection", "Invalid Username or Password");
-    }
-     return db;
+    return db;
 }
 
 void DatabaseConnection::destroyDbConnection(){

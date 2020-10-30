@@ -24,16 +24,13 @@ public:
 
 private slots:
     void on_pushButtonSignIn_clicked();
-    //void on_pushButtonNewCompany_clicked();
-
-
     void on_pushButtonNewCompany_clicked();
 
 private:
     Ui::WindowLogin *ui;
-    QSqlDatabase db;
     WindowNewCompany *windownewcompany;
     WindowMainContainer *windowmaincontainer;
+    QSqlDatabase db1;
 
 };
 #endif // WINDOWLOGIN_H

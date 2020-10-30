@@ -1,14 +1,15 @@
 #ifndef WINDOWNEWCOMPANY_H
 #define WINDOWNEWCOMPANY_H
 
+#include <QDebug>
 #include <QMainWindow>
+#include <QMessageBox>
+#include <QString>
+#include <QSqlQuery>
 #include <QSqlDatabase>
 #include <QtSql>
-#include <QSqlQuery>
-#include <QString>
-#include <QMessageBox>
-#include <QDebug>
 
+#include <databaseconnection.h>
 
 namespace Ui {
 class WindowNewCompany;
@@ -20,7 +21,6 @@ class WindowNewCompany : public QMainWindow
 
 public:
     explicit WindowNewCompany(QWidget *parent = nullptr);
-    void setDB(QSqlDatabase);
     ~WindowNewCompany();
 
 private slots:
@@ -29,8 +29,19 @@ private slots:
     void on_pushButton_clicked();
 
 private:
+    // Private Data Members
     Ui::WindowNewCompany *ui;
-    QSqlDatabase db;
+    QSqlDatabase db2;
+
+    // Const Static Data Members
+    const static QString SSN_WITH_DASHES;
+    const static QString SSN_WITHOUT_DASHES;
+
+    // Private Member Functions
+
+    bool check_ssn_format(QString ssn) const;   // Used to verify the format of the SSN.
+
+    void clear_all_fields();                    // Used to clear all lineEdit fields.
 };
 
 #endif // WINDOWNEWCOMPANY_H
