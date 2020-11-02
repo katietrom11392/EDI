@@ -25,6 +25,7 @@ private slots:
 
     void on_tabWidget_currentChanged(int index);
 
+    void on_pushButton_LogOut_clicked();
 
     void on_pushButton_addEmployee_3_clicked();
 

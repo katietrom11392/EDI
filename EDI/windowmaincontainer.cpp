@@ -51,6 +51,14 @@ void WindowMainContainer::on_tabWidget_currentChanged(int index)
     }
 }
 
+void WindowMainContainer::on_pushButton_LogOut_clicked() {
+    QMessageBox::information(
+        this,
+        tr("EDI: Employee Data Interface"), // Window text
+        tr("Goodbye!") );                   // Text displayed inside of window
+    this -> close();
+}
+
 void WindowMainContainer::on_pushButton_addEmployee_3_clicked()
 {
     viewEditEmployeeWindow->show();
