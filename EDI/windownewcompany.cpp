@@ -142,7 +142,7 @@ void WindowNewCompany::on_pushButtonNewCompanyDone_clicked()
             QString employeeID = ui -> lineEdit_employee_id -> text();
             QString ssn = ui -> lineEdit_ssn -> text();
 
-            QSqlQuery query(QSqlDatabase::database("two"));
+            QSqlQuery eQuery(QSqlDatabase::database("two"));
 
             // We may need to potentially re-format the SSN if it was inputted with dashes.
             if (ssn.size() == SSN_WITH_DASHES.size()) {
@@ -151,21 +151,23 @@ void WindowNewCompany::on_pushButtonNewCompanyDone_clicked()
             }
 
             // Insert Employee Values
-            query.prepare("INSERT INTO Employee (EmployeeID, Name_Last, Name_First, SSN, Position_Code, Username, Password) VALUES (:employeeID, :nameLast, :nameFirst, :ssn, :position, :username, :password)");
-            query.bindValue(":employeeID", employeeID);
-            query.bindValue(":nameLast", lastName);
-            query.bindValue(":nameFirst", firstName);
-            query.bindValue(":ssn", ssn);
-            query.bindValue(":position", "C");
-            query.bindValue(":username", newUsername);
-            query.bindValue(":password", password);
-            query.exec();
+            eQuery.prepare("INSERT INTO Employee (EmployeeID, Name_Last, Name_First, SSN, Position_Code, Username, Password) VALUES (:employeeID, :nameLast, :nameFirst, :ssn, :position, :username, :password)");
+            eQuery.bindValue(":employeeID", employeeID);
+            eQuery.bindValue(":nameLast", lastName);
+            eQuery.bindValue(":nameFirst", firstName);
+            eQuery.bindValue(":ssn", ssn);
+            eQuery.bindValue(":position", "C");
+            eQuery.bindValue(":username", newUsername);
+            eQuery.bindValue(":password", password);
+            eQuery.exec();
+
+            QSqlQuery cQuery(QSqlDatabase::database("two"));
 
             // Insert Company Values
-            query.prepare("INSERT INTO Company (CompanyName, CEO) VALUES (:companyName, :employeeID)");
-            query.bindValue(":companyName", companyName);
-            query.bindValue("::employeeID", employeeID);
-            query.exec();
+            cQuery.prepare("INSERT INTO Company (CompanyName, CEO) VALUES (:companyName, :employeeID)");
+            cQuery.bindValue(":companyName", companyName);
+            cQuery.bindValue(":employeeID", employeeID);
+            cQuery.exec();
 
             // qmessagebox for debugging. delete when we know it works every time for everyone
             QMessageBox::information(this, "Creating", "Creating new company...");
