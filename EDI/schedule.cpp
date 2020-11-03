@@ -6,17 +6,12 @@ Schedule::Schedule(){
 }
 
 void Schedule::initilize(std::string employee){
-    std::stack<Shift> dates;
     std::string start = "", end = "", date = "";
     //for (line in dbcall(table shifts AND employee) ){
     //start = line.substr()
     //etc...
-    dates.push(Shift(start, end, date));
+    	addShift(&Shift(start, end, date));
     //}
-    while(!dates.empty()){
-        addShift(&dates.top());
-        dates.pop();
-    }
 }
 
 void Schedule::addShift(Shift *addition){
