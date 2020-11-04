@@ -2,6 +2,8 @@
 #define CONTROLTAB_VIEWEDITEMPLOYEE_H
 
 #include <QWidget>
+#include <QCalendarWidget>
+#include <qcalendar.h>
 
 namespace Ui {
 class ControlTab_ViewEditEmployee;

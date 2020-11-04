@@ -13,6 +13,7 @@ SOURCES += \
     controltab_vieweditemployee.cpp \
     databaseconnection.cpp \
     main.cpp \
+    qcalendar.cpp \
     windowlogin.cpp \
     windowmaincontainer.cpp \
     windownewcompany.cpp
@@ -20,6 +21,7 @@ SOURCES += \
 HEADERS += \
     controltab_vieweditemployee.h \
     databaseconnection.h \
+    qcalendar.h \
     windowlogin.h \
     windowmaincontainer.h \
     windownewcompany.h
