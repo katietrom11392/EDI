@@ -1,5 +1,8 @@
 #include "controltab_vieweditemployee.h"
 #include "ui_controltab_vieweditemployee.h"
+#include <QTableView>
+#include <QDate>
+#include <QDebug>
 
 ControlTab_ViewEditEmployee::ControlTab_ViewEditEmployee(QWidget *parent) :
     QWidget(parent),
