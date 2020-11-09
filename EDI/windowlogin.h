@@ -4,11 +4,24 @@
 #include <QMainWindow>
 #include <windownewcompany.h>
 #include <databaseconnection.h>
-#include <windowmaincontainer.h>
 #include <QtSql>
 #include <QSqlDatabase>
 #include <QSqlQuery>
 #include <QMessageBox>
+
+#include <QWidget>
+#include <QCalendarWidget>
+#include <qcalendar.h>
+#include <QTableView>
+#include <QDate>
+#include <QDebug>
+
+/*****************************************************************************************************************************************
+ * WindowLogin responds to user interactions with the windowlogin.ui view.
+ * It acts as the base window from which all other events subsequently occur.
+ * A WindowNewCompany object is instantiated from WindowLogin so a new company may be created.
+ * A WindowMain object is intatiated from WindowLogin when a successful login occurs. WindowLogin is destroyed at that point.
+ *****************************************************************************************************************************************/
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class WindowLogin; }
@@ -29,7 +42,6 @@ private slots:
 private:
     Ui::WindowLogin *ui;
     WindowNewCompany *windownewcompany;
-    WindowMainContainer *windowmaincontainer;
     QSqlDatabase db1;
 
 };

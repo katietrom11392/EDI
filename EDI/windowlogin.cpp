@@ -1,6 +1,11 @@
 #include "windowlogin.h"
 #include "ui_windowlogin.h"
+#include "windowmain.h"
 
+
+/***********************************************************************************************************
+ * We setup the associated UI and instantiate a database connection for the WindowLogin model
+***********************************************************************************************************/
 WindowLogin::WindowLogin(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::WindowLogin)
@@ -10,9 +15,10 @@ WindowLogin::WindowLogin(QWidget *parent)
     // Instantiate database connection object for connection to database instance "one"
     DatabaseConnection *dbc = new DatabaseConnection(this);
     db1 = dbc->establishConnection("one");
-    windowmaincontainer = new WindowMainContainer();
-    windownewcompany = new WindowNewCompany();
 }
+
+
+
 
 WindowLogin::~WindowLogin()
 {
@@ -20,6 +26,20 @@ WindowLogin::~WindowLogin()
 }
 
 
+
+/*************************************************************************************************************
+ * When a user clicks the login button, we
+ *
+ * 1. Verify data has been entered in the login text fields
+ *
+ * 2. Create and execute a query to get the first name and position code from the database, where the
+ * entered username and password are matched. (We need the first name for the "Welcome <user> message at the
+ * top of the WindowLogin screen and the position code to verify clearance level of the employee logging in).
+ *
+ * 3. Verify the login information was valid, and found. If it was, instantiate a WindowMain object (the
+ * main user interface of the application) and hide/destory this WindowLogin object.
+ * If the login was not successful, a MessageBox pops up and the user has the opportunity to attempt further.
+*************************************************************************************************************/
 void WindowLogin::on_pushButtonSignIn_clicked()
 {
     QString lineEdit_username = ui->lineEdit_username->text();
@@ -29,12 +49,12 @@ void WindowLogin::on_pushButtonSignIn_clicked()
             QMessageBox::information(this,"Error", "Missing field");
     }
     else{
-        if(db1.open()){
+        /*if(db1.open()){
              QMessageBox::information(this, "Connection", "Searching database for login info...");
          }
          else{
              QMessageBox::information(this, "Connection", "Invalid Username or Password");
-        }
+        }*/
 
         QSqlQuery query(QSqlDatabase::database("one"));
         QString queryString;
@@ -53,15 +73,23 @@ void WindowLogin::on_pushButtonSignIn_clicked()
             QMessageBox::information(this, "Invalid login", "Invalid login credentials. Try again.");
         }
         else{
-            windowmaincontainer->setWelcomeName(userFirstName);
-            windowmaincontainer->setDisabledFeatures(userPositionCode);
-            windowmaincontainer->show();
+            WindowMain *main = new WindowMain();
+            main->setWelcomeName(userFirstName);
+            main->setDisabledFeatures(userPositionCode);
+            main->show();
             this->hide();
         }
     }
 }
 
+
+
+/*************************************************************************************************************
+ * When the Create New Company button is pushed, the WindowNewCompany object is created an the
+ * corresponding UI is displayed.
+*************************************************************************************************************/
 void WindowLogin::on_pushButtonNewCompany_clicked()
 {
+    windownewcompany = new WindowNewCompany();
     windownewcompany->show();
 }

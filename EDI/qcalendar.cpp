@@ -1,12 +1,18 @@
-#include <QPainter>
 #include "qcalendar.h"
 
-
+/***********************************************************************************************************
+ * Each calendar that is created has its own database connections, specified by its object name.
+ * We call get dates to get a vector of dates that an employee has a shift for.
+ * We then set the style on the pen and brush for the calendar to be highlighted/painted when
+ * it is rendered on the screen
+***********************************************************************************************************/
     QCalendar::QCalendar(QWidget *parent)
        : QCalendarWidget(parent)
     {
        DatabaseConnection *dbc = new DatabaseConnection(this);
-       db4 = dbc->establishConnection("four");
+       thisDB = this->parent()->objectName();
+
+       db4 = dbc->establishConnection(thisDB);
        //shift.date = QDate::currentDate();
        getDates();
        m_outlinePen.setColor(Qt::transparent);
@@ -16,21 +22,43 @@
 
     }
 
+
+
+    /***********************************************************************************************************
+     * We probably dont need this destructor?
+    ***********************************************************************************************************/
     QCalendar::~QCalendar()
     {
-
+        db4.removeDatabase(thisDB);
+        db4.close();
     }
 
+
+
+    /***********************************************************************************************************
+     * Sets the color of our pen to outline our dates with
+    ***********************************************************************************************************/
     void QCalendar::setColor(QColor& color)
     {
        m_outlinePen.setColor(color);
     }
 
+
+
+    /***********************************************************************************************************
+     * Gets the color of the pen to outline our dates with
+    ***********************************************************************************************************/
     QColor QCalendar::getColor()
     {
        return (m_outlinePen.color());
     }
 
+
+
+
+    /***********************************************************************************************************
+     * Paints/highlights the specified dates in the m_dates vector
+    ***********************************************************************************************************/
     void QCalendar::paintCell(QPainter *painter, const QRect &rect, const QDate &date) const
     {
        QCalendarWidget::paintCell(painter, rect, date);
@@ -45,6 +73,11 @@
 
 
 
+    /***********************************************************************************************************
+     * Gets the dates from the database for a particular employee's shift and creates a vector of shift events
+     * and corresponding dates to hold the data. This data is accessed in our contrcutor for the calendar so
+     * that it is loaded with the proper highlighting.
+    ***********************************************************************************************************/
     void QCalendar::getDates()
     {
         QDate date;
@@ -52,7 +85,7 @@
         QString end;
         shiftEvent s;
 
-        QSqlQuery query(QSqlDatabase::database("four"));
+        QSqlQuery query(QSqlDatabase::database(thisDB));
         QString queryString;
         queryString = "SELECT ShiftDate, StartHour, EndHour FROM Shift S JOIN Employee E ON E.EmployeeID = S.Employee WHERE S.Employee = 92";
         query.exec(queryString);
@@ -70,4 +103,5 @@
             shift_events.append(s);
             m_dates.append(date);
         }
+        //query.clear();
     }

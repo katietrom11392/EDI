@@ -10,7 +10,7 @@ void Schedule::initilize(std::string employee){
     //for (line in dbcall(table shifts AND employee) ){
     //start = line.substr()
     //etc...
-    	addShift(&Shift(start, end, date));
+        //addShift(&Shift(start, end, date)); << THE following line was causing a comiler error
     //}
 }
 
