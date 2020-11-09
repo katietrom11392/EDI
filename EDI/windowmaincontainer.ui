@@ -13,6 +13,12 @@
     <height>773</height>
    </rect>
   </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
   <property name="windowTitle">
    <string>Employee Database Interface</string>
   </property>
@@ -40,7 +46,7 @@ padding: 0 10;
 }</string>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="tab_my_edi">
      <attribute name="title">
@@ -288,7 +294,7 @@ padding: 0 10;
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>813</width>
+         <width>815</width>
          <height>549</height>
         </rect>
        </property>
@@ -569,12 +575,35 @@ padding: 0 10;
      <x>0</x>
      <y>0</y>
      <width>851</width>
-     <height>22</height>
+     <height>20</height>
     </rect>
    </property>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
+ <tabstops>
+  <tabstop>tabWidget</tabstop>
+  <tabstop>calendarWidget</tabstop>
+  <tabstop>lineEdit_search</tabstop>
+  <tabstop>pushButton_addEmployee_2</tabstop>
+  <tabstop>radioButton</tabstop>
+  <tabstop>radioButton_2</tabstop>
+  <tabstop>radioButton_3</tabstop>
+  <tabstop>radioButton_4</tabstop>
+  <tabstop>radioButton_5</tabstop>
+  <tabstop>radioButton_6</tabstop>
+  <tabstop>radioButton_7</tabstop>
+  <tabstop>scrollArea</tabstop>
+  <tabstop>tableWidget_db</tabstop>
+  <tabstop>pushButton_addEmployee_5</tabstop>
+  <tabstop>pushButton_addEmployee_8</tabstop>
+  <tabstop>pushButton_addEmployee_4</tabstop>
+  <tabstop>pushButton_addEmployee_7</tabstop>
+  <tabstop>tableWidget_db_2</tabstop>
+  <tabstop>pushButton_addEmployee_6</tabstop>
+  <tabstop>pushButton_vieweditemployee</tabstop>
+  <tabstop>pushButton_LogOut</tabstop>
+ </tabstops>
  <resources>
   <include location="logo.qrc"/>
  </resources>
