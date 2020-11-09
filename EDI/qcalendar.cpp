@@ -10,8 +10,9 @@
        //shift.date = QDate::currentDate();
        getDates();
        m_outlinePen.setColor(Qt::transparent);
-       m_transparentBrush.setColor(Qt::red);
-       m_transparentBrush.setStyle(Qt::Dense7Pattern);
+       //m_transparentBrush.setColor(QColor(245,101,37)); ORANGE
+       m_transparentBrush.setColor(QColor(79,226,103)); // GREEN
+       m_transparentBrush.setStyle(Qt::BDiagPattern);
 
     }
 
@@ -53,7 +54,7 @@
 
         QSqlQuery query(QSqlDatabase::database("four"));
         QString queryString;
-        queryString = "SELECT eDate, SHour, EHour FROM Schedule S JOIN Employee E ON E.EmployeeID = S.Employee WHERE S.Employee = 92";
+        queryString = "SELECT ShiftDate, StartHour, EndHour FROM Shift S JOIN Employee E ON E.EmployeeID = S.Employee WHERE S.Employee = 92";
         query.exec(queryString);
 
 

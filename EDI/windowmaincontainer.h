@@ -22,6 +22,9 @@ class WindowMainContainer : public QMainWindow
 public:
     explicit WindowMainContainer(QWidget *parent = nullptr);
     ~WindowMainContainer();
+    void setWelcomeName(QString userFirstName);
+    void setDisabledFeatures(QString userPositionCode);
+
 
 private slots:
 
@@ -29,12 +32,13 @@ private slots:
 
     void on_pushButton_LogOut_clicked();
 
-    void on_pushButton_addEmployee_3_clicked();
+    void on_pushButton_vieweditemployee_clicked();
 
 private:
     Ui::WindowMainContainer *ui;
     ControlTab_ViewEditEmployee *viewEditEmployeeWindow;
     QSqlDatabase db3;
+    QString userFirstName;
 };
 
 #endif // WINDOWMAINCONTAINER_H

@@ -1,6 +1,7 @@
 #include "windowmaincontainer.h"
 #include "ui_windowmaincontainer.h"
 
+
 WindowMainContainer::WindowMainContainer(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::WindowMainContainer)
@@ -10,6 +11,9 @@ WindowMainContainer::WindowMainContainer(QWidget *parent) :
 
     DatabaseConnection *dbc = new DatabaseConnection(this);
     db3 = dbc->establishConnection("three");
+
+    ui->tableWidget_db->setStyleSheet("QTableView:item:selected {background-color: #F56525; color: #FFFFFF}\n"
+                         "QTableView:item:selected:focus {background-color: #F56525;}");
 }
 
 
@@ -17,6 +21,27 @@ WindowMainContainer::~WindowMainContainer()
 {
     delete ui;
 }
+
+
+
+
+void WindowMainContainer::setWelcomeName(QString userFirstName){
+    this->userFirstName = userFirstName;
+    ui->label_welcomeUser->setText("Welcome, " + userFirstName + ".");
+}
+
+
+
+
+
+void WindowMainContainer::setDisabledFeatures(QString userPositionCode){
+    if (userPositionCode == "E"){
+        ui->tabWidget->setTabEnabled(1, false);
+        ui->tabWidget->setTabEnabled(2, false);
+    }
+}
+
+
 
 
 void WindowMainContainer::on_tabWidget_currentChanged(int index)
@@ -59,7 +84,7 @@ void WindowMainContainer::on_pushButton_LogOut_clicked() {
     this -> close();
 }
 
-void WindowMainContainer::on_pushButton_addEmployee_3_clicked()
+void WindowMainContainer::on_pushButton_vieweditemployee_clicked()
 {
     viewEditEmployeeWindow->show();
 }

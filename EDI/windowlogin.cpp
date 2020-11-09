@@ -7,7 +7,7 @@ WindowLogin::WindowLogin(QWidget *parent)
 {
     ui->setupUi(this);
 
-    // Instantiate database connectin object for connection to database instance "one"
+    // Instantiate database connection object for connection to database instance "one"
     DatabaseConnection *dbc = new DatabaseConnection(this);
     db1 = dbc->establishConnection("one");
     windowmaincontainer = new WindowMainContainer();
@@ -38,18 +38,23 @@ void WindowLogin::on_pushButtonSignIn_clicked()
 
         QSqlQuery query(QSqlDatabase::database("one"));
         QString queryString;
-        queryString = "SELECT COUNT(*) FROM Employee WHERE Username LIKE '" + lineEdit_username + "' AND Password LIKE '" + lineEdit_password + "'";
+        queryString = "SELECT Name_First, Position_Code FROM Employee WHERE Username LIKE '" + lineEdit_username + "' AND Password LIKE '" + lineEdit_password + "'";
         query.exec(queryString);
         int user_matched = 0;
+        QString userFirstName;
+        QString userPositionCode;
+
         while (query.next()) {
-            user_matched = query.value(0).toInt();
+            user_matched++;
+            userFirstName = query.value(0).toString();
+            userPositionCode = query.value(1).toString();
         }
-
-
         if (user_matched != 1){
             QMessageBox::information(this, "Invalid login", "Invalid login credentials. Try again.");
         }
         else{
+            windowmaincontainer->setWelcomeName(userFirstName);
+            windowmaincontainer->setDisabledFeatures(userPositionCode);
             windowmaincontainer->show();
             this->hide();
         }
