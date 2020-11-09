@@ -324,7 +324,7 @@
      </rect>
     </property>
     <property name="maxLength">
-     <number>11</number>
+     <number>9</number>
     </property>
     <property name="echoMode">
      <enum>QLineEdit::Normal</enum>
