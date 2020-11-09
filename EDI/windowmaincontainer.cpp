@@ -51,7 +51,7 @@ void WindowMainContainer::on_tabWidget_currentChanged(int index)
     QSqlQuery query_getEmployeeRow(QSqlDatabase::database("three"));
     QString employeeRowSqlString;
     query_numEmployees.exec("SELECT COUNT(*) FROM Employee");
-    employeeRowSqlString = "SELECT * FROM Employee";
+    employeeRowSqlString = "SELECT EmployeeID, Name_Last, Name_First, Salary, SSN, Position_Code, Username, Password, Team FROM Employee";
     query_getEmployeeRow.exec(employeeRowSqlString);
     int col = 0;
 
@@ -65,6 +65,8 @@ void WindowMainContainer::on_tabWidget_currentChanged(int index)
         ui->tableWidget_db->setItem( row, 4, new QTableWidgetItem(query_getEmployeeRow.value(4).toString()));
         ui->tableWidget_db->setItem( row, 5, new QTableWidgetItem(query_getEmployeeRow.value(5).toString()));
         ui->tableWidget_db->setItem( row, 6, new QTableWidgetItem(query_getEmployeeRow.value(6).toString()));
+        ui->tableWidget_db->setItem( row, 7, new QTableWidgetItem(query_getEmployeeRow.value(7).toString()));
+
 
         QString password = query_getEmployeeRow.value(7).toString();
         QString encryptedPassword = "";
