@@ -6,6 +6,7 @@
 #include <QDate>
 #include <QPen>
 #include <QBrush>
+#include <QPainter>
 
 #include <databaseconnection.h>
 #include <QtSql>
@@ -13,21 +14,30 @@
 #include <QSqlQuery>
 
 
+/*****************************************************************************************************************************************
+ * QCalendar is used written as a subclass of the QT provided QCalendarWidget class.
+ * This class was needed to override properties of our CalendarWidgets within the windowmain.ui and controltab_vieweditemployee.ui files.
+ * The properties to be overridden include the way particular dates are highlighted.
+ * These dates are loaded from the MYSQL database.
+ *****************************************************************************************************************************************/
+
 class QCalendar : public QCalendarWidget
 {
 Q_OBJECT
+
 
 Q_PROPERTY(QColor color READ getColor WRITE setColor)
 
 public:
    QCalendar(QWidget *parent = 0);
    ~QCalendar();
-
    void setColor(QColor& color);
    QColor getColor();
 
+
 protected:
    virtual void paintCell(QPainter *painter, const QRect &rect, const QDate &date) const;
+
 
 private:
 
@@ -49,6 +59,7 @@ private:
    void getDates();
 
    QSqlDatabase db4;
+   QString thisDB;
 };
 
 #endif // QCALENDAR_H
