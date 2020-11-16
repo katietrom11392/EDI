@@ -1,6 +1,7 @@
 #include "windowmain.h"
 #include "ui_windowmain.h"
 
+#include <iostream>
 
 /***********************************************************************************************************
  * We setup the associated UI and instantiate a database connection for the WinowMain model
@@ -45,8 +46,33 @@ void WindowMain::on_pushButton_vieweditemployee_2_clicked()
             QMessageBox::information(this, "", "Too many employees selected.");
     }
     else{
+        // Create a vector of the current row selection
+    /*
+
+QModelIndexList selection = yourTableView->selectionModel()->selectedRows();
+
+// Multiple rows can be selected
+for(int i=0; i< selection.count(); i++)
+{
+    QModelIndex index = selection.at(i);
+    qDebug() << index.row();
+}
+*/
+        QModelIndex index = ui -> tableWidget_db_3 -> selectionModel() -> currentIndex();
+        int row = index.row();
+        //std::cout << row << std::endl;
+        QVector<QString> fields = { };
+        for (int i = 0; i < ui -> tableWidget_db_3 -> columnCount(); i++) {
+            QString str = ui -> tableWidget_db_3 -> model() -> index(index.row(), i).data().toString();
+            fields.push_back(str);
+            std::cout << fields.back().toStdString() << std::endl;
+        }
+
         viewEditEmployeeWindow = new ControlTab_ViewEditEmployee();
-        viewEditEmployeeWindow->show();
+        viewEditEmployeeWindow -> set_fields(fields);
+        viewEditEmployeeWindow -> set_view_position(userPosition);
+        viewEditEmployeeWindow -> set_edit_mode_lock();
+        viewEditEmployeeWindow -> show();
     }
 
 }
@@ -117,6 +143,16 @@ void WindowMain::on_pushButton_LogOut_clicked()
 void WindowMain::setWelcomeName(QString userFirstName){
     this->userFirstName = userFirstName;
     ui->label_welcomeUser->setText("Welcome, " + userFirstName + ".");
+}
+
+
+
+
+/***********************************************************************************************************
+ * Stores a copy of the user's position.
+***********************************************************************************************************/
+void WindowMain::setPosition(QString userPos) {
+    userPosition = userPos;
 }
 
 

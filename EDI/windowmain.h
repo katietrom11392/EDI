@@ -29,8 +29,10 @@ public:
     explicit WindowMain(QWidget *parent = nullptr);
     ~WindowMain();
     void setWelcomeName(QString userFirstName);
+    void setPosition(QString userPos);
     void setDisabledFeatures(QString userPositionCode);
 
+    void set_fields(QVector<QString> itemFields);
 
 private slots:
     void on_pushButton_vieweditemployee_2_clicked();
@@ -44,6 +46,7 @@ private:
     Ui::WindowMain *ui;
     QSqlDatabase db3;
     QString userFirstName;
+    QString userPosition;
     ControlTab_ViewEditEmployee *viewEditEmployeeWindow;
 };
 

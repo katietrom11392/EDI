@@ -75,6 +75,7 @@ void WindowLogin::on_pushButtonSignIn_clicked()
         else{
             WindowMain *main = new WindowMain();
             main->setWelcomeName(userFirstName);
+            main->setPosition(userPositionCode);
             main->setDisabledFeatures(userPositionCode);
             main->show();
             this->hide();
