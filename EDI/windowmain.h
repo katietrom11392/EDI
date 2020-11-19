@@ -4,6 +4,13 @@
 #include <QWidget>
 #include <QCalendarWidget>
 #include <qcalendar.h>
+#include <QChart>
+#include <QtCharts/qchart.h>
+#include <QtCharts/QChartView>
+#include <QtCharts/QLineSeries>
+
+using namespace QtCharts;
+
 
 #include <QTableView>
 #include <QDate>

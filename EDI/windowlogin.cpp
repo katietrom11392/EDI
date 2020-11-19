@@ -56,6 +56,8 @@ void WindowLogin::on_pushButtonSignIn_clicked()
              QMessageBox::information(this, "Connection", "Invalid Username or Password");
         }*/
 
+
+
         QSqlQuery query(QSqlDatabase::database("one"));
         QString queryString;
         queryString = "SELECT Name_First, Position_Code FROM Employee WHERE Username LIKE '" + lineEdit_username + "' AND Password LIKE '" + lineEdit_password + "'";
@@ -73,11 +75,14 @@ void WindowLogin::on_pushButtonSignIn_clicked()
             QMessageBox::information(this, "Invalid login", "Invalid login credentials. Try again.");
         }
         else{
+
             WindowMain *main = new WindowMain();
             main->setWelcomeName(userFirstName);
             main->setDisabledFeatures(userPositionCode);
             main->show();
             this->hide();
+
+
         }
     }
 }

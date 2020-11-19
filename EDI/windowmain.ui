@@ -63,7 +63,7 @@ padding: 0 10;
 }</string>
    </property>
    <property name="currentIndex">
-    <number>0</number>
+    <number>2</number>
    </property>
    <widget class="QWidget" name="tab_my_edi_2">
     <attribute name="title">
@@ -536,7 +536,7 @@ border-radius: 15px;</string>
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>813</width>
+        <width>815</width>
         <height>569</height>
        </rect>
       </property>
@@ -731,6 +731,17 @@ border-radius: 15px;</string>
     <attribute name="title">
      <string>Analyze</string>
     </attribute>
+    <widget class="QFrame" name="productivityLineGraph">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>20</y>
+       <width>841</width>
+       <height>471</height>
+      </rect>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout"/>
+    </widget>
    </widget>
   </widget>
   <widget class="QLabel" name="labelLogo">
