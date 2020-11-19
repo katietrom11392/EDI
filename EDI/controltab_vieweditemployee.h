@@ -27,30 +27,33 @@ public:
     explicit ControlTab_ViewEditEmployee(QWidget *parent = nullptr);
     ~ControlTab_ViewEditEmployee();
 
-    void set_fields(QVector<QString> fieldsVector);
-    void set_view_position(QString viewPosition);
-    void set_edit_mode_lock();
+    void set_fields(QVector<QString> fieldsVector);     // Set the lineEdit fields to the values of a given vector.
+    void set_view_position(QString viewPosition);       // Recognizes the position of the user and aids in setting their permissions.
+    void set_edit_mode_lock();                          // Locks the user out of being able to edit based on their position.
 
 private slots:
     void on_pushButton_editMode_clicked();
+
     void on_pushButton_saveChanges_clicked();
+
     void on_pushButton_return_clicked();
 
 
 private:
+    // Private Data Members
     Ui::ControlTab_ViewEditEmployee *ui;
-
+    QSqlDatabase dbve;
+    QString userPosition = "";
+    QVector<QString> originalFields;
+    QVector<QString> fields;
     bool editMode = false;
     bool editModeLocked = false;
 
-    QString userPosition = "";
+    // Private Member Functions
 
-    QVector<QString> originalFields;
-    QVector<QString> fields;
+    void populate_position_combobox(QString position);  // Populates the position combobox with the appropriate values.
 
-    void set_fields_disable(bool setTo);
-
-    void populate_position_combobox(QString position);
+    void set_fields_disable(bool setTo);                // Toggles fields to be enabled or disabled.
 
 };
 

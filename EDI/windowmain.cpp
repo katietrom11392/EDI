@@ -44,23 +44,10 @@ void WindowMain::on_pushButton_vieweditemployee_2_clicked()
             QMessageBox::information(this, "", "No employee selected.");
         else
             QMessageBox::information(this, "", "Too many employees selected.");
-    }
-    else{
-        // Create a vector of the current row selection
-    /*
+    } else {
 
-QModelIndexList selection = yourTableView->selectionModel()->selectedRows();
-
-// Multiple rows can be selected
-for(int i=0; i< selection.count(); i++)
-{
-    QModelIndex index = selection.at(i);
-    qDebug() << index.row();
-}
-*/
         QModelIndex index = ui -> tableWidget_db_3 -> selectionModel() -> currentIndex();
-        int row = index.row();
-        //std::cout << row << std::endl;
+
         QVector<QString> fields = { };
         for (int i = 0; i < ui -> tableWidget_db_3 -> columnCount(); i++) {
             QString str = ui -> tableWidget_db_3 -> model() -> index(index.row(), i).data().toString();

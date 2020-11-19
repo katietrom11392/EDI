@@ -3,27 +3,9 @@
 
 #include <iostream>
 
-ControlTab_ViewEditEmployee::ControlTab_ViewEditEmployee(QWidget *parent) : QWidget(parent), ui(new Ui::ControlTab_ViewEditEmployee) {
-    ui->setupUi(this);
-
-    editMode = false;
-    set_fields_disable(true);
-    ui -> pushButton_saveChanges -> setDisabled(true);
-}
-
-ControlTab_ViewEditEmployee::~ControlTab_ViewEditEmployee()
-{
-    delete ui;
-}
-
-void ControlTab_ViewEditEmployee::on_pushButton_editMode_clicked() {
-    if (!editModeLocked) {
-        editMode = !editMode;
-        set_fields_disable(!editMode);
-        ui -> pushButton_editMode -> setDisabled(editMode);
-        ui -> pushButton_saveChanges -> setDisabled(!editMode);
-    }
-}
+// ===================================
+// PRIVATE HELPER FUNCTION DEFINITIONS
+// ===================================
 
 void ControlTab_ViewEditEmployee::populate_position_combobox(QString position) {
 
@@ -49,12 +31,38 @@ void ControlTab_ViewEditEmployee::populate_position_combobox(QString position) {
 
 }
 
+ControlTab_ViewEditEmployee::ControlTab_ViewEditEmployee(QWidget *parent) : QWidget(parent), ui(new Ui::ControlTab_ViewEditEmployee) {
+    ui->setupUi(this);
+
+    DatabaseConnection *dbc = new DatabaseConnection(this);
+    dbve = dbc -> establishConnection("ve");
+
+    editMode = false;
+    set_fields_disable(true);
+    ui -> pushButton_saveChanges -> setDisabled(true);
+}
+
+ControlTab_ViewEditEmployee::~ControlTab_ViewEditEmployee() {
+    delete ui;
+}
+
+void ControlTab_ViewEditEmployee::on_pushButton_editMode_clicked() {
+    if (!editModeLocked) {
+        editMode = !editMode;
+        set_fields_disable(!editMode);
+        ui -> pushButton_editMode -> setDisabled(editMode);
+        ui -> pushButton_saveChanges -> setDisabled(!editMode);
+    }
+}
+
+
+
 void ControlTab_ViewEditEmployee::set_fields_disable(bool setTo) {
     ui -> lineEdit_employeeID -> setDisabled(setTo);
     ui -> lineEdit_lastName -> setDisabled(setTo);
     ui -> lineEdit_firstName -> setDisabled(setTo);
-    ui -> lineEdit_ssn -> setDisabled(setTo);
     ui -> lineEdit_salary -> setDisabled(setTo);
+    ui -> lineEdit_ssn -> setDisabled(setTo);
     ui -> comboBox_position -> setDisabled(setTo);
     ui -> lineEdit_username -> setDisabled(setTo);
     ui -> lineEdit_password -> setDisabled(setTo);
@@ -85,7 +93,60 @@ void ControlTab_ViewEditEmployee::set_fields(QVector<QString> fieldsVector) {
 
 
 void ControlTab_ViewEditEmployee::on_pushButton_return_clicked() {
-    this->hide();
+
+    // Write the fields.
+
+    // Ensure that the fields are filled.
+    // I'm using fields.size() - 1 here since the Team field gets passed with the fields vector at the end and we want to ignore it.
+    bool allFieldsFilled = true;
+    for (int i = 0; i < fields.size() - 1; i++) {
+        QString field = fields.at(i);
+        std::cout << "Field is " << field.toStdString() << std::endl;
+        if (field.isEmpty()) {
+            allFieldsFilled = false;
+            break;
+        }
+    }
+
+    if (!allFieldsFilled) {
+        QMessageBox::information(this, "Error", "Error: Missing field.");
+    } else {
+
+
+        QString employeeID = fields.at(0);
+        QString lastName = fields.at(1);
+        QString firstName = fields.at(2);
+        QString salary = fields.at(3);
+        QString ssn = fields.at(4);
+        QString position = fields.at(5);
+        QString username = fields.at(6);
+        QString password = fields.at(7);
+        std::cout << position.toStdString() << std::endl;
+        std::cout << employeeID.toStdString() << std::endl;
+        std::cout << originalFields.at(0).toStdString() << std::endl;
+
+        QSqlQuery query(QSqlDatabase::database("ve"));
+
+        // I had to bind these some weird and wonky way using question marks instead of binding the values, but at least it works. ¯\_(._.)_/¯
+        query.prepare("UPDATE Employee SET EmployeeID = ?, Name_Last = ?, Name_First = ?, Salary = ?, SSN = ?, Position_Code = ?, Username = ?, Password = ? WHERE EmployeeID = ?");
+        query.addBindValue(employeeID);
+        query.addBindValue(lastName);
+        query.addBindValue(firstName);
+        query.addBindValue(salary);
+        query.addBindValue(ssn);
+        query.addBindValue(position);
+        query.addBindValue(username);
+        query.addBindValue(password);
+        query.addBindValue(QString(originalFields.at(0)));
+        query.exec();
+
+        if (!query.exec()) {
+            qDebug() << query.lastError();
+        }
+
+        this->hide();
+    }
+
 }
 
 void ControlTab_ViewEditEmployee::set_view_position(QString viewPosition) {
@@ -134,11 +195,13 @@ void ControlTab_ViewEditEmployee::on_pushButton_saveChanges_clicked() {
     ui -> pushButton_editMode -> setDisabled(editMode);
     ui -> pushButton_saveChanges -> setDisabled(!editMode);
 
-    // TODO: Write changes to fields.
-
-    QString firstName = ui -> lineEdit_firstName -> text();
-    QString lastName = ui -> lineEdit_lastName -> text();
-    QString confirmMessage = "Changes have been saved for employee " + lastName + ", " + firstName + ".";
-
-    QMessageBox::information(this, "Info", confirmMessage);
+    // Write changes to fields.
+    fields.replace(0, ui -> lineEdit_employeeID -> text());
+    fields.replace(1, ui -> lineEdit_lastName -> text());
+    fields.replace(2, ui -> lineEdit_firstName -> text());
+    fields.replace(3, ui -> lineEdit_salary -> text());
+    fields.replace(4, ui -> lineEdit_ssn -> text());
+    fields.replace(5, ui -> comboBox_position -> currentText());
+    fields.replace(6, ui -> lineEdit_username -> text());
+    fields.replace(7, ui -> lineEdit_password -> text());
 }
