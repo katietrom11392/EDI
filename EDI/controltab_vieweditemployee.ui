@@ -156,6 +156,9 @@
      <height>21</height>
     </rect>
    </property>
+   <property name="maxLength">
+    <number>30</number>
+   </property>
   </widget>
   <widget class="QLineEdit" name="lineEdit_firstName">
    <property name="geometry">
@@ -165,6 +168,9 @@
      <width>131</width>
      <height>21</height>
     </rect>
+   </property>
+   <property name="maxLength">
+    <number>30</number>
    </property>
   </widget>
   <widget class="QLineEdit" name="lineEdit_salary">
@@ -176,6 +182,9 @@
      <height>21</height>
     </rect>
    </property>
+   <property name="maxLength">
+    <number>12</number>
+   </property>
   </widget>
   <widget class="QLineEdit" name="lineEdit_ssn">
    <property name="geometry">
@@ -185,6 +194,9 @@
      <width>131</width>
      <height>21</height>
     </rect>
+   </property>
+   <property name="maxLength">
+    <number>9</number>
    </property>
   </widget>
   <widget class="QLineEdit" name="lineEdit_username">
@@ -196,6 +208,9 @@
      <height>21</height>
     </rect>
    </property>
+   <property name="maxLength">
+    <number>20</number>
+   </property>
   </widget>
   <widget class="QLineEdit" name="lineEdit_password">
    <property name="geometry">
@@ -206,6 +221,9 @@
      <height>21</height>
     </rect>
    </property>
+   <property name="maxLength">
+    <number>20</number>
+   </property>
   </widget>
   <widget class="QLineEdit" name="lineEdit_employeeID">
    <property name="geometry">
@@ -215,6 +233,9 @@
      <width>131</width>
      <height>21</height>
     </rect>
+   </property>
+   <property name="maxLength">
+    <number>9</number>
    </property>
   </widget>
   <widget class="QCalendar" name="calendarWidget">

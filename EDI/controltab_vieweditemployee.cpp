@@ -7,6 +7,7 @@
 // PRIVATE HELPER FUNCTION DEFINITIONS
 // ===================================
 
+// Populates the position combobox with the appropriate values.
 void ControlTab_ViewEditEmployee::populate_position_combobox(QString position) {
 
     // Always add the employee position.
@@ -31,6 +32,22 @@ void ControlTab_ViewEditEmployee::populate_position_combobox(QString position) {
 
 }
 
+// Toggles fields to be enabled or disabled.
+void ControlTab_ViewEditEmployee::set_fields_disable(bool setTo) {
+    ui -> lineEdit_employeeID -> setDisabled(setTo);
+    ui -> lineEdit_lastName -> setDisabled(setTo);
+    ui -> lineEdit_firstName -> setDisabled(setTo);
+    ui -> lineEdit_salary -> setDisabled(setTo);
+    ui -> lineEdit_ssn -> setDisabled(setTo);
+    ui -> comboBox_position -> setDisabled(setTo);
+    ui -> lineEdit_username -> setDisabled(setTo);
+    ui -> lineEdit_password -> setDisabled(setTo);
+}
+
+// ===================================
+// PUBLIC FUNCTION DEFINITIONS
+// ===================================
+
 ControlTab_ViewEditEmployee::ControlTab_ViewEditEmployee(QWidget *parent) : QWidget(parent), ui(new Ui::ControlTab_ViewEditEmployee) {
     ui->setupUi(this);
 
@@ -43,6 +60,7 @@ ControlTab_ViewEditEmployee::ControlTab_ViewEditEmployee(QWidget *parent) : QWid
 }
 
 ControlTab_ViewEditEmployee::~ControlTab_ViewEditEmployee() {
+    dbve.close();
     delete ui;
 }
 
@@ -54,20 +72,6 @@ void ControlTab_ViewEditEmployee::on_pushButton_editMode_clicked() {
         ui -> pushButton_saveChanges -> setDisabled(!editMode);
     }
 }
-
-
-
-void ControlTab_ViewEditEmployee::set_fields_disable(bool setTo) {
-    ui -> lineEdit_employeeID -> setDisabled(setTo);
-    ui -> lineEdit_lastName -> setDisabled(setTo);
-    ui -> lineEdit_firstName -> setDisabled(setTo);
-    ui -> lineEdit_salary -> setDisabled(setTo);
-    ui -> lineEdit_ssn -> setDisabled(setTo);
-    ui -> comboBox_position -> setDisabled(setTo);
-    ui -> lineEdit_username -> setDisabled(setTo);
-    ui -> lineEdit_password -> setDisabled(setTo);
-}
-
 
 void ControlTab_ViewEditEmployee::set_fields(QVector<QString> fieldsVector) {
     originalFields = fieldsVector;
@@ -127,7 +131,8 @@ void ControlTab_ViewEditEmployee::on_pushButton_return_clicked() {
 
         QSqlQuery query(QSqlDatabase::database("ve"));
 
-        // I had to bind these some weird and wonky way using question marks instead of binding the values, but at least it works. ¯\_(._.)_/¯
+        // I'm using a different format here for binding a query. I realized you could do them all as question marks if you use
+        // addBindValue and just bind the values in order.
         query.prepare("UPDATE Employee SET EmployeeID = ?, Name_Last = ?, Name_First = ?, Salary = ?, SSN = ?, Position_Code = ?, Username = ?, Password = ? WHERE EmployeeID = ?");
         query.addBindValue(employeeID);
         query.addBindValue(lastName);
@@ -144,7 +149,8 @@ void ControlTab_ViewEditEmployee::on_pushButton_return_clicked() {
             qDebug() << query.lastError();
         }
 
-        this->hide();
+        //this->hide();
+        this -> close();
     }
 
 }
@@ -171,7 +177,6 @@ void ControlTab_ViewEditEmployee::set_edit_mode_lock() {
         allowed.push_back("M");
         allowed.push_back("C");
     }
-
 
     bool setLock = true;
     for (auto position : allowed) {
