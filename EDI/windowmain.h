@@ -9,6 +9,9 @@
 #include <QDate>
 #include <QDebug>
 #include <controltab_vieweditemployee.h>
+#include <controltab_vieweditteamwindow.h>
+#include <newteam.h>
+#include <iostream>
 
 /*****************************************************************************************************************************************
  * WindowMain is the interface that contains all the elements a user would interact with after a successful login.
@@ -40,11 +43,29 @@ private slots:
     void on_pushButton_LogOut_clicked();
 
 
+    void on_pushButton_SearchEmployee_clicked();
+
+    void on_pushButton_Reset_clicked();
+
+    void on_pushButton_SearchTeam_clicked();
+
+    void on_pushButton_TeamReset_clicked();
+
+    void on_pushButton_newTeam_clicked();
+
+    void on_pushButton_viewEditTeam_clicked();
+
+
 private:
     Ui::WindowMain *ui;
     QSqlDatabase db3;
     QString userFirstName;
     ControlTab_ViewEditEmployee *viewEditEmployeeWindow;
+    ControlTab_ViewEditTeamWindow *viewEditTeamWindow;
+    NewTeam *newTeam;
+    void resetEmployeeTable();
+    void resetTeamTable();
+
 };
 
 
