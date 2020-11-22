@@ -227,7 +227,7 @@
       </font>
      </property>
      <property name="text">
-      <string>Too many teams selected.</string>
+      <string>Missing fields.</string>
      </property>
      <property name="wordWrap">
       <bool>true</bool>
