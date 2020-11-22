@@ -31,6 +31,8 @@ public:
     void resetProjTable();
 
     void resetTeamTable();
+    void resetEmployeeTable();
+
     void closeEvent(QCloseEvent *event);
 
 private slots:

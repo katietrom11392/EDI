@@ -48,6 +48,7 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 RESOURCES += \
+    ediSolo.qrc \
     logo.qrc \
     resourceExample.qrc
 

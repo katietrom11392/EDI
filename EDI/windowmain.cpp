@@ -19,7 +19,15 @@ WindowMain::WindowMain(QWidget *parent) :
                          "QTableView:item:selected:focus {background-color: #F56525;}");
     ui->tableWidget_db_4->setStyleSheet("QTableView:item:selected {background-color: #F56525; color: #FFFFFF}\n"
                          "QTableView:item:selected:focus {background-color: #F56525;}");
+
+    ui->oopsNoEmployee->hide();
+    ui->oopsNoTeamSelected->hide();
+    ui->oopsSearchFilter->hide();
+    ui->oopsTooManyEmp->hide();
+    ui->oopsTooManyTeams->hide();
 }
+
+
 
 
 
@@ -44,10 +52,20 @@ void WindowMain::on_pushButton_vieweditemployee_2_clicked()
 {
     QModelIndexList rowSelection = ui->tableWidget_db_3->selectionModel()->selectedRows();
     if (rowSelection.count() != 1){
-        if (rowSelection.count() == 0)
-            QMessageBox::information(this, "", "No employee selected.");
-        else
-            QMessageBox::information(this, "", "Too many employees selected.");
+        if (rowSelection.count() == 0){
+            ui->oopsNoEmployee->show();
+            ui->oopsTooManyEmp->hide();
+            ui->oopsNoTeamSelected->hide();
+            ui->oopsTooManyTeams->hide();
+            ui->oopsSearchFilter->hide();
+        }
+        else{
+            ui->oopsTooManyEmp->show();
+            ui->oopsNoTeamSelected->hide();
+            ui->oopsTooManyTeams->hide();
+            ui->oopsSearchFilter->hide();
+            ui->oopsNoEmployee->hide();
+        }
     }
     else{
         viewEditEmployeeWindow = new ControlTab_ViewEditEmployee();
@@ -235,7 +253,11 @@ void WindowMain::on_pushButton_SearchEmployee_clicked(){
             query_searchEmployee.exec();
         }
         else{ // No Radio button was selected
-            QMessageBox::information(this,"Error","Select a search filter to proceed.");
+            ui->oopsSearchFilter->show();
+            ui->oopsTooManyEmp->hide();
+            ui->oopsNoTeamSelected->hide();
+            ui->oopsTooManyTeams->hide();
+            ui->oopsNoEmployee->hide();
         }
 
 
@@ -343,6 +365,8 @@ void WindowMain::on_pushButton_TeamReset_clicked()
 void WindowMain::on_pushButton_newTeam_clicked()
 {
     newTeam = new NewTeam();
+    newTeam->set_db_table_refs(ui->tableWidget_db_3, ui->tableWidget_db_4);
+;
     newTeam->show();
 }
 
@@ -357,13 +381,21 @@ void WindowMain::on_pushButton_viewEditTeam_clicked()
 {
     QModelIndexList rowSelection = ui->tableWidget_db_4->selectionModel()->selectedRows();
     if (rowSelection.count() != 1){
-        if (rowSelection.count() == 0)
-            QMessageBox::information(this, "", "No team selected.");
-        else
-            QMessageBox::information(this, "", "Too many teams selected.");
+        if (rowSelection.count() == 0){
+            ui->oopsNoTeamSelected->show();
+            ui->oopsTooManyEmp->hide();
+            ui->oopsTooManyTeams->hide();
+            ui->oopsSearchFilter->hide();
+            ui->oopsNoEmployee->hide();
+        }
+        else{
+            ui->oopsTooManyTeams->show();
+            ui->oopsTooManyEmp->hide();
+            ui->oopsNoTeamSelected->hide();
+            ui->oopsSearchFilter->hide();
+            ui->oopsNoEmployee->hide();
+        }
     } else {
-
-        // Create a vector of the current row selection
         QModelIndex index = ui -> tableWidget_db_4 -> selectionModel() -> currentIndex();
         QVector<QString> fields = { };
         for (int i = 0; i < ui -> tableWidget_db_4 -> columnCount(); i++) {
@@ -375,12 +407,72 @@ void WindowMain::on_pushButton_viewEditTeam_clicked()
         viewEditTeamWindow -> set_fields(fields);
         viewEditTeamWindow->set_db_table_refs(ui->tableWidget_db_3, ui->tableWidget_db_4);
         viewEditTeamWindow -> show();
-
-       // connect(viewEditEmployeeWindow, SIGNAL(hide()), this, SLOT(process(viewEditTeamWindow)));
     }
 }
 
 
+
+
+
+/***********************************************************************************************************
+ * process(ControlTab_ViewEditTeamWindow *viewEditTeamWindow): resets the team table.
+***********************************************************************************************************/
 void WindowMain::process(ControlTab_ViewEditTeamWindow *viewEditTeamWindow) {
       resetTeamTable();
+}
+
+
+
+
+
+
+/***********************************************************************************************************
+ * Hides the Edi helper popup when no employee was selected, but the user clicked "View/Edit Employee"
+***********************************************************************************************************/
+void WindowMain::on_pushButton_noEmployee_clicked()
+{
+    ui->bubbleOopsNoEmployee->hide();
+}
+
+
+
+
+
+
+/***********************************************************************************************************
+ * Hides the Edi helper popup when no employee was selected, but the user clicked "View/Edit Employee"
+***********************************************************************************************************/
+void WindowMain::on_pushButton_noTeamSelected_clicked()
+{
+    ui->oopsNoTeamSelected->hide();
+}
+
+
+
+
+
+
+void WindowMain::on_pushButton_SearchField_clicked()
+{
+    ui->oopsSearchFilter->hide();
+}
+
+
+
+
+
+
+void WindowMain::on_pushButton_tooManyEmp_clicked()
+{
+    ui->oopsTooManyEmp->hide();
+}
+
+
+
+
+
+
+void WindowMain::on_pushButton_tooManyTeams_clicked()
+{
+    ui->oopsTooManyTeams->hide();
 }

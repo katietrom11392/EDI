@@ -66,6 +66,8 @@ void ControlTab_ViewEditTeamWindow::set_fields(QVector<QString> fields){
     resetProjTable();
 
     ui->labelTeamName->setText(curTeamName);
+
+    ui->lineEditNumMembers->setText(QVariant(ui->tableWidget_members->rowCount()).toString());
 }
 
 
@@ -158,6 +160,47 @@ void ControlTab_ViewEditTeamWindow::resetTeamTable(){
         int row = teamDB->rowCount()-1;
         while (col < 4){
             teamDB->setItem( row, col, new QTableWidgetItem(query_getTeamRow.value(col).toString()));
+            col++;
+        }
+        col = 0;
+    }
+}
+
+
+
+
+
+
+/****************************************************************************************************************************
+ * Details from the employee database are loaded into the QTableWidget that acts as the embedded MYSQL database for employees.
+ * To get this data a query is created that gets all the employees from the Employee table in the db, and loads them one by
+ * one into a newly created row for the QTableWidget employee embedded db.
+*****************************************************************************************************************************/
+void ControlTab_ViewEditTeamWindow::resetEmployeeTable(){
+
+    QSqlQuery query_getEmployeeRow(QSqlDatabase::database("three"));
+    QString employeeRowSqlString;
+    employeeRowSqlString = "SELECT EmployeeID, Name_Last, Name_First, Salary, SSN, Position_Code, Username, Password, Team FROM Employee";
+    query_getEmployeeRow.exec(employeeRowSqlString);
+
+    employeeDB->setRowCount(0);
+    int col = 0;
+
+    while (query_getEmployeeRow.next()) {
+        employeeDB->insertRow ( employeeDB->rowCount() );
+        int row = employeeDB->rowCount()-1;
+        while (col < 9){
+            if (col == 7){
+                QString password = query_getEmployeeRow.value(col).toString();
+                QString encryptedPassword = "";
+                for (auto letter : password){
+                    encryptedPassword.append("*");
+                }
+                employeeDB->setItem( row, col, new QTableWidgetItem(encryptedPassword));
+            }
+            else{
+                employeeDB->setItem( row, col, new QTableWidgetItem(query_getEmployeeRow.value(col).toString()));
+            }
             col++;
         }
         col = 0;
@@ -274,7 +317,7 @@ void ControlTab_ViewEditTeamWindow::on_pushButton_saveChanges_clicked()
  * 2. Checks that the Employee is a valid employee.
  * 3. Checks if the employee is already part of another team.
  * 4. If the employee is not part of another team, add the employee to the Team
- * 5. Update the Member table to reflect the new team member change.
+ * 5. Update the Member and Employee tables to reflect the new team member change.
 *****************************************************************************************************************************/
 void ControlTab_ViewEditTeamWindow::on_pushButton_addNew_clicked() {
 
@@ -300,6 +343,9 @@ void ControlTab_ViewEditTeamWindow::on_pushButton_addNew_clicked() {
 
                 // 5.
                 resetMemberTable();
+                resetEmployeeTable();
+                ui->lineEditNumMembers->setText(QVariant(QVariant(ui->lineEditNumMembers->text()).toInt() + 1).toString());
+
             }
             ui->lineEditNewMember->clear();
         }
@@ -318,7 +364,7 @@ void ControlTab_ViewEditTeamWindow::on_pushButton_addNew_clicked() {
  * on_pushButton_remove_clicked() : Removing a team member from this team.
  *
  * 1. Confirms the line to enter the desired employee ID of the member to remove is changed.
- * 2. If the empoloyee is part of the team, remove them from the team and update the Members table.
+ * 2. If the empoloyee is part of the team, remove them from the team and update the Members and Employee table.
 *****************************************************************************************************************************/
 void ControlTab_ViewEditTeamWindow::on_pushButton_remove_clicked(){
 
@@ -337,6 +383,8 @@ void ControlTab_ViewEditTeamWindow::on_pushButton_remove_clicked(){
             query_verifyEmployee2.bindValue(":thisID", ui->lineEditNewMember->text());
             query_verifyEmployee2.exec();
             resetMemberTable();
+            resetEmployeeTable();
+            ui->lineEditNumMembers->setText(QVariant(QVariant(ui->lineEditNumMembers->text()).toInt() - 1).toString());
             ui->lineEditNewMember->clear();
         }
         else{
@@ -353,14 +401,14 @@ void ControlTab_ViewEditTeamWindow::on_pushButton_remove_clicked(){
 /****************************************************************************************************************************
  * on_pushButton_assign_clicked() : Assigning a new project to the team.
  *
- * 1. Checks that the input field for the new project name has been changed.
+ * 1. Checks that the input field for the new project name has been changed and that it has been changed to a valid length name.
  * 2. Checks that the Expected Hours Double Spin Box has hours > 0.
  * 3. Checks that the Project Name is available in the company's database and adds the project as "In Progress", if so.
 *****************************************************************************************************************************/
 void ControlTab_ViewEditTeamWindow::on_pushButton_assign_clicked()
 {
     // 1.
-    if (ui->lineEdit_newProj->text() != ""){
+    if (ui->lineEdit_newProj->text() != "" && ui->lineEdit_newProj->text().length() <= 30){
         float hoursEntered = QVariant(ui->spinBoxExpectedHours->text()).toFloat();
 
         // 2.
@@ -405,6 +453,9 @@ void ControlTab_ViewEditTeamWindow::on_pushButton_assign_clicked()
             QMessageBox::information(this, "Error", "Expected Hours must be positive.");
         }
     }
+    if (ui->lineEdit_newProj->text().length() > 30){
+        QMessageBox::information(this,"","Team Name cannot be more than 30 characters in length.");
+    }
 }
 
 
@@ -439,7 +490,6 @@ void ControlTab_ViewEditTeamWindow::on_pushButton_changeStatus_clicked(){
         query_updateProjStatus.bindValue(":newStatus", inProgressStatus? "Complete" : "Pending");
         query_updateProjStatus.bindValue(":thisProj", selectedRowProjName);
         query_updateProjStatus.exec();
-        resetProjTable();
 
         // 3.
         if (inProgressStatus){
@@ -450,6 +500,17 @@ void ControlTab_ViewEditTeamWindow::on_pushButton_changeStatus_clicked(){
             numCurProjects++;
             numProjectsCompleted--;
         }
+        QSqlQuery query_updateProjNums(QSqlDatabase::database("dbVet"));
+        query_updateProjNums.prepare("UPDATE Team SET ProjectsCompleted = :newPC WHERE TeamID = :thisTeam");
+        query_updateProjNums.bindValue(":newPC", QVariant(numProjectsCompleted).toInt());
+        query_updateProjNums.bindValue(":thisTeam", curTeamId);
+        query_updateProjNums.exec();
+        if (query_updateProjNums.size() == 1){
+            QMessageBox::information(this,"","HI");
+        }
+
+        resetProjTable();
+        resetTeamTable();
         ui->lineEditCurProjects->setText(QVariant(numCurProjects).toString());
         ui->lineEditProjComplete->setText(QVariant(numProjectsCompleted).toString());
     }

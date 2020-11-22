@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>New Team</string>
+   <string>Create New Team</string>
   </property>
   <widget class="QLabel" name="label">
    <property name="geometry">
@@ -121,33 +121,332 @@
     </rect>
    </property>
   </widget>
-  <widget class="QToolButton" name="toolButton">
+  <widget class="QLabel" name="label_4">
    <property name="geometry">
     <rect>
-     <x>310</x>
-     <y>120</y>
-     <width>26</width>
-     <height>22</height>
+     <x>360</x>
+     <y>260</y>
+     <width>31</width>
+     <height>31</height>
     </rect>
    </property>
    <property name="text">
-    <string>...</string>
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap resource="ediSolo.qrc">:/new/prefix1/ediSolo.png</pixmap>
+   </property>
+   <property name="scaledContents">
+    <bool>true</bool>
    </property>
   </widget>
-  <widget class="QToolButton" name="toolButton_2">
+  <widget class="QWidget" name="oopsName" native="true">
    <property name="geometry">
     <rect>
-     <x>310</x>
-     <y>150</y>
-     <width>26</width>
-     <height>22</height>
+     <x>260</x>
+     <y>180</y>
+     <width>111</width>
+     <height>91</height>
     </rect>
    </property>
-   <property name="text">
-    <string>...</string>
+   <widget class="QLabel" name="bubbleName">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>111</width>
+      <height>91</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap resource="ediSolo.qrc">:/new/prefix1/rBubble.png</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_oopsName">
+    <property name="geometry">
+     <rect>
+      <x>3</x>
+      <y>7</y>
+      <width>106</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>11</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Oops!
+Team Name can be up to 30 characters.</string>
+    </property>
+    <property name="wordWrap">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_oopsName">
+    <property name="geometry">
+     <rect>
+      <x>90</x>
+      <y>0</y>
+      <width>21</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: transparent;
+border: none;</string>
+    </property>
+    <property name="text">
+     <string>x</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QWidget" name="oopsId" native="true">
+   <property name="geometry">
+    <rect>
+     <x>260</x>
+     <y>180</y>
+     <width>111</width>
+     <height>91</height>
+    </rect>
    </property>
+   <widget class="QLabel" name="bubbleId">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>111</width>
+      <height>91</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap resource="ediSolo.qrc">:/new/prefix1/rBubble.png</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_oopsId">
+    <property name="geometry">
+     <rect>
+      <x>3</x>
+      <y>7</y>
+      <width>106</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>11</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Oops!
+Team ID can be up to 5 characters.</string>
+    </property>
+    <property name="wordWrap">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_oopsID">
+    <property name="geometry">
+     <rect>
+      <x>90</x>
+      <y>0</y>
+      <width>21</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: transparent;
+border: none;</string>
+    </property>
+    <property name="text">
+     <string>x</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QWidget" name="oopsIdOrName" native="true">
+   <property name="geometry">
+    <rect>
+     <x>260</x>
+     <y>180</y>
+     <width>111</width>
+     <height>91</height>
+    </rect>
+   </property>
+   <widget class="QLabel" name="bubbleIdOrName">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>111</width>
+      <height>91</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap resource="ediSolo.qrc">:/new/prefix1/rBubble.png</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_oopsIdOrName">
+    <property name="geometry">
+     <rect>
+      <x>4</x>
+      <y>8</y>
+      <width>101</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>11</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Oops!
+Team ID or Name already in use.</string>
+    </property>
+    <property name="wordWrap">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_oopsIdOrName">
+    <property name="geometry">
+     <rect>
+      <x>90</x>
+      <y>0</y>
+      <width>21</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: transparent;
+border: none;</string>
+    </property>
+    <property name="text">
+     <string>x</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QWidget" name="oopsMissingFields" native="true">
+   <property name="geometry">
+    <rect>
+     <x>260</x>
+     <y>180</y>
+     <width>111</width>
+     <height>91</height>
+    </rect>
+   </property>
+   <widget class="QLabel" name="bubbleMissingFields">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>111</width>
+      <height>91</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap resource="ediSolo.qrc">:/new/prefix1/rBubble.png</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_MissingFields">
+    <property name="geometry">
+     <rect>
+      <x>3</x>
+      <y>7</y>
+      <width>106</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>11</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Oops!
+Missing fields.</string>
+    </property>
+    <property name="wordWrap">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_MissingFields">
+    <property name="geometry">
+     <rect>
+      <x>90</x>
+      <y>0</y>
+      <width>21</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: transparent;
+border: none;</string>
+    </property>
+    <property name="text">
+     <string>x</string>
+    </property>
+   </widget>
   </widget>
  </widget>
- <resources/>
+ <resources>
+  <include location="ediSolo.qrc"/>
+ </resources>
  <connections/>
 </ui>

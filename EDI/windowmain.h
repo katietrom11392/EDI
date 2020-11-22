@@ -56,6 +56,16 @@ private slots:
 
     void on_pushButton_viewEditTeam_clicked();
 
+    void on_pushButton_noEmployee_clicked();
+
+    void on_pushButton_noTeamSelected_clicked();
+
+    void on_pushButton_SearchField_clicked();
+
+    void on_pushButton_tooManyEmp_clicked();
+
+    void on_pushButton_tooManyTeams_clicked();
+
 private:
     Ui::WindowMain *ui;
     QSqlDatabase db3;

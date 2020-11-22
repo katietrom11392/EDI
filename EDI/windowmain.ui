@@ -63,7 +63,7 @@ padding: 0 10;
 }</string>
    </property>
    <property name="currentIndex">
-    <number>0</number>
+    <number>1</number>
    </property>
    <widget class="QWidget" name="tab_my_edi_2">
     <attribute name="title">
@@ -553,82 +553,6 @@ border-radius: 15px;</string>
        </rect>
       </property>
       <layout class="QGridLayout" name="gridLayout_2">
-       <item row="1" column="0" colspan="5">
-        <widget class="QTableWidget" name="tableWidget_db_3">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="minimumSize">
-          <size>
-           <width>0</width>
-           <height>0</height>
-          </size>
-         </property>
-         <property name="maximumSize">
-          <size>
-           <width>16777215</width>
-           <height>500</height>
-          </size>
-         </property>
-         <property name="editTriggers">
-          <set>QAbstractItemView::NoEditTriggers</set>
-         </property>
-         <property name="alternatingRowColors">
-          <bool>false</bool>
-         </property>
-         <property name="selectionBehavior">
-          <enum>QAbstractItemView::SelectRows</enum>
-         </property>
-         <column>
-          <property name="text">
-           <string>EmployeeID</string>
-          </property>
-         </column>
-         <column>
-          <property name="text">
-           <string>Last Name</string>
-          </property>
-         </column>
-         <column>
-          <property name="text">
-           <string>First Name</string>
-          </property>
-         </column>
-         <column>
-          <property name="text">
-           <string>Salary</string>
-          </property>
-         </column>
-         <column>
-          <property name="text">
-           <string>SSN</string>
-          </property>
-         </column>
-         <column>
-          <property name="text">
-           <string>Position</string>
-          </property>
-         </column>
-         <column>
-          <property name="text">
-           <string>Username</string>
-          </property>
-         </column>
-         <column>
-          <property name="text">
-           <string>Password</string>
-          </property>
-         </column>
-         <column>
-          <property name="text">
-           <string>Team</string>
-          </property>
-         </column>
-        </widget>
-       </item>
        <item row="0" column="0">
         <widget class="QLabel" name="label_19">
          <property name="font">
@@ -708,6 +632,32 @@ border-radius: 15px;</string>
          </column>
         </widget>
        </item>
+       <item row="4" column="1">
+        <widget class="QPushButton" name="pushButton_SearchTeam">
+         <property name="maximumSize">
+          <size>
+           <width>110</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>Search Team</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="2">
+        <widget class="QPushButton" name="pushButton_TeamReset">
+         <property name="maximumSize">
+          <size>
+           <width>80</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>Reset</string>
+         </property>
+        </widget>
+       </item>
        <item row="2" column="4">
         <widget class="QPushButton" name="pushButton_newTeam">
          <property name="maximumSize">
@@ -718,6 +668,26 @@ border-radius: 15px;</string>
          </property>
          <property name="text">
           <string>New Team</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="0">
+        <widget class="QLabel" name="label_20">
+         <property name="font">
+          <font>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="text">
+          <string>Teams</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="4">
+        <widget class="QPushButton" name="pushButton_viewEditTeam">
+         <property name="text">
+          <string>View/Edit Team</string>
          </property>
         </widget>
        </item>
@@ -744,55 +714,88 @@ border-radius: 15px;</string>
          <property name="text">
           <string/>
          </property>
+         <property name="placeholderText">
+          <string>Team ID or Team Name</string>
+         </property>
          <property name="clearButtonEnabled">
           <bool>true</bool>
          </property>
         </widget>
        </item>
-       <item row="2" column="0">
-        <widget class="QLabel" name="label_20">
-         <property name="font">
-          <font>
-           <weight>75</weight>
-           <bold>true</bold>
-          </font>
+       <item row="1" column="0" colspan="5">
+        <widget class="QTableWidget" name="tableWidget_db_3">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
          </property>
-         <property name="text">
-          <string>Teams</string>
-         </property>
-        </widget>
-       </item>
-       <item row="4" column="1">
-        <widget class="QPushButton" name="pushButton_SearchTeam">
-         <property name="maximumSize">
+         <property name="minimumSize">
           <size>
-           <width>110</width>
-           <height>16777215</height>
+           <width>0</width>
+           <height>0</height>
           </size>
          </property>
-         <property name="text">
-          <string>Search Team</string>
-         </property>
-        </widget>
-       </item>
-       <item row="4" column="4">
-        <widget class="QPushButton" name="pushButton_viewEditTeam">
-         <property name="text">
-          <string>View/Edit Team</string>
-         </property>
-        </widget>
-       </item>
-       <item row="4" column="2">
-        <widget class="QPushButton" name="pushButton_TeamReset">
          <property name="maximumSize">
           <size>
-           <width>80</width>
-           <height>16777215</height>
+           <width>16777215</width>
+           <height>500</height>
           </size>
          </property>
-         <property name="text">
-          <string>Reset</string>
+         <property name="editTriggers">
+          <set>QAbstractItemView::NoEditTriggers</set>
          </property>
+         <property name="alternatingRowColors">
+          <bool>false</bool>
+         </property>
+         <property name="selectionBehavior">
+          <enum>QAbstractItemView::SelectRows</enum>
+         </property>
+         <column>
+          <property name="text">
+           <string>EmployeeID</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Last Name</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>First Name</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Salary</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>SSN</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Position</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Username</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Password</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string>Team</string>
+          </property>
+         </column>
         </widget>
        </item>
       </layout>
@@ -849,7 +852,7 @@ border-radius: 15px;</string>
     <rect>
      <x>10</x>
      <y>10</y>
-     <width>61</width>
+     <width>71</width>
      <height>31</height>
     </rect>
    </property>
@@ -866,7 +869,7 @@ border-radius: 15px;</string>
   <widget class="QLabel" name="labelEDI">
    <property name="geometry">
     <rect>
-     <x>80</x>
+     <x>90</x>
      <y>20</y>
      <width>231</width>
      <height>16</height>
@@ -939,6 +942,475 @@ border-radius: 15px;</string>
     <bool>true</bool>
    </property>
   </widget>
+  <widget class="QWidget" name="oopsSearchFilter" native="true">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>519</y>
+     <width>141</width>
+     <height>121</height>
+    </rect>
+   </property>
+   <widget class="QLabel" name="label_oopsSearchFilter">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>80</y>
+      <width>31</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap resource="ediSolo.qrc">:/new/prefix1/ediSolo.png</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="bubbleOops">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>10</y>
+      <width>91</width>
+      <height>71</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap resource="ediSolo.qrc">:/new/prefix1/lBubble.png</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_oopsSearchFilter_2">
+    <property name="geometry">
+     <rect>
+      <x>42</x>
+      <y>13</y>
+      <width>81</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>11</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>No search filter selected.</string>
+    </property>
+    <property name="wordWrap">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_SearchField">
+    <property name="geometry">
+     <rect>
+      <x>110</x>
+      <y>10</y>
+      <width>21</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: transparent;
+border: none;</string>
+    </property>
+    <property name="text">
+     <string>x</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QWidget" name="oopsNoTeamSelected" native="true">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>519</y>
+     <width>141</width>
+     <height>121</height>
+    </rect>
+   </property>
+   <widget class="QLabel" name="label_oopsSoloEdi">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>80</y>
+      <width>31</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap resource="ediSolo.qrc">:/new/prefix1/ediSolo.png</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="bubbleOopsNoTeamSelected">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>10</y>
+      <width>91</width>
+      <height>71</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap resource="ediSolo.qrc">:/new/prefix1/lBubble.png</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_oopsNoTeamSelected">
+    <property name="geometry">
+     <rect>
+      <x>42</x>
+      <y>12</y>
+      <width>81</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>11</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>No team selected.</string>
+    </property>
+    <property name="wordWrap">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_noTeamSelected">
+    <property name="geometry">
+     <rect>
+      <x>110</x>
+      <y>10</y>
+      <width>21</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: transparent;
+border: none;</string>
+    </property>
+    <property name="text">
+     <string>x</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QWidget" name="oopsTooManyTeams" native="true">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>519</y>
+     <width>141</width>
+     <height>121</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"/>
+   </property>
+   <widget class="QLabel" name="label_oopsSoloEdi_2">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>80</y>
+      <width>31</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap resource="ediSolo.qrc">:/new/prefix1/ediSolo.png</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="bubbleOopsTooManyTeams">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>10</y>
+      <width>91</width>
+      <height>71</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap resource="ediSolo.qrc">:/new/prefix1/lBubble.png</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_oopsTooManyTeams">
+    <property name="geometry">
+     <rect>
+      <x>41</x>
+      <y>12</y>
+      <width>83</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>11</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Too many teams selected.</string>
+    </property>
+    <property name="wordWrap">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_tooManyTeams">
+    <property name="geometry">
+     <rect>
+      <x>110</x>
+      <y>10</y>
+      <width>21</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: transparent;
+border: none;</string>
+    </property>
+    <property name="text">
+     <string>x</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QWidget" name="oopsNoEmployee" native="true">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>519</y>
+     <width>141</width>
+     <height>121</height>
+    </rect>
+   </property>
+   <widget class="QLabel" name="label_oopsSoloEdi_3">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>80</y>
+      <width>31</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap resource="ediSolo.qrc">:/new/prefix1/ediSolo.png</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="bubbleOopsNoEmployee">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>10</y>
+      <width>91</width>
+      <height>71</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap resource="ediSolo.qrc">:/new/prefix1/lBubble.png</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_oopsNoEmployee">
+    <property name="geometry">
+     <rect>
+      <x>42</x>
+      <y>12</y>
+      <width>81</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>11</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>No employee selected.</string>
+    </property>
+    <property name="wordWrap">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_noEmployee">
+    <property name="geometry">
+     <rect>
+      <x>110</x>
+      <y>10</y>
+      <width>21</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: transparent;
+border: none;</string>
+    </property>
+    <property name="text">
+     <string>x</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QWidget" name="oopsTooManyEmp" native="true">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>519</y>
+     <width>141</width>
+     <height>121</height>
+    </rect>
+   </property>
+   <widget class="QLabel" name="label_oopsSoloEdi_4">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>80</y>
+      <width>31</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap resource="ediSolo.qrc">:/new/prefix1/ediSolo.png</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="bubbleOopsTooManyEmp">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>10</y>
+      <width>91</width>
+      <height>71</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap resource="ediSolo.qrc">:/new/prefix1/lBubble.png</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_oopsTooManyEmp">
+    <property name="geometry">
+     <rect>
+      <x>42</x>
+      <y>12</y>
+      <width>81</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>11</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Too many employees selected.</string>
+    </property>
+    <property name="wordWrap">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_tooManyEmp">
+    <property name="geometry">
+     <rect>
+      <x>110</x>
+      <y>10</y>
+      <width>21</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: transparent;
+border: none;</string>
+    </property>
+    <property name="text">
+     <string>x</string>
+    </property>
+   </widget>
+  </widget>
+  <zorder>tabWidget</zorder>
+  <zorder>labelLogo</zorder>
+  <zorder>labelEDI</zorder>
+  <zorder>pushButton_LogOut</zorder>
+  <zorder>label_welcomeUser</zorder>
+  <zorder>label_Logout_image</zorder>
+  <zorder>oopsNoEmployee</zorder>
+  <zorder>oopsNoTeamSelected</zorder>
+  <zorder>oopsSearchFilter</zorder>
+  <zorder>oopsTooManyEmp</zorder>
+  <zorder>oopsTooManyTeams</zorder>
  </widget>
  <customwidgets>
   <customwidget>
@@ -948,6 +1420,7 @@ border-radius: 15px;</string>
   </customwidget>
  </customwidgets>
  <resources>
+  <include location="ediSolo.qrc"/>
   <include location="logo.qrc"/>
  </resources>
  <connections/>
