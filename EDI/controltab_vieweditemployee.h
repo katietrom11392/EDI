@@ -27,7 +27,7 @@ public:
     explicit ControlTab_ViewEditEmployee(QWidget *parent = nullptr);
     ~ControlTab_ViewEditEmployee();
 
-    void set_fields(QVector<QString> fieldsVector);     // Set the lineEdit fields to the values of a given vector.
+    void set_fields(QVector<QString> fieldsVector, QVector<QString> originalVector);     // Set the lineEdit fields to the values of a given vector.
     void set_view_position(QString viewPosition);       // Recognizes the position of the user and aids in setting their permissions.
     void set_edit_mode_lock();                          // Locks the user out of being able to edit based on their position.
 
@@ -38,6 +38,7 @@ private slots:
 
     void on_pushButton_return_clicked();
 
+    void on_pushButton_restoreDefault_clicked();
 
 private:
     // Private Data Members

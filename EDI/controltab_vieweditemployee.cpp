@@ -51,16 +51,22 @@ void ControlTab_ViewEditEmployee::set_fields_disable(bool setTo) {
 ControlTab_ViewEditEmployee::ControlTab_ViewEditEmployee(QWidget *parent) : QWidget(parent), ui(new Ui::ControlTab_ViewEditEmployee) {
     ui->setupUi(this);
 
-    DatabaseConnection *dbc = new DatabaseConnection(this);
-    dbve = dbc -> establishConnection("ve");
+    if (!QSqlDatabase::contains("ve")) {
+        DatabaseConnection *dbc = new DatabaseConnection(this);
+        dbve = dbc -> establishConnection("ve");
+    } else {
+        dbve = QSqlDatabase::database("ve");
+    }
 
     editMode = false;
     set_fields_disable(true);
     ui -> pushButton_saveChanges -> setDisabled(true);
+    ui -> pushButton_restoreDefault -> setDisabled(true);
 }
 
 ControlTab_ViewEditEmployee::~ControlTab_ViewEditEmployee() {
-    dbve.close();
+    //dbve.close();
+    //QSqlDatabase::removeDatabase("ve");
     delete ui;
 }
 
@@ -70,11 +76,12 @@ void ControlTab_ViewEditEmployee::on_pushButton_editMode_clicked() {
         set_fields_disable(!editMode);
         ui -> pushButton_editMode -> setDisabled(editMode);
         ui -> pushButton_saveChanges -> setDisabled(!editMode);
+        ui -> pushButton_restoreDefault -> setDisabled(!editMode);
     }
 }
 
-void ControlTab_ViewEditEmployee::set_fields(QVector<QString> fieldsVector) {
-    originalFields = fieldsVector;
+void ControlTab_ViewEditEmployee::set_fields(QVector<QString> fieldsVector, QVector<QString> originalVector) {
+    originalFields = originalVector;
     fields = fieldsVector;
 
     QString position = fields.at(5);
@@ -107,6 +114,7 @@ void ControlTab_ViewEditEmployee::on_pushButton_return_clicked() {
         QString field = fields.at(i);
         std::cout << "Field is " << field.toStdString() << std::endl;
         if (field.isEmpty()) {
+            QMessageBox::information(this, "Error", "Error: Missing field.");
             allFieldsFilled = false;
             break;
         }
@@ -116,7 +124,6 @@ void ControlTab_ViewEditEmployee::on_pushButton_return_clicked() {
         QMessageBox::information(this, "Error", "Error: Missing field.");
     } else {
 
-
         QString employeeID = fields.at(0);
         QString lastName = fields.at(1);
         QString firstName = fields.at(2);
@@ -125,34 +132,54 @@ void ControlTab_ViewEditEmployee::on_pushButton_return_clicked() {
         QString position = fields.at(5);
         QString username = fields.at(6);
         QString password = fields.at(7);
-        std::cout << position.toStdString() << std::endl;
-        std::cout << employeeID.toStdString() << std::endl;
-        std::cout << originalFields.at(0).toStdString() << std::endl;
+        //std::cout << position.toStdString() << std::endl;
+        //std::cout << employeeID.toStdString() << std::endl;
+        //std::cout << originalFields.at(0).toStdString() << std::endl;
 
-        QSqlQuery query(QSqlDatabase::database("ve"));
+        bool fieldError = false;
 
-        // I'm using a different format here for binding a query. I realized you could do them all as question marks if you use
-        // addBindValue and just bind the values in order.
-        query.prepare("UPDATE Employee SET EmployeeID = ?, Name_Last = ?, Name_First = ?, Salary = ?, SSN = ?, Position_Code = ?, Username = ?, Password = ? WHERE EmployeeID = ?");
-        query.addBindValue(employeeID);
-        query.addBindValue(lastName);
-        query.addBindValue(firstName);
-        query.addBindValue(salary);
-        query.addBindValue(ssn);
-        query.addBindValue(position);
-        query.addBindValue(username);
-        query.addBindValue(password);
-        query.addBindValue(QString(originalFields.at(0)));
-        query.exec();
-
-        if (!query.exec()) {
-            qDebug() << query.lastError();
+        // Ensure that the employee ID field is formatted properly.
+        if (!employeeID.contains(QRegularExpression("^[0-9]+$"))) {
+            QMessageBox::information(this, "Error", "Error: Employee ID imporperly formatted.");
+            fieldError = true;
         }
 
-        //this->hide();
-        this -> close();
-    }
+        if (!salary.contains(QRegularExpression("^[0-9]+$"))) {
+            QMessageBox::information(this, "Error", "Error: Salary improperly formatted.");
+            fieldError = true;
+        }
 
+        // Ensure that the SSN field is formatted properly.
+        if (ssn.size() != 9 || !ssn.contains(QRegularExpression("^[0-9]+$"))) {
+            QMessageBox::information(this, "Error", "Error: SSN improperly formatted.");
+            fieldError = true;
+        }
+
+        if (!fieldError) {
+            QSqlQuery query(QSqlDatabase::database("ve"));
+
+            // I'm using a different format here for binding a query. I realized you could do them all as question marks if you use
+            // addBindValue and just bind the values in order.
+            query.prepare("UPDATE Employee SET EmployeeID = ?, Name_Last = ?, Name_First = ?, Salary = ?, SSN = ?, Position_Code = ?, Username = ?, Password = ? WHERE EmployeeID = ?");
+            query.addBindValue(employeeID);
+            query.addBindValue(lastName);
+            query.addBindValue(firstName);
+            query.addBindValue(salary);
+            query.addBindValue(ssn);
+            query.addBindValue(position);
+            query.addBindValue(username);
+            query.addBindValue(password);
+            query.addBindValue(QString(originalFields.at(0)));
+            query.exec();
+
+            if (!query.exec()) {
+                qDebug() << query.lastError();
+            }
+
+            //this->hide();
+            this -> close();
+        }
+    }
 }
 
 void ControlTab_ViewEditEmployee::set_view_position(QString viewPosition) {
@@ -199,6 +226,7 @@ void ControlTab_ViewEditEmployee::on_pushButton_saveChanges_clicked() {
     set_fields_disable(!editMode);
     ui -> pushButton_editMode -> setDisabled(editMode);
     ui -> pushButton_saveChanges -> setDisabled(!editMode);
+    ui -> pushButton_restoreDefault -> setDisabled(!editMode);
 
     // Write changes to fields.
     fields.replace(0, ui -> lineEdit_employeeID -> text());
@@ -209,4 +237,8 @@ void ControlTab_ViewEditEmployee::on_pushButton_saveChanges_clicked() {
     fields.replace(5, ui -> comboBox_position -> currentText());
     fields.replace(6, ui -> lineEdit_username -> text());
     fields.replace(7, ui -> lineEdit_password -> text());
+}
+
+void ControlTab_ViewEditEmployee::on_pushButton_restoreDefault_clicked() {
+    set_fields(originalFields, originalFields);
 }

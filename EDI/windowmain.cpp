@@ -56,7 +56,7 @@ void WindowMain::on_pushButton_vieweditemployee_2_clicked()
         }
 
         viewEditEmployeeWindow = new ControlTab_ViewEditEmployee();
-        viewEditEmployeeWindow -> set_fields(fields);
+        viewEditEmployeeWindow -> set_fields(fields, fields);
         viewEditEmployeeWindow -> set_view_position(userPosition);
         viewEditEmployeeWindow -> set_edit_mode_lock();
         viewEditEmployeeWindow -> show();
