@@ -335,7 +335,7 @@ public:
         tab_analyze_2->setObjectName(QString::fromUtf8("tab_analyze_2"));
         productivityLineGraph = new QFrame(tab_analyze_2);
         productivityLineGraph->setObjectName(QString::fromUtf8("productivityLineGraph"));
-        productivityLineGraph->setGeometry(QRect(0, 20, 841, 471));
+        productivityLineGraph->setGeometry(QRect(0, 20, 841, 501));
         horizontalLayout = new QHBoxLayout(productivityLineGraph);
         horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
         tabWidget->addTab(tab_analyze_2, QString());

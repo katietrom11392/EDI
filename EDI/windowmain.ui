@@ -737,7 +737,7 @@ border-radius: 15px;</string>
        <x>0</x>
        <y>20</y>
        <width>841</width>
-       <height>471</height>
+       <height>501</height>
       </rect>
      </property>
      <layout class="QHBoxLayout" name="horizontalLayout"/>

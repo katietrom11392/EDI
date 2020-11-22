@@ -8,6 +8,7 @@
 #include <QtCharts/qchart.h>
 #include <QtCharts/QChartView>
 #include <QtCharts/QLineSeries>
+#include <QValueAxis>
 
 using namespace QtCharts;
 
