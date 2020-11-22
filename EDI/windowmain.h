@@ -12,6 +12,7 @@
 #include <controltab_vieweditteamwindow.h>
 #include <newteam.h>
 #include <iostream>
+#include <QEventLoop>
 
 /*****************************************************************************************************************************************
  * WindowMain is the interface that contains all the elements a user would interact with after a successful login.
@@ -33,7 +34,7 @@ public:
     ~WindowMain();
     void setWelcomeName(QString userFirstName);
     void setDisabledFeatures(QString userPositionCode);
-
+    void process(ControlTab_ViewEditTeamWindow *viewEditTeamWindow);
 
 private slots:
     void on_pushButton_vieweditemployee_2_clicked();
@@ -54,7 +55,6 @@ private slots:
     void on_pushButton_newTeam_clicked();
 
     void on_pushButton_viewEditTeam_clicked();
-
 
 private:
     Ui::WindowMain *ui;

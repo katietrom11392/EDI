@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>548</width>
-    <height>377</height>
+    <width>597</width>
+    <height>386</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,7 +16,7 @@
   <widget class="QPushButton" name="pushButton_editMode">
    <property name="geometry">
     <rect>
-     <x>340</x>
+     <x>360</x>
      <y>10</y>
      <width>91</width>
      <height>32</height>
@@ -32,7 +32,7 @@
    </property>
    <property name="geometry">
     <rect>
-     <x>430</x>
+     <x>450</x>
      <y>10</y>
      <width>112</width>
      <height>32</height>
@@ -227,30 +227,20 @@
     </rect>
    </property>
   </widget>
-  <widget class="QLabel" name="label_7">
-   <property name="geometry">
-    <rect>
-     <x>280</x>
-     <y>200</y>
-     <width>81</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Project Name</string>
-   </property>
-  </widget>
   <widget class="QLineEdit" name="lineEdit_newProj">
    <property name="enabled">
     <bool>false</bool>
    </property>
    <property name="geometry">
     <rect>
-     <x>370</x>
-     <y>200</y>
-     <width>151</width>
+     <x>280</x>
+     <y>180</y>
+     <width>121</width>
      <height>21</height>
     </rect>
+   </property>
+   <property name="placeholderText">
+    <string>Project Name</string>
    </property>
   </widget>
   <widget class="QLabel" name="label_8">
@@ -281,21 +271,21 @@
    </property>
    <property name="geometry">
     <rect>
-     <x>470</x>
-     <y>170</y>
-     <width>61</width>
+     <x>375</x>
+     <y>200</y>
+     <width>51</width>
      <height>32</height>
     </rect>
    </property>
    <property name="text">
-    <string>Assign</string>
+    <string>Add</string>
    </property>
   </widget>
   <widget class="QLabel" name="label_9">
    <property name="geometry">
     <rect>
-     <x>20</x>
-     <y>170</y>
+     <x>10</x>
+     <y>160</y>
      <width>75</width>
      <height>16</height>
     </rect>
@@ -328,9 +318,9 @@
   <widget class="QTableWidget" name="tableWidget_members">
    <property name="geometry">
     <rect>
-     <x>20</x>
+     <x>10</x>
      <y>230</y>
-     <width>231</width>
+     <width>245</width>
      <height>131</height>
     </rect>
    </property>
@@ -347,7 +337,7 @@
     <number>19</number>
    </attribute>
    <attribute name="horizontalHeaderDefaultSectionSize">
-    <number>115</number>
+    <number>121</number>
    </attribute>
    <column>
     <property name="text">
@@ -366,9 +356,9 @@
    </property>
    <property name="geometry">
     <rect>
-     <x>140</x>
+     <x>5</x>
      <y>200</y>
-     <width>61</width>
+     <width>51</width>
      <height>32</height>
     </rect>
    </property>
@@ -382,7 +372,7 @@
    </property>
    <property name="geometry">
     <rect>
-     <x>190</x>
+     <x>45</x>
      <y>200</y>
      <width>71</width>
      <height>32</height>
@@ -393,12 +383,15 @@
    </property>
   </widget>
   <widget class="QTableWidget" name="tableWidget_projs">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
    <property name="geometry">
     <rect>
      <x>280</x>
-     <y>260</y>
-     <width>241</width>
-     <height>101</height>
+     <y>230</y>
+     <width>301</width>
+     <height>131</height>
     </rect>
    </property>
    <property name="editTriggers">
@@ -414,7 +407,7 @@
     <number>19</number>
    </attribute>
    <attribute name="horizontalHeaderDefaultSectionSize">
-    <number>119</number>
+    <number>99</number>
    </attribute>
    <column>
     <property name="text">
@@ -426,6 +419,11 @@
      <string>Status</string>
     </property>
    </column>
+   <column>
+    <property name="text">
+     <string>Hours</string>
+    </property>
+   </column>
   </widget>
   <widget class="QLineEdit" name="lineEditNewMember">
    <property name="enabled">
@@ -433,9 +431,9 @@
    </property>
    <property name="geometry">
     <rect>
-     <x>20</x>
-     <y>200</y>
-     <width>101</width>
+     <x>10</x>
+     <y>180</y>
+     <width>121</width>
      <height>21</height>
     </rect>
    </property>
@@ -452,8 +450,8 @@
    </property>
    <property name="geometry">
     <rect>
-     <x>460</x>
-     <y>230</y>
+     <x>418</x>
+     <y>200</y>
      <width>71</width>
      <height>32</height>
     </rect>
@@ -466,7 +464,7 @@
    <property name="geometry">
     <rect>
      <x>280</x>
-     <y>230</y>
+     <y>160</y>
      <width>75</width>
      <height>16</height>
     </rect>
@@ -496,54 +494,73 @@
     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
    </property>
   </widget>
-  <widget class="QLabel" name="label_12">
-   <property name="geometry">
-    <rect>
-     <x>280</x>
-     <y>170</y>
-     <width>130</width>
-     <height>16</height>
-    </rect>
-   </property>
-   <property name="minimumSize">
-    <size>
-     <width>130</width>
-     <height>0</height>
-    </size>
-   </property>
-   <property name="maximumSize">
-    <size>
-     <width>130</width>
-     <height>16777215</height>
-    </size>
-   </property>
-   <property name="font">
-    <font>
-     <weight>75</weight>
-     <bold>true</bold>
-    </font>
-   </property>
-   <property name="text">
-    <string>Assign New Project</string>
-   </property>
-   <property name="alignment">
-    <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-   </property>
-  </widget>
   <widget class="QPushButton" name="pushButton_changeStatus">
    <property name="enabled">
     <bool>false</bool>
    </property>
    <property name="geometry">
     <rect>
-     <x>360</x>
-     <y>230</y>
+     <x>274</x>
+     <y>200</y>
      <width>111</width>
      <height>32</height>
     </rect>
    </property>
    <property name="text">
     <string>Change Status</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_ExpectedHours">
+   <property name="geometry">
+    <rect>
+     <x>410</x>
+     <y>183</y>
+     <width>101</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Expected Hours</string>
+   </property>
+  </widget>
+  <widget class="QDoubleSpinBox" name="spinBoxExpectedHours">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>510</x>
+     <y>180</y>
+     <width>71</width>
+     <height>22</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QLabel" name="labelTeamName">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>10</y>
+     <width>341</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>18</pointsize>
+     <weight>50</weight>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: #F46524;
+</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
    </property>
   </widget>
  </widget>

@@ -1,6 +1,7 @@
 #include "windowlogin.h"
 #include "ui_windowlogin.h"
 #include "windowmain.h"
+#include <QPalette>
 
 
 /***********************************************************************************************************

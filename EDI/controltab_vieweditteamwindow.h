@@ -26,25 +26,25 @@ public:
 
     void set_fields(QVector<QString> fields);
     void set_db_table_refs(QTableWidget *employeeTable, QTableWidget *teamTable);
-    void updateEmployeeTable(QTableWidget *employeeTable, QString teamID);
-    void updateTeamTable(QTableWidget *teamTable, QString teamName);
 
     void resetMemberTable();
     void resetProjTable();
 
+    void resetTeamTable();
+    void closeEvent(QCloseEvent *event);
 
 private slots:
     void on_pushButton_editMode_clicked();
 
     void on_pushButton_saveChanges_clicked();
 
-    void on_pushButton_assign_clicked();
-
     void on_pushButton_addNew_clicked();
 
-    void on_pushButton_changeStatus_clicked();
-
     void on_pushButton_remove_clicked();
+
+    void on_pushButton_assign_clicked();
+
+    void on_pushButton_changeStatus_clicked();
 
     void on_pushButton_removeProj_clicked();
 

@@ -1,5 +1,6 @@
 #include "windowmain.h"
 #include "ui_windowmain.h"
+#include <QTimer>
 
 
 /***********************************************************************************************************
@@ -372,7 +373,14 @@ void WindowMain::on_pushButton_viewEditTeam_clicked()
 
         viewEditTeamWindow = new ControlTab_ViewEditTeamWindow();
         viewEditTeamWindow -> set_fields(fields);
-        viewEditTeamWindow -> set_db_table_refs(ui->tableWidget_db_3, ui->tableWidget_db_4);
+        viewEditTeamWindow->set_db_table_refs(ui->tableWidget_db_3, ui->tableWidget_db_4);
         viewEditTeamWindow -> show();
+
+       // connect(viewEditEmployeeWindow, SIGNAL(hide()), this, SLOT(process(viewEditTeamWindow)));
     }
+}
+
+
+void WindowMain::process(ControlTab_ViewEditTeamWindow *viewEditTeamWindow) {
+      resetTeamTable();
 }
