@@ -39,6 +39,10 @@ private slots:
     void on_pushButtonSignIn_clicked();
     void on_pushButtonNewCompany_clicked();
 
+    void on_pushButton_missginFields_clicked();
+
+    void on_pushButton_invalid_clicked();
+
 private:
     Ui::WindowLogin *ui;
     WindowNewCompany *windownewcompany;

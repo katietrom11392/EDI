@@ -12,8 +12,10 @@ CONFIG -= debug_and_release debug_and_release_target
 
 SOURCES += \
     controltab_vieweditemployee.cpp \
+    controltab_vieweditteamwindow.cpp \
     databaseconnection.cpp \
     main.cpp \
+    newteam.cpp \
     qcalendar.cpp \
     schedule.cpp \
     shift.cpp \
@@ -23,7 +25,9 @@ SOURCES += \
 
 HEADERS += \
     controltab_vieweditemployee.h \
+    controltab_vieweditteamwindow.h \
     databaseconnection.h \
+    newteam.h \
     qcalendar.h \
     schedule.h \
     shift.h \
@@ -33,6 +37,8 @@ HEADERS += \
 
 FORMS += \
     controltab_vieweditemployee.ui \
+    controltab_vieweditteamwindow.ui \
+    newteam.ui \
     windowlogin.ui \
     windowmain.ui \
     windownewcompany.ui
@@ -43,6 +49,7 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 RESOURCES += \
+    ediSolo.qrc \
     logo.qrc \
     resourceExample.qrc
 

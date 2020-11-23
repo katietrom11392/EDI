@@ -1,6 +1,7 @@
 #include "windowlogin.h"
 #include "ui_windowlogin.h"
 #include "windowmain.h"
+#include <QPalette>
 
 
 /***********************************************************************************************************
@@ -15,6 +16,8 @@ WindowLogin::WindowLogin(QWidget *parent)
     // Instantiate database connection object for connection to database instance "one"
     DatabaseConnection *dbc = new DatabaseConnection(this);
     db1 = dbc->establishConnection("one");
+    ui->oopsMissingFields->hide();
+    ui->oopsInvalid->hide();
 }
 
 
@@ -46,7 +49,8 @@ void WindowLogin::on_pushButtonSignIn_clicked()
     QString lineEdit_password = ui->lineEdit_password->text();
 
     if (lineEdit_username == "" || lineEdit_password == ""){
-            QMessageBox::information(this,"Error", "Missing field");
+            ui->oopsMissingFields->show();
+            ui->oopsInvalid->hide();
     }
     else{
         /*if(db1.open()){
@@ -73,7 +77,8 @@ void WindowLogin::on_pushButtonSignIn_clicked()
             userPositionCode = query.value(1).toString();
         }
         if (user_matched != 1){
-            QMessageBox::information(this, "Invalid login", "Invalid login credentials. Try again.");
+            ui->oopsInvalid->show();
+            ui->oopsMissingFields->hide();
         }
         else{
 
@@ -84,6 +89,7 @@ void WindowLogin::on_pushButtonSignIn_clicked()
 
             WindowMain *main = new WindowMain();
             main->setWelcomeName(userFirstName);
+            main->setPosition(userPositionCode);
             main->setDisabledFeatures(userPositionCode);
             main->show();
             this->hide();
@@ -102,4 +108,14 @@ void WindowLogin::on_pushButtonNewCompany_clicked()
 {
     windownewcompany = new WindowNewCompany();
     windownewcompany->show();
+}
+
+void WindowLogin::on_pushButton_missginFields_clicked()
+{
+    ui->oopsMissingFields->hide();
+}
+
+void WindowLogin::on_pushButton_invalid_clicked()
+{
+    ui->oopsInvalid->hide();
 }
