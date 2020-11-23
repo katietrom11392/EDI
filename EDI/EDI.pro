@@ -1,4 +1,4 @@
-QT       += core gui sql
+QT       += core gui sql multimedia
 QT       += charts
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
@@ -54,4 +54,5 @@ RESOURCES += \
     resourceExample.qrc
 
 DISTFILES += \
+    pop.wav \
     sshConnectionCode

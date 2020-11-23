@@ -4,6 +4,7 @@
 #include <QPalette>
 
 
+
 /***********************************************************************************************************
  * We setup the associated UI and instantiate a database connection for the WindowLogin model
 ***********************************************************************************************************/
@@ -18,6 +19,7 @@ WindowLogin::WindowLogin(QWidget *parent)
     db1 = dbc->establishConnection("one");
     ui->oopsMissingFields->hide();
     ui->oopsInvalid->hide();
+    sound = new QSound(":/new/prefix1/pop.wav");
 }
 
 
@@ -50,19 +52,10 @@ void WindowLogin::on_pushButtonSignIn_clicked()
 
     if (lineEdit_username == "" || lineEdit_password == ""){
             ui->oopsMissingFields->show();
+            sound->play();
             ui->oopsInvalid->hide();
     }
     else{
-        /*if(db1.open()){
-             QMessageBox::information(this, "Connection", "Searching database for login info...");
-         }
-         else{
-             QMessageBox::information(this, "Connection", "Invalid Username or Password");
-        }*/
-
-
-
-
         QSqlQuery query(QSqlDatabase::database("one"));
         QString queryString;
         queryString = "SELECT Name_First, Position_Code FROM Employee WHERE Username LIKE '" + lineEdit_username + "' AND Password LIKE '" + lineEdit_password + "'";
@@ -78,15 +71,10 @@ void WindowLogin::on_pushButtonSignIn_clicked()
         }
         if (user_matched != 1){
             ui->oopsInvalid->show();
+            sound->play();
             ui->oopsMissingFields->hide();
         }
         else{
-
-
-
-           // QString userFirstName;
-           // QString userPositionCode;
-
             WindowMain *main = new WindowMain();
             main->setWelcomeName(userFirstName);
             main->setPosition(userPositionCode);
@@ -97,6 +85,8 @@ void WindowLogin::on_pushButtonSignIn_clicked()
         }
     }
 }
+
+
 
 
 

@@ -9,6 +9,7 @@
 #include <QtSql>
 #include <databaseconnection.h>
 #include <QTableWidget>
+#include <QSound>
 
 namespace Ui {
 class NewTeam;
@@ -41,6 +42,7 @@ private:
     QSqlDatabase dbk;
     QTableWidget *employeeDB;
     QTableWidget *teamDB;
+    QSound *sound;
 };
 
 #endif // NEWTEAM_H
