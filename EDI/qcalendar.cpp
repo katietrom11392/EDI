@@ -19,7 +19,6 @@
        //m_transparentBrush.setColor(QColor(245,101,37)); ORANGE
        m_transparentBrush.setColor(QColor(79,226,103)); // GREEN
        m_transparentBrush.setStyle(Qt::BDiagPattern);
-
     }
 
 
