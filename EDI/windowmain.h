@@ -70,6 +70,8 @@ private slots:
 
     void on_pushButton_tooManyTeams_clicked();
 
+    void on_calendarWidget1_2_clicked(const QDate &date);
+
 private:
     Ui::WindowMain *ui;
     QSqlDatabase db3;

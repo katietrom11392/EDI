@@ -498,3 +498,16 @@ void WindowMain::on_pushButton_tooManyTeams_clicked()
 {
     ui->oopsTooManyTeams->hide();
 }
+
+void WindowMain::on_calendarWidget1_2_clicked(const QDate &date)
+{
+    ui->scheddate->setText(
+                date.toString("dd.MM.yyyy")
+                );
+    ui->schedstart->setText(
+                ui->calendarWidget1_2->getStart(date)
+                );
+    ui->schedend->setText(
+                ui->calendarWidget1_2->getEnd(date)
+                );
+}

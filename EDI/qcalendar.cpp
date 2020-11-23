@@ -52,8 +52,32 @@
        return (m_outlinePen.color());
     }
 
+    /*
+     * Returns a pointer to a string if the calendar has
+     * the date on file, otherwise return an empty string.
+     */
 
+    QString QCalendar::getStart(const QDate &date){
+        QString strt = "";
+        for (auto d : shift_events){
+            if (d.date == date){
+                strt = d.start;
+                break;
+            }
+        }
+        return strt;
+    }
 
+    QString QCalendar::getEnd(const QDate &date){
+        QString end = "";
+        for (auto d : shift_events){
+            if (d.date == date){
+                end = d.end;
+                break;
+            }
+        }
+        return end;
+    }
 
     /***********************************************************************************************************
      * Paints/highlights the specified dates in the m_dates vector
