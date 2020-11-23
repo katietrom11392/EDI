@@ -53,18 +53,19 @@ void WindowMain::on_pushButton_vieweditemployee_2_clicked()
 {
     QModelIndexList rowSelection = ui->tableWidget_db_3->selectionModel()->selectedRows();
     if (rowSelection.count() != 1){
-        if (rowSelection.count() == 0)
+        if (rowSelection.count() == 0) {
             ui->oopsNoEmployee->show();
             ui->oopsTooManyEmp->hide();
             ui->oopsNoTeamSelected->hide();
             ui->oopsTooManyTeams->hide();
             ui->oopsSearchFilter->hide();
-        else
+        } else {
             ui->oopsTooManyEmp->show();
             ui->oopsNoTeamSelected->hide();
             ui->oopsTooManyTeams->hide();
             ui->oopsSearchFilter->hide();
             ui->oopsNoEmployee->hide();
+        }
     } else {
 
         QModelIndex index = ui -> tableWidget_db_3 -> selectionModel() -> currentIndex();
