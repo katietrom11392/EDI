@@ -12,12 +12,6 @@
 #include <QSql>
 #include <QSqlQuery>
 
-
-/***************************************************************************************************************
- * DatabaseConnection is used to instantiate connections to the database.
- * The QString variable, connectionName, must be uniquely named for each connection that uses the MYSQL database.
- ***************************************************************************************************************/
-
 class DatabaseConnection : public QMainWindow
 {
     Q_OBJECT

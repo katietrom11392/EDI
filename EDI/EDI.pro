@@ -14,26 +14,22 @@ SOURCES += \
     databaseconnection.cpp \
     main.cpp \
     qcalendar.cpp \
-    schedule.cpp \
-    shift.cpp \
     windowlogin.cpp \
-    windowmain.cpp \
+    windowmaincontainer.cpp \
     windownewcompany.cpp
 
 HEADERS += \
     controltab_vieweditemployee.h \
     databaseconnection.h \
     qcalendar.h \
-    schedule.h \
-    shift.h \
     windowlogin.h \
-    windowmain.h \
+    windowmaincontainer.h \
     windownewcompany.h
 
 FORMS += \
     controltab_vieweditemployee.ui \
     windowlogin.ui \
-    windowmain.ui \
+    windowmaincontainer.ui \
     windownewcompany.ui
 
 # Default rules for deployment.

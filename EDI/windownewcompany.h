@@ -8,13 +8,8 @@
 #include <QSqlQuery>
 #include <QSqlDatabase>
 #include <QtSql>
-#include <databaseconnection.h>
 
-/******************************************************************************************************************
- * WindowNewCompany is instantiated from within WindowLogin.
- * It is used for a user to insert a new company and CEO employee into the database.
- * The WindowNewCompany object is destroyed on a successful company creation and the view returns to WindowLogin.
-*******************************************************************************************************************/
+#include <databaseconnection.h>
 
 namespace Ui {
 class WindowNewCompany;

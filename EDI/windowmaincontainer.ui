@@ -10,14 +10,8 @@
     <x>0</x>
     <y>0</y>
     <width>851</width>
-    <height>773</height>
+    <height>737</height>
    </rect>
-  </property>
-  <property name="sizePolicy">
-   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-    <horstretch>0</horstretch>
-    <verstretch>0</verstretch>
-   </sizepolicy>
   </property>
   <property name="windowTitle">
    <string>Employee Database Interface</string>
@@ -27,26 +21,13 @@
     <property name="geometry">
      <rect>
       <x>0</x>
-      <y>60</y>
+      <y>50</y>
       <width>851</width>
-      <height>671</height>
+      <height>731</height>
      </rect>
     </property>
-    <property name="autoFillBackground">
-     <bool>false</bool>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">QTabBar::tab:selected 
-{
-    color: white;
-    background: rgb(245, 102, 37); 
-border: 1px solid black;
-   border-radius: 5px;
-padding: 0 10;
-}</string>
-    </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="tab_my_edi">
      <attribute name="title">
@@ -144,6 +125,19 @@ padding: 0 10;
      <attribute name="title">
       <string>Control</string>
      </attribute>
+     <widget class="QPushButton" name="pushButton_addEmployee">
+      <property name="geometry">
+       <rect>
+        <x>690</x>
+        <y>10</y>
+        <width>131</width>
+        <height>32</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>New Employee</string>
+      </property>
+     </widget>
      <widget class="QLineEdit" name="lineEdit_search">
       <property name="geometry">
        <rect>
@@ -156,6 +150,56 @@ padding: 0 10;
       <property name="text">
        <string/>
       </property>
+     </widget>
+     <widget class="QTableWidget" name="tableWidget_db">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>110</y>
+        <width>801</width>
+        <height>451</height>
+       </rect>
+      </property>
+      <column>
+       <property name="text">
+        <string>EmployeeID</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Last Name</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>First Name</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Salary</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>SSN</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Position</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Username</string>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>Password</string>
+       </property>
+      </column>
      </widget>
      <widget class="QRadioButton" name="radioButton">
       <property name="geometry">
@@ -258,218 +302,20 @@ padding: 0 10;
        </rect>
       </property>
       <property name="text">
-       <string>Search Employee</string>
+       <string>Search</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButton_vieweditemployee">
+     <widget class="QPushButton" name="pushButton_addEmployee_3">
       <property name="geometry">
        <rect>
-        <x>660</x>
-        <y>40</y>
-        <width>161</width>
+        <x>690</x>
+        <y>35</y>
+        <width>131</width>
         <height>32</height>
        </rect>
       </property>
       <property name="text">
-       <string>View/Edit Employee</string>
-      </property>
-     </widget>
-     <widget class="QScrollArea" name="scrollArea">
-      <property name="geometry">
-       <rect>
-        <x>0</x>
-        <y>100</y>
-        <width>831</width>
-        <height>551</height>
-       </rect>
-      </property>
-      <property name="verticalScrollBarPolicy">
-       <enum>Qt::ScrollBarAlwaysOn</enum>
-      </property>
-      <property name="widgetResizable">
-       <bool>true</bool>
-      </property>
-      <widget class="QWidget" name="scrollAreaWidgetContents">
-       <property name="geometry">
-        <rect>
-         <x>0</x>
-         <y>0</y>
-         <width>815</width>
-         <height>549</height>
-        </rect>
-       </property>
-       <layout class="QGridLayout" name="gridLayout">
-        <item row="3" column="0">
-         <widget class="QPushButton" name="pushButton_addEmployee_5">
-          <property name="text">
-           <string>New Team</string>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="0">
-         <widget class="QLabel" name="label_2">
-          <property name="font">
-           <font>
-            <weight>75</weight>
-            <bold>true</bold>
-           </font>
-          </property>
-          <property name="text">
-           <string>Company Employees</string>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="0" colspan="4">
-         <widget class="QTableWidget" name="tableWidget_db">
-          <property name="editTriggers">
-           <set>QAbstractItemView::NoEditTriggers</set>
-          </property>
-          <property name="alternatingRowColors">
-           <bool>false</bool>
-          </property>
-          <property name="selectionBehavior">
-           <enum>QAbstractItemView::SelectRows</enum>
-          </property>
-          <column>
-           <property name="text">
-            <string>EmployeeID</string>
-           </property>
-          </column>
-          <column>
-           <property name="text">
-            <string>Last Name</string>
-           </property>
-          </column>
-          <column>
-           <property name="text">
-            <string>First Name</string>
-           </property>
-          </column>
-          <column>
-           <property name="text">
-            <string>Salary</string>
-           </property>
-          </column>
-          <column>
-           <property name="text">
-            <string>SSN</string>
-           </property>
-          </column>
-          <column>
-           <property name="text">
-            <string>Position</string>
-           </property>
-          </column>
-          <column>
-           <property name="text">
-            <string>Username</string>
-           </property>
-          </column>
-          <column>
-           <property name="text">
-            <string>Password</string>
-           </property>
-          </column>
-          <column>
-           <property name="text">
-            <string>Team</string>
-           </property>
-          </column>
-         </widget>
-        </item>
-        <item row="3" column="2">
-         <widget class="QPushButton" name="pushButton_addEmployee_4">
-          <property name="text">
-           <string>Quick Add</string>
-          </property>
-         </widget>
-        </item>
-        <item row="3" column="3">
-         <widget class="QPushButton" name="pushButton_addEmployee_7">
-          <property name="text">
-           <string>Quick Remove</string>
-          </property>
-         </widget>
-        </item>
-        <item row="2" column="0">
-         <widget class="QLabel" name="label_7">
-          <property name="font">
-           <font>
-            <weight>75</weight>
-            <bold>true</bold>
-           </font>
-          </property>
-          <property name="text">
-           <string>Teams</string>
-          </property>
-         </widget>
-        </item>
-        <item row="3" column="1">
-         <widget class="QPushButton" name="pushButton_addEmployee_8">
-          <property name="text">
-           <string>View/Edit Team</string>
-          </property>
-         </widget>
-        </item>
-        <item row="6" column="0" colspan="4">
-         <widget class="QTableWidget" name="tableWidget_db_2">
-          <property name="lineWidth">
-           <number>1</number>
-          </property>
-          <property name="selectionBehavior">
-           <enum>QAbstractItemView::SelectRows</enum>
-          </property>
-          <property name="iconSize">
-           <size>
-            <width>0</width>
-            <height>0</height>
-           </size>
-          </property>
-          <property name="wordWrap">
-           <bool>true</bool>
-          </property>
-          <attribute name="horizontalHeaderDefaultSectionSize">
-           <number>200</number>
-          </attribute>
-          <attribute name="horizontalHeaderStretchLastSection">
-           <bool>false</bool>
-          </attribute>
-          <column>
-           <property name="text">
-            <string>Team ID</string>
-           </property>
-          </column>
-          <column>
-           <property name="text">
-            <string>Team Name</string>
-           </property>
-          </column>
-          <column>
-           <property name="text">
-            <string>Projects Assigned</string>
-           </property>
-          </column>
-          <column>
-           <property name="text">
-            <string>Projects Completed</string>
-           </property>
-          </column>
-         </widget>
-        </item>
-       </layout>
-      </widget>
-     </widget>
-     <widget class="QPushButton" name="pushButton_addEmployee_6">
-      <property name="geometry">
-       <rect>
-        <x>660</x>
-        <y>10</y>
-        <width>161</width>
-        <height>32</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>New Employee</string>
+       <string>View/Edit</string>
       </property>
      </widget>
     </widget>
@@ -514,8 +360,8 @@ padding: 0 10;
    <widget class="QPushButton" name="pushButton_LogOut">
     <property name="geometry">
      <rect>
-      <x>740</x>
-      <y>20</y>
+      <x>630</x>
+      <y>30</y>
       <width>112</width>
       <height>32</height>
      </rect>
@@ -527,33 +373,21 @@ padding: 0 10;
    <widget class="QLabel" name="label_welcomeUser">
     <property name="geometry">
      <rect>
-      <x>670</x>
-      <y>0</y>
-      <width>171</width>
+      <x>640</x>
+      <y>10</y>
+      <width>101</width>
       <height>20</height>
      </rect>
     </property>
-    <property name="font">
-     <font>
-      <weight>75</weight>
-      <bold>true</bold>
-     </font>
-    </property>
-    <property name="layoutDirection">
-     <enum>Qt::LeftToRight</enum>
-    </property>
     <property name="text">
-     <string>Welcome</string>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+     <string>Welcome &lt;User&gt;</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_Logout_image">
     <property name="geometry">
      <rect>
-      <x>730</x>
-      <y>20</y>
+      <x>630</x>
+      <y>30</y>
       <width>31</width>
       <height>31</height>
      </rect>
@@ -575,35 +409,12 @@ padding: 0 10;
      <x>0</x>
      <y>0</y>
      <width>851</width>
-     <height>20</height>
+     <height>21</height>
     </rect>
    </property>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
- <tabstops>
-  <tabstop>tabWidget</tabstop>
-  <tabstop>calendarWidget</tabstop>
-  <tabstop>lineEdit_search</tabstop>
-  <tabstop>pushButton_addEmployee_2</tabstop>
-  <tabstop>radioButton</tabstop>
-  <tabstop>radioButton_2</tabstop>
-  <tabstop>radioButton_3</tabstop>
-  <tabstop>radioButton_4</tabstop>
-  <tabstop>radioButton_5</tabstop>
-  <tabstop>radioButton_6</tabstop>
-  <tabstop>radioButton_7</tabstop>
-  <tabstop>scrollArea</tabstop>
-  <tabstop>tableWidget_db</tabstop>
-  <tabstop>pushButton_addEmployee_5</tabstop>
-  <tabstop>pushButton_addEmployee_8</tabstop>
-  <tabstop>pushButton_addEmployee_4</tabstop>
-  <tabstop>pushButton_addEmployee_7</tabstop>
-  <tabstop>tableWidget_db_2</tabstop>
-  <tabstop>pushButton_addEmployee_6</tabstop>
-  <tabstop>pushButton_vieweditemployee</tabstop>
-  <tabstop>pushButton_LogOut</tabstop>
- </tabstops>
  <resources>
   <include location="logo.qrc"/>
  </resources>
