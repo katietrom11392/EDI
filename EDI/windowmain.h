@@ -33,7 +33,11 @@ public:
     explicit WindowMain(QWidget *parent = nullptr);
     ~WindowMain();
     void setWelcomeName(QString userFirstName);
+    void setPosition(QString userPos);
     void setDisabledFeatures(QString userPositionCode);
+    
+    void set_fields(QVector<QString> itemFields);
+  
     void process(ControlTab_ViewEditTeamWindow *viewEditTeamWindow);
 
 private slots:
@@ -70,6 +74,7 @@ private:
     Ui::WindowMain *ui;
     QSqlDatabase db3;
     QString userFirstName;
+    QString userPosition;
     ControlTab_ViewEditEmployee *viewEditEmployeeWindow;
     ControlTab_ViewEditTeamWindow *viewEditTeamWindow;
     NewTeam *newTeam;
