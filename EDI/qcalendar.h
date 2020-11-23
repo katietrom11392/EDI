@@ -33,7 +33,8 @@ public:
    ~QCalendar();
    void setColor(QColor& color);
    QColor getColor();
-
+   QString getStart(const QDate &date);
+   QString getEnd(const QDate &date);
 
 protected:
    virtual void paintCell(QPainter *painter, const QRect &rect, const QDate &date) const;
