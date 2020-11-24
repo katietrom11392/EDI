@@ -19,6 +19,7 @@ using namespace QtCharts;
 #include <QDebug>
 #include <controltab_vieweditemployee.h>
 #include <controltab_vieweditteamwindow.h>
+#include <controltab_newemployee.h>
 #include <newteam.h>
 #include <iostream>
 #include <QEventLoop>
@@ -59,7 +60,6 @@ private slots:
 
     void on_pushButton_LogOut_clicked();
 
-
     void on_pushButton_SearchEmployee_clicked();
 
     void on_pushButton_Reset_clicked();
@@ -88,6 +88,8 @@ private slots:
 
     void on_pushButton_TeamEmpty_clicked();
 
+    void on_pushButton_newEmployee_clicked();
+
 private:
     Ui::WindowMain *ui;
     QSqlDatabase db3;
@@ -95,6 +97,7 @@ private:
     QString userPosition;
     ControlTab_ViewEditEmployee *viewEditEmployeeWindow;
     ControlTab_ViewEditTeamWindow *viewEditTeamWindow;
+    ControlTab_NewEmployee *newEmployeeWindow;
     NewTeam *newTeam;
     void resetEmployeeTable();
     void resetTeamTable();

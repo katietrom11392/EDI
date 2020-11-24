@@ -644,3 +644,15 @@ void WindowMain::setEmployee(QString employeeID){
     ui->calendarWidget1_2->setEmployee(curEmployee);
 }
 
+
+
+
+
+
+/***********************************************************************************************************
+ * The user selected the add employee button.
+***********************************************************************************************************/
+void WindowMain::on_pushButton_newEmployee_clicked() {
+    newEmployeeWindow = new ControlTab_NewEmployee();
+    newEmployeeWindow -> show();
+}
