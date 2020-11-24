@@ -50,6 +50,7 @@ private:
     WindowNewCompany *windownewcompany;
     QSqlDatabase db1;
     QSound *sound;
+    QString employeeID;
 
 
 };

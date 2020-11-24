@@ -58,7 +58,7 @@ void WindowLogin::on_pushButtonSignIn_clicked()
     else{
         QSqlQuery query(QSqlDatabase::database("one"));
         QString queryString;
-        queryString = "SELECT Name_First, Position_Code FROM Employee WHERE Username LIKE '" + lineEdit_username + "' AND Password LIKE '" + lineEdit_password + "'";
+        queryString = "SELECT Name_First, Position_Code, EmployeeID FROM Employee WHERE Username LIKE '" + lineEdit_username + "' AND Password LIKE '" + lineEdit_password + "'";
         query.exec(queryString);
         int user_matched = 0;
         QString userFirstName;
@@ -68,6 +68,7 @@ void WindowLogin::on_pushButtonSignIn_clicked()
             user_matched++;
             userFirstName = query.value(0).toString();
             userPositionCode = query.value(1).toString();
+            employeeID = query.value(2).toString();
         }
         if (user_matched != 1){
             ui->oopsInvalid->show();
@@ -77,6 +78,7 @@ void WindowLogin::on_pushButtonSignIn_clicked()
         else{
             WindowMain *main = new WindowMain();
             main->setWelcomeName(userFirstName);
+            main->setEmployee(employeeID);
             main->setPosition(userPositionCode);
             main->setDisabledFeatures(userPositionCode);
             main->show();

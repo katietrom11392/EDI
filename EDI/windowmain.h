@@ -49,6 +49,9 @@ public:
   
     void process(ControlTab_ViewEditTeamWindow *viewEditTeamWindow);
 
+    void setEmployee(QString employeeID);
+
+
 private slots:
     void on_pushButton_vieweditemployee_2_clicked();
 
@@ -96,6 +99,7 @@ private:
     void resetEmployeeTable();
     void resetTeamTable();
     QSound *sound;
+    QString curEmployee;
 };
 
 
