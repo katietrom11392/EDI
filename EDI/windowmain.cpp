@@ -129,6 +129,7 @@ void WindowMain::on_pushButton_vieweditemployee_2_clicked()
         viewEditEmployeeWindow -> set_fields(fields, fields);
         viewEditEmployeeWindow -> set_view_position(userPosition);
         viewEditEmployeeWindow -> set_edit_mode_lock();
+        viewEditEmployeeWindow->set_db_table_refs(ui->tableWidget_db_3, ui->tableWidget_db_4);
         viewEditEmployeeWindow -> show();
     }
 
@@ -257,6 +258,7 @@ void WindowMain::setPosition(QString userPos) {
 
 
 
+
 /***********************************************************************************************************
  * Disables tabs indexed 1 and 2, or the Control tab and the Analyze tab when a users position code matches
  * that of a basic level employee "E".
@@ -375,6 +377,7 @@ void WindowMain::on_pushButton_SearchEmployee_clicked(){
     }
 
 }
+
 
 
 
@@ -547,7 +550,9 @@ void WindowMain::on_pushButton_noTeamSelected_clicked()
 
 
 
-
+/*********************************************************************************************************
+ * User pressed Search for an employee
+*********************************************************************************************************/
 void WindowMain::on_pushButton_SearchField_clicked()
 {
     ui->oopsSearchFilter->hide();
@@ -557,7 +562,9 @@ void WindowMain::on_pushButton_SearchField_clicked()
 
 
 
-
+/*********************************************************************************************************
+ * User pressed View/Edit Employee but too many rows were selected
+*********************************************************************************************************/
 void WindowMain::on_pushButton_tooManyEmp_clicked()
 {
     ui->oopsTooManyEmp->hide();
@@ -567,12 +574,22 @@ void WindowMain::on_pushButton_tooManyEmp_clicked()
 
 
 
-
+/*********************************************************************************************************
+ * User pressed View/Edit Team but too many rows were selected
+*********************************************************************************************************/
 void WindowMain::on_pushButton_tooManyTeams_clicked()
 {
     ui->oopsTooManyTeams->hide();
 }
 
+
+
+
+
+
+/*********************************************************************************************************
+ * Calendar stuff in MyEdi Tab - Evan
+*********************************************************************************************************/
 void WindowMain::on_calendarWidget1_2_clicked(const QDate &date)
 {
     ui->scheddate->setText(
@@ -586,12 +603,44 @@ void WindowMain::on_calendarWidget1_2_clicked(const QDate &date)
                 );
 }
 
+
+
+
+
+
+
+/*********************************************************************************************************
+ * User pressed Search for an employee but did not enter anything in the employee search field
+*********************************************************************************************************/
 void WindowMain::on_pushButton_SearchEmpty_clicked()
 {
     ui->oopsSearchEmpty->hide();
 }
 
+
+
+
+
+
+
+/*********************************************************************************************************
+ * User pressed Search for a team but did not enter anything in the team search field
+*********************************************************************************************************/
 void WindowMain::on_pushButton_TeamEmpty_clicked()
 {
     ui->oopsTeamEmpty->hide();
 }
+
+
+
+
+
+
+/*********************************************************************************************************
+ * Setting the MyEdi calendar to highlight the shift dates for the currently logged in user.
+*********************************************************************************************************/
+void WindowMain::setEmployee(QString employeeID){
+    curEmployee = employeeID;
+    ui->calendarWidget1_2->setEmployee(curEmployee);
+}
+
