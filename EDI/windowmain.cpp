@@ -91,6 +91,10 @@ WindowMain::WindowMain(QWidget *parent) :
     ui->oopsSearchFilter->hide();
     ui->oopsTooManyEmp->hide();
     ui->oopsTooManyTeams->hide();
+    ui->oopsSearchEmpty->hide();
+    ui->oopsTeamEmpty->hide();
+
+    sound = new QSound(":/new/prefix1/pop.wav");
 }
 
 
@@ -124,13 +128,18 @@ void WindowMain::on_pushButton_vieweditemployee_2_clicked()
             ui->oopsNoTeamSelected->hide();
             ui->oopsTooManyTeams->hide();
             ui->oopsSearchFilter->hide();
+            ui->oopsSearchEmpty->hide();
+            ui->oopsTeamEmpty->hide();
         } else {
             ui->oopsTooManyEmp->show();
             ui->oopsNoTeamSelected->hide();
             ui->oopsTooManyTeams->hide();
             ui->oopsSearchFilter->hide();
             ui->oopsNoEmployee->hide();
+            ui->oopsSearchEmpty->hide();
+            ui->oopsTeamEmpty->hide();
         }
+        sound->play();
     } else {
 
         QModelIndex index = ui -> tableWidget_db_3 -> selectionModel() -> currentIndex();
@@ -146,6 +155,7 @@ void WindowMain::on_pushButton_vieweditemployee_2_clicked()
         viewEditEmployeeWindow -> set_fields(fields, fields);
         viewEditEmployeeWindow -> set_view_position(userPosition);
         viewEditEmployeeWindow -> set_edit_mode_lock();
+        viewEditEmployeeWindow->set_db_table_refs(ui->tableWidget_db_3, ui->tableWidget_db_4);
         viewEditEmployeeWindow -> show();
     }
 
@@ -274,6 +284,7 @@ void WindowMain::setPosition(QString userPos) {
 
 
 
+
 /***********************************************************************************************************
  * Disables tabs indexed 1 and 2, or the Control tab and the Analyze tab when a users position code matches
  * that of a basic level employee "E".
@@ -341,10 +352,13 @@ void WindowMain::on_pushButton_SearchEmployee_clicked(){
         }
         else{ // No Radio button was selected
             ui->oopsSearchFilter->show();
-            ui->oopsTooManyEmp->hide();
-            ui->oopsNoTeamSelected->hide();
-            ui->oopsTooManyTeams->hide();
+            sound->play();
             ui->oopsNoEmployee->hide();
+            ui->oopsNoTeamSelected->hide();
+            ui->oopsTooManyEmp->hide();
+            ui->oopsTooManyTeams->hide();
+            ui->oopsSearchEmpty->hide();
+            ui->oopsTeamEmpty->hide();
         }
 
 
@@ -377,8 +391,19 @@ void WindowMain::on_pushButton_SearchEmployee_clicked(){
             ui->tableWidget_db_3->setRowCount(0);
         }
     }
+    else{
+        ui->oopsSearchEmpty->show();
+        sound->play();
+        ui->oopsNoEmployee->hide();
+        ui->oopsNoTeamSelected->hide();
+        ui->oopsSearchFilter->hide();
+        ui->oopsTooManyEmp->hide();
+        ui->oopsTooManyTeams->hide();
+        ui->oopsTeamEmpty->hide();
+    }
 
 }
+
 
 
 
@@ -428,6 +453,16 @@ void WindowMain::on_pushButton_SearchTeam_clicked()
             ui->tableWidget_db_4->setRowCount(0);
         }
     }
+    else{
+        ui->oopsTeamEmpty->show();
+        sound->play();
+        ui->oopsNoEmployee->hide();
+        ui->oopsNoTeamSelected->hide();
+        ui->oopsSearchFilter->hide();
+        ui->oopsTooManyEmp->hide();
+        ui->oopsTooManyTeams->hide();
+        ui->oopsSearchEmpty->hide();
+    }
 
 }
 
@@ -453,7 +488,6 @@ void WindowMain::on_pushButton_newTeam_clicked()
 {
     newTeam = new NewTeam();
     newTeam->set_db_table_refs(ui->tableWidget_db_3, ui->tableWidget_db_4);
-;
     newTeam->show();
 }
 
@@ -470,18 +504,23 @@ void WindowMain::on_pushButton_viewEditTeam_clicked()
     if (rowSelection.count() != 1){
         if (rowSelection.count() == 0){
             ui->oopsNoTeamSelected->show();
+            ui->oopsNoEmployee->hide();
+            ui->oopsSearchFilter->hide();
             ui->oopsTooManyEmp->hide();
             ui->oopsTooManyTeams->hide();
-            ui->oopsSearchFilter->hide();
-            ui->oopsNoEmployee->hide();
+            ui->oopsSearchEmpty->hide();
+            ui->oopsTeamEmpty->hide();
         }
         else{
             ui->oopsTooManyTeams->show();
-            ui->oopsTooManyEmp->hide();
+            ui->oopsNoEmployee->hide();
             ui->oopsNoTeamSelected->hide();
             ui->oopsSearchFilter->hide();
-            ui->oopsNoEmployee->hide();
+            ui->oopsTooManyEmp->hide();
+            ui->oopsSearchEmpty->hide();
+            ui->oopsTeamEmpty->hide();
         }
+        sound->play();
     } else {
         QModelIndex index = ui -> tableWidget_db_4 -> selectionModel() -> currentIndex();
         QVector<QString> fields = { };
@@ -489,7 +528,6 @@ void WindowMain::on_pushButton_viewEditTeam_clicked()
             QString str = ui -> tableWidget_db_4 -> model() -> index(index.row(), i).data().toString();
             fields.push_back(str);
         }
-
         viewEditTeamWindow = new ControlTab_ViewEditTeamWindow();
         viewEditTeamWindow -> set_fields(fields);
         viewEditTeamWindow->set_db_table_refs(ui->tableWidget_db_3, ui->tableWidget_db_4);
@@ -518,7 +556,7 @@ void WindowMain::process(ControlTab_ViewEditTeamWindow *viewEditTeamWindow) {
 ***********************************************************************************************************/
 void WindowMain::on_pushButton_noEmployee_clicked()
 {
-    ui->bubbleOopsNoEmployee->hide();
+    ui->oopsNoEmployee->hide();
 }
 
 
@@ -538,7 +576,9 @@ void WindowMain::on_pushButton_noTeamSelected_clicked()
 
 
 
-
+/*********************************************************************************************************
+ * User pressed Search for an employee
+*********************************************************************************************************/
 void WindowMain::on_pushButton_SearchField_clicked()
 {
     ui->oopsSearchFilter->hide();
@@ -548,7 +588,9 @@ void WindowMain::on_pushButton_SearchField_clicked()
 
 
 
-
+/*********************************************************************************************************
+ * User pressed View/Edit Employee but too many rows were selected
+*********************************************************************************************************/
 void WindowMain::on_pushButton_tooManyEmp_clicked()
 {
     ui->oopsTooManyEmp->hide();
@@ -558,12 +600,22 @@ void WindowMain::on_pushButton_tooManyEmp_clicked()
 
 
 
-
+/*********************************************************************************************************
+ * User pressed View/Edit Team but too many rows were selected
+*********************************************************************************************************/
 void WindowMain::on_pushButton_tooManyTeams_clicked()
 {
     ui->oopsTooManyTeams->hide();
 }
 
+
+
+
+
+
+/*********************************************************************************************************
+ * Calendar stuff in MyEdi Tab - Evan
+*********************************************************************************************************/
 void WindowMain::on_calendarWidget1_2_clicked(const QDate &date)
 {
     ui->scheddate->setText(
@@ -576,3 +628,45 @@ void WindowMain::on_calendarWidget1_2_clicked(const QDate &date)
                 ui->calendarWidget1_2->getEnd(date)
                 );
 }
+
+
+
+
+
+
+
+/*********************************************************************************************************
+ * User pressed Search for an employee but did not enter anything in the employee search field
+*********************************************************************************************************/
+void WindowMain::on_pushButton_SearchEmpty_clicked()
+{
+    ui->oopsSearchEmpty->hide();
+}
+
+
+
+
+
+
+
+/*********************************************************************************************************
+ * User pressed Search for a team but did not enter anything in the team search field
+*********************************************************************************************************/
+void WindowMain::on_pushButton_TeamEmpty_clicked()
+{
+    ui->oopsTeamEmpty->hide();
+}
+
+
+
+
+
+
+/*********************************************************************************************************
+ * Setting the MyEdi calendar to highlight the shift dates for the currently logged in user.
+*********************************************************************************************************/
+void WindowMain::setEmployee(QString employeeID){
+    curEmployee = employeeID;
+    ui->calendarWidget1_2->setEmployee(curEmployee);
+}
+

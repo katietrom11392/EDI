@@ -9,6 +9,7 @@
 #include <QtCharts/QChartView>
 #include <QtCharts/QLineSeries>
 #include <QValueAxis>
+#include <QSound>
 
 using namespace QtCharts;
 
@@ -48,6 +49,9 @@ public:
   
     void process(ControlTab_ViewEditTeamWindow *viewEditTeamWindow);
 
+    void setEmployee(QString employeeID);
+
+
 private slots:
     void on_pushButton_vieweditemployee_2_clicked();
 
@@ -80,6 +84,10 @@ private slots:
 
     void on_calendarWidget1_2_clicked(const QDate &date);
 
+    void on_pushButton_SearchEmpty_clicked();
+
+    void on_pushButton_TeamEmpty_clicked();
+
 private:
     Ui::WindowMain *ui;
     QSqlDatabase db3;
@@ -90,7 +98,8 @@ private:
     NewTeam *newTeam;
     void resetEmployeeTable();
     void resetTeamTable();
-
+    QSound *sound;
+    QString curEmployee;
 };
 
 

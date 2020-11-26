@@ -4,6 +4,7 @@
 #include <QPalette>
 
 
+
 /***********************************************************************************************************
  * We setup the associated UI and instantiate a database connection for the WindowLogin model
 ***********************************************************************************************************/
@@ -18,6 +19,7 @@ WindowLogin::WindowLogin(QWidget *parent)
     db1 = dbc->establishConnection("one");
     ui->oopsMissingFields->hide();
     ui->oopsInvalid->hide();
+    sound = new QSound(":/new/prefix1/pop.wav");
 }
 
 
@@ -50,6 +52,7 @@ void WindowLogin::on_pushButtonSignIn_clicked()
 
     if (lineEdit_username == "" || lineEdit_password == ""){
             ui->oopsMissingFields->show();
+            sound->play();
             ui->oopsInvalid->hide();
     }
     else{
@@ -60,11 +63,9 @@ void WindowLogin::on_pushButtonSignIn_clicked()
              QMessageBox::information(this, "Connection", "Invalid Username or Password");
         }*/
 
-
-
         QSqlQuery query(QSqlDatabase::database("one"));
         QString queryString;
-        queryString = "SELECT Name_First, Position_Code FROM Employee WHERE Username LIKE '" + lineEdit_username + "' AND Password LIKE '" + lineEdit_password + "'";
+        queryString = "SELECT Name_First, Position_Code, EmployeeID FROM Employee WHERE Username LIKE '" + lineEdit_username + "' AND Password LIKE '" + lineEdit_password + "'";
         query.exec(queryString);
         int user_matched = 0;
         QString userFirstName;
@@ -74,16 +75,18 @@ void WindowLogin::on_pushButtonSignIn_clicked()
             user_matched++;
             userFirstName = query.value(0).toString();
             userPositionCode = query.value(1).toString();
+            employeeID = query.value(2).toString();
         }
         if (user_matched != 1){
             ui->oopsInvalid->show();
+            sound->play();
             ui->oopsMissingFields->hide();
         }
         else{
 
-
             WindowMain *main = new WindowMain();
             main->setWelcomeName(userFirstName);
+            main->setEmployee(employeeID);
             main->setPosition(userPositionCode);
             main->setDisabledFeatures(userPositionCode);
             main->show();
@@ -92,6 +95,8 @@ void WindowLogin::on_pushButtonSignIn_clicked()
         }
     }
 }
+
+
 
 
 

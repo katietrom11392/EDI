@@ -248,7 +248,10 @@
     </rect>
    </property>
   </widget>
-  <widget class="QTimeEdit" name="timeEdit_2">
+  <widget class="QTimeEdit" name="timeEdit_Start">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="geometry">
     <rect>
      <x>472</x>
@@ -258,7 +261,10 @@
     </rect>
    </property>
   </widget>
-  <widget class="QTimeEdit" name="timeEdit_3">
+  <widget class="QTimeEdit" name="timeEdit_End">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="geometry">
     <rect>
      <x>472</x>
@@ -297,9 +303,9 @@
   <widget class="QPushButton" name="pushButton_saveChanges">
    <property name="geometry">
     <rect>
-     <x>370</x>
+     <x>350</x>
      <y>10</y>
-     <width>91</width>
+     <width>131</width>
      <height>32</height>
     </rect>
    </property>
@@ -307,7 +313,10 @@
     <string>Save Changes</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_3">
+  <widget class="QPushButton" name="pushButton_deleteShift">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="geometry">
     <rect>
      <x>260</x>
@@ -320,7 +329,10 @@
     <string>Delete Shift</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_4">
+  <widget class="QPushButton" name="pushButton_insertShift">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="geometry">
     <rect>
      <x>260</x>
@@ -374,7 +386,7 @@
     <rect>
      <x>10</x>
      <y>10</y>
-     <width>91</width>
+     <width>131</width>
      <height>32</height>
     </rect>
    </property>
@@ -399,10 +411,10 @@
   <tabstop>lineEdit_username</tabstop>
   <tabstop>lineEdit_password</tabstop>
   <tabstop>calendarWidget</tabstop>
-  <tabstop>timeEdit_2</tabstop>
-  <tabstop>timeEdit_3</tabstop>
-  <tabstop>pushButton_4</tabstop>
-  <tabstop>pushButton_3</tabstop>
+  <tabstop>timeEdit_Start</tabstop>
+  <tabstop>timeEdit_End</tabstop>
+  <tabstop>pushButton_insertShift</tabstop>
+  <tabstop>pushButton_deleteShift</tabstop>
   <tabstop>pushButton_editMode</tabstop>
   <tabstop>pushButton_saveChanges</tabstop>
  </tabstops>
