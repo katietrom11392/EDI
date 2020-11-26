@@ -30,18 +30,44 @@ WindowMain::WindowMain(QWidget *parent) :
     QValueAxis *axisX = new QValueAxis;
     QValueAxis *axisY = new QValueAxis;
 
+    // Change color of the plotted line
+    QPen pen(QRgb(0xfdb157));
+    pen.setWidth(5);
+    series->setPen(pen);
+
+    // Change color of axis lines
+    QPen axisPen(QRgb(0xd18952));
+    axisPen.setWidth(2);
+    axisX->setLinePen(axisPen);
+    axisY->setLinePen(axisPen);
+
+
+    // Turn off grid lines
+    axisX->setGridLineVisible(false);
+    axisY->setGridLineVisible(false);
+    axisY->setShadesPen(Qt::NoPen);
+    axisY->setShadesBrush(QBrush(QColor(0x99, 0xcc, 0xcc, 0x55)));
+    axisY->setShadesVisible(true);
+
+
     series ->append(1,6);
     series ->append(2,4);
     series ->append(3,8);
     series ->append(7,4);
     series ->append(10,5);
+    axisX->setRange(0, 20);     // sets the length of axis from 0-30
+    axisY->setRange(0, 20);     // sets the length of axis from 0-30
+
+    // these can be used to create the QtChart in the statement below, once the data is pulled from the EDI database
+    //
+    // uncomment once database queries are setup
+    //int xvalue=0, yvalue=0;
 
     *series << QPoint(11,1) << QPointF(13,3)<< QPointF(17,6)<< QPointF(18,3)<< QPointF(20,2);
 
     QChart *chart = new QChart();
     chart->legend()->hide();
     chart->addSeries(series);
-    //chart->createDefaultAxes();
 
     axisY->setTitleText("Tasks Completed");
     axisX->setTitleText("Hours Worked");
