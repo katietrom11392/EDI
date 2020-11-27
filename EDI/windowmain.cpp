@@ -654,5 +654,6 @@ void WindowMain::setEmployee(QString employeeID){
 ***********************************************************************************************************/
 void WindowMain::on_pushButton_newEmployee_clicked() {
     newEmployeeWindow = new ControlTab_NewEmployee();
+    newEmployeeWindow -> populate_position_comboBox(userPosition);
     newEmployeeWindow -> show();
 }

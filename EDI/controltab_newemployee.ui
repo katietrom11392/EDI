@@ -255,7 +255,7 @@
     </rect>
    </property>
   </widget>
-  <widget class="QLineEdit" name="lineEdit_password_2">
+  <widget class="QLineEdit" name="lineEdit_verifyPassword">
    <property name="geometry">
     <rect>
      <x>120</x>
@@ -298,6 +298,19 @@
    </property>
   </widget>
  </widget>
+ <tabstops>
+  <tabstop>lineEdit_employeeID</tabstop>
+  <tabstop>lineEdit_lastName</tabstop>
+  <tabstop>lineEdit_firstName</tabstop>
+  <tabstop>lineEdit_salary</tabstop>
+  <tabstop>lineEdit_ssn</tabstop>
+  <tabstop>comboBox_position</tabstop>
+  <tabstop>lineEdit_username</tabstop>
+  <tabstop>lineEdit_password</tabstop>
+  <tabstop>lineEdit_verifyPassword</tabstop>
+  <tabstop>pushButton_addEmployee</tabstop>
+  <tabstop>pushButton_return</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>
