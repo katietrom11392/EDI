@@ -249,6 +249,13 @@ void WindowMain::resetTeamTable(){
 ***********************************************************************************************************/
 void WindowMain::on_tabWidget_currentChanged(int index)
 {
+    ui->oopsNoEmployee->hide();
+    ui->oopsNoTeamSelected->hide();
+    ui->oopsSearchFilter->hide();
+    ui->oopsTooManyEmp->hide();
+    ui->oopsTooManyTeams->hide();
+    ui->oopsSearchEmpty->hide();
+    ui->oopsTeamEmpty->hide();
     resetEmployeeTable();
     resetTeamTable();
 }

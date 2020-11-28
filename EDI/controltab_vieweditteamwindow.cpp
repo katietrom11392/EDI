@@ -22,6 +22,19 @@ ControlTab_ViewEditTeamWindow::ControlTab_ViewEditTeamWindow(QWidget *parent) :
                          "QTableView:item:selected:focus {background-color: #F56525;}");
     ui->tableWidget_projs->setStyleSheet("QTableView:item:selected {background-color: #F56525; color: #FFFFFF}\n"
                          "QTableView:item:selected:focus {background-color: #F56525;}");
+
+    sound = new QSound(":/new/prefix1/pop.wav");
+
+    ui->oopsCannotRemove->hide();
+    ui->oopsDuplicateProject->hide();
+    ui->oopsEmployeeTaken->hide();
+    ui->oopsInvalidID->hide();
+    ui->oopsNegHours->hide();
+    ui->oopsNoProjSelected->hide();
+    ui->oopsNotOnTeam->hide();
+    ui->oopsTeamExists->hide();
+    ui->oopsTeamNameLen->hide();
+    ui->oopsTooManyProj->hide();
 }
 
 
@@ -267,7 +280,7 @@ void ControlTab_ViewEditTeamWindow::on_pushButton_editMode_clicked() {
  *
  * 1. This event checks that data in the Team Name line, has actually been edited.
  * 2. It verfies the name is available and not currenly in use in the company.
- * 3. It updates the database if the name is available and sets all the fields back to disabled.
+ *    It updates the database if the name is available and sets all the fields back to disabled.
 *****************************************************************************************************************************/
 void ControlTab_ViewEditTeamWindow::on_pushButton_saveChanges_clicked()
 {
@@ -280,7 +293,17 @@ void ControlTab_ViewEditTeamWindow::on_pushButton_saveChanges_clicked()
 
         // 2.
         if (query_verifyName.size() > 0){
-            QMessageBox::information(this,"Error", "Team name already exists.");
+            ui->oopsTeamExists->show();
+            ui->oopsCannotRemove->hide();
+            ui->oopsDuplicateProject->hide();
+            ui->oopsEmployeeTaken->hide();
+            ui->oopsInvalidID->hide();
+            ui->oopsNegHours->hide();
+            ui->oopsNoProjSelected->hide();
+            ui->oopsNotOnTeam->hide();
+            ui->oopsTeamNameLen->hide();
+            ui->oopsTooManyProj->hide();
+            sound->play();
         }
         else{
             QSqlQuery query_updateTeamName(QSqlDatabase::database("dbVet"));
@@ -289,20 +312,30 @@ void ControlTab_ViewEditTeamWindow::on_pushButton_saveChanges_clicked()
             query_updateTeamName.bindValue(":curID", curTeamId);
             query_updateTeamName.exec();
             curTeamName = ui->lineEditTeamName->text();
-            ui->lineEditTeamName->setText(ui->lineEditTeamName->text());
+            ui->lineEditTeamName->setDisabled(true);
+            ui->pushButton_assign->setDisabled(true);
+            ui->pushButton_addNew->setDisabled(true);
+            ui->pushButton_remove->setDisabled(true);
+            ui->pushButton_saveChanges->setDisabled(true);
+            ui->lineEdit_newProj->setDisabled(true);
+            ui->lineEditNewMember->setDisabled(true);
+            ui->pushButton_changeStatus->setDisabled(true);
+            ui->pushButton_removeProj->setDisabled(true);
+            ui->spinBoxExpectedHours->setDisabled(true);
         }
     }
-    // 3.
-    ui->lineEditTeamName->setDisabled(true);
-    ui->pushButton_assign->setDisabled(true);
-    ui->pushButton_addNew->setDisabled(true);
-    ui->pushButton_remove->setDisabled(true);
-    ui->pushButton_saveChanges->setDisabled(true);
-    ui->lineEdit_newProj->setDisabled(true);
-    ui->lineEditNewMember->setDisabled(true);
-    ui->pushButton_changeStatus->setDisabled(true);
-    ui->pushButton_removeProj->setDisabled(true);
-    ui->spinBoxExpectedHours->setDisabled(true);
+    else{
+        ui->lineEditTeamName->setDisabled(true);
+        ui->pushButton_assign->setDisabled(true);
+        ui->pushButton_addNew->setDisabled(true);
+        ui->pushButton_remove->setDisabled(true);
+        ui->pushButton_saveChanges->setDisabled(true);
+        ui->lineEdit_newProj->setDisabled(true);
+        ui->lineEditNewMember->setDisabled(true);
+        ui->pushButton_changeStatus->setDisabled(true);
+        ui->pushButton_removeProj->setDisabled(true);
+        ui->spinBoxExpectedHours->setDisabled(true);
+    }
 }
 
 
@@ -332,7 +365,17 @@ void ControlTab_ViewEditTeamWindow::on_pushButton_addNew_clicked() {
         if (query_verifyEmployee.next()){
             // 3.
             if (query_verifyEmployee.value(1).toString().length() > 0){
-                QMessageBox::information(this,"Error", "Employee is already on a team.");
+                ui->oopsEmployeeTaken->show();
+                ui->oopsCannotRemove->hide();
+                ui->oopsDuplicateProject->hide();
+                ui->oopsInvalidID->hide();
+                ui->oopsNegHours->hide();
+                ui->oopsNoProjSelected->hide();
+                ui->oopsNotOnTeam->hide();
+                ui->oopsTeamExists->hide();
+                ui->oopsTeamNameLen->hide();
+                ui->oopsTooManyProj->hide();
+                sound->play();
             }
             else{ // 4.
                 QSqlQuery query_addEmployee(QSqlDatabase::database("dbVet"));
@@ -350,7 +393,17 @@ void ControlTab_ViewEditTeamWindow::on_pushButton_addNew_clicked() {
             ui->lineEditNewMember->clear();
         }
         else{
-            QMessageBox::information(this, "Error", "Invalid ID.");
+            ui->oopsInvalidID->show();
+            ui->oopsEmployeeTaken->hide();
+            ui->oopsCannotRemove->hide();
+            ui->oopsDuplicateProject->hide();
+            ui->oopsNegHours->hide();
+            ui->oopsNoProjSelected->hide();
+            ui->oopsNotOnTeam->hide();
+            ui->oopsTeamExists->hide();
+            ui->oopsTeamNameLen->hide();
+            ui->oopsTooManyProj->hide();
+            sound->play();
         }
     }
 }
@@ -388,7 +441,17 @@ void ControlTab_ViewEditTeamWindow::on_pushButton_remove_clicked(){
             ui->lineEditNewMember->clear();
         }
         else{
-            QMessageBox::information(this,"Error", "Employee ID does not match " + curTeamName + "'s members.");
+            ui->oopsNotOnTeam->show();
+            ui->oopsInvalidID->hide();
+            ui->oopsEmployeeTaken->hide();
+            ui->oopsCannotRemove->hide();
+            ui->oopsDuplicateProject->hide();
+            ui->oopsNegHours->hide();
+            ui->oopsNoProjSelected->hide();
+            ui->oopsTeamExists->hide();
+            ui->oopsTeamNameLen->hide();
+            ui->oopsTooManyProj->hide();
+            sound->play();
         }
     }
 }
@@ -445,16 +508,46 @@ void ControlTab_ViewEditTeamWindow::on_pushButton_assign_clicked()
                 ui->spinBoxExpectedHours->clear();
             }
             else{
-                QMessageBox::information(this,"Error", "Project " + ui->lineEdit_newProj->text() + " already exists in company.");
+                ui->oopsDuplicateProject->show();
+                ui->oopsNotOnTeam->hide();
+                ui->oopsInvalidID->hide();
+                ui->oopsEmployeeTaken->hide();
+                ui->oopsCannotRemove->hide();
+                ui->oopsNegHours->hide();
+                ui->oopsNoProjSelected->hide();
+                ui->oopsTeamExists->hide();
+                ui->oopsTeamNameLen->hide();
+                ui->oopsTooManyProj->hide();
+                sound->play();
             }
 
         }
         else{
-            QMessageBox::information(this, "Error", "Expected Hours must be positive.");
+            ui->oopsNegHours->show();
+            ui->oopsDuplicateProject->hide();
+            ui->oopsNotOnTeam->hide();
+            ui->oopsInvalidID->hide();
+            ui->oopsEmployeeTaken->hide();
+            ui->oopsCannotRemove->hide();
+            ui->oopsNoProjSelected->hide();
+            ui->oopsTeamExists->hide();
+            ui->oopsTeamNameLen->hide();
+            ui->oopsTooManyProj->hide();
+            sound->play();
         }
     }
     if (ui->lineEdit_newProj->text().length() > 30){
-        QMessageBox::information(this,"","Team Name cannot be more than 30 characters in length.");
+        ui->oopsTeamNameLen->show();
+        ui->oopsNegHours->hide();
+        ui->oopsDuplicateProject->hide();
+        ui->oopsNotOnTeam->hide();
+        ui->oopsInvalidID->hide();
+        ui->oopsEmployeeTaken->hide();
+        ui->oopsCannotRemove->hide();
+        ui->oopsNoProjSelected->hide();
+        ui->oopsTeamExists->hide();
+        ui->oopsTooManyProj->hide();
+        sound->play();
     }
 }
 
@@ -474,10 +567,31 @@ void ControlTab_ViewEditTeamWindow::on_pushButton_changeStatus_clicked(){
     // 1.
     QModelIndexList rowSelection = ui->tableWidget_projs->selectionModel()->selectedRows();
     if (rowSelection.count() != 1){
-        if (rowSelection.count() == 0)
-            QMessageBox::information(this, "", "No project selected.");
-        else
-            QMessageBox::information(this, "", "Too many projects selected.");
+        if (rowSelection.count() == 0){
+            ui->oopsNoProjSelected->show();
+            ui->oopsTeamNameLen->hide();
+            ui->oopsNegHours->hide();
+            ui->oopsDuplicateProject->hide();
+            ui->oopsNotOnTeam->hide();
+            ui->oopsInvalidID->hide();
+            ui->oopsEmployeeTaken->hide();
+            ui->oopsCannotRemove->hide();
+            ui->oopsTeamExists->hide();
+            ui->oopsTooManyProj->hide();
+        }
+        else{
+            ui->oopsTooManyProj->show();
+            ui->oopsNoProjSelected->hide();
+            ui->oopsTeamNameLen->hide();
+            ui->oopsNegHours->hide();
+            ui->oopsDuplicateProject->hide();
+            ui->oopsNotOnTeam->hide();
+            ui->oopsInvalidID->hide();
+            ui->oopsEmployeeTaken->hide();
+            ui->oopsCannotRemove->hide();
+            ui->oopsTeamExists->hide();
+        }
+        sound->play();
     } // 2.
     else {
         QModelIndex index = ui -> tableWidget_projs -> selectionModel() -> currentIndex();
@@ -487,7 +601,7 @@ void ControlTab_ViewEditTeamWindow::on_pushButton_changeStatus_clicked(){
 
         QSqlQuery query_updateProjStatus(QSqlDatabase::database("dbVet"));
         query_updateProjStatus.prepare("UPDATE Project SET ProjectStatus = :newStatus WHERE ProjectName = :thisProj");
-        query_updateProjStatus.bindValue(":newStatus", inProgressStatus? "Complete" : "Pending");
+        query_updateProjStatus.bindValue(":newStatus", inProgressStatus? "Completed" : "Pending");
         query_updateProjStatus.bindValue(":thisProj", selectedRowProjName);
         query_updateProjStatus.exec();
 
@@ -505,9 +619,6 @@ void ControlTab_ViewEditTeamWindow::on_pushButton_changeStatus_clicked(){
         query_updateProjNums.bindValue(":newPC", QVariant(numProjectsCompleted).toInt());
         query_updateProjNums.bindValue(":thisTeam", curTeamId);
         query_updateProjNums.exec();
-        if (query_updateProjNums.size() == 1){
-            QMessageBox::information(this,"","HI");
-        }
 
         resetProjTable();
         resetTeamTable();
@@ -533,10 +644,31 @@ void ControlTab_ViewEditTeamWindow::on_pushButton_removeProj_clicked(){
      // 1.
     QModelIndexList rowSelection = ui->tableWidget_projs->selectionModel()->selectedRows();
     if (rowSelection.count() != 1){
-        if (rowSelection.count() == 0)
-            QMessageBox::information(this, "", "No project selected.");
-        else
-            QMessageBox::information(this, "", "Too many projects selected.");
+        if (rowSelection.count() == 0){
+            ui->oopsNoProjSelected->show();
+            ui->oopsTooManyProj->hide();
+            ui->oopsTeamNameLen->hide();
+            ui->oopsNegHours->hide();
+            ui->oopsDuplicateProject->hide();
+            ui->oopsNotOnTeam->hide();
+            ui->oopsInvalidID->hide();
+            ui->oopsEmployeeTaken->hide();
+            ui->oopsCannotRemove->hide();
+            ui->oopsTeamExists->hide();
+        }
+        else{
+            ui->oopsTooManyProj->show();
+            ui->oopsNoProjSelected->hide();
+            ui->oopsTeamNameLen->hide();
+            ui->oopsNegHours->hide();
+            ui->oopsDuplicateProject->hide();
+            ui->oopsNotOnTeam->hide();
+            ui->oopsInvalidID->hide();
+            ui->oopsEmployeeTaken->hide();
+            ui->oopsCannotRemove->hide();
+            ui->oopsTeamExists->hide();
+        }
+        sound->play();
     } // 2.
     else {
         QModelIndex index = ui -> tableWidget_projs -> selectionModel() -> currentIndex();
@@ -544,7 +676,17 @@ void ControlTab_ViewEditTeamWindow::on_pushButton_removeProj_clicked(){
         bool inProgressStatus = selectedRowProjStatus == "Pending"? true : false;
 
         if (!inProgressStatus){
-            QMessageBox::information(this,"","Cannot remove a completed project.");
+            ui->oopsDuplicateProject->hide();
+            ui->oopsNoProjSelected->hide();
+            ui->oopsTooManyProj->hide();
+            ui->oopsTeamNameLen->hide();
+            ui->oopsNegHours->hide();
+            ui->oopsNotOnTeam->hide();
+            ui->oopsInvalidID->hide();
+            ui->oopsEmployeeTaken->hide();
+            ui->oopsCannotRemove->show();
+            ui->oopsTeamExists->hide();
+            sound->play();
         } // 3.
         else{
             QString selectedRowProjName = ui -> tableWidget_projs -> model() -> index(index.row(), 0).data().toString();
@@ -567,3 +709,53 @@ void ControlTab_ViewEditTeamWindow::on_pushButton_removeProj_clicked(){
     }
 }
 
+
+void ControlTab_ViewEditTeamWindow::on_pushButton_CannotRemove_clicked()
+{
+    ui->oopsCannotRemove->hide();
+}
+
+void ControlTab_ViewEditTeamWindow::on_pushButton_DuplicateProject_clicked()
+{
+    ui->oopsDuplicateProject->hide();
+}
+
+void ControlTab_ViewEditTeamWindow::on_pushButton_EmployeeTaken_clicked()
+{
+    ui->oopsEmployeeTaken->hide();
+}
+
+void ControlTab_ViewEditTeamWindow::on_pushButton_InvalidID_clicked()
+{
+    ui->oopsInvalidID->hide();
+}
+
+void ControlTab_ViewEditTeamWindow::on_pushButton_NegHours_clicked()
+{
+    ui->oopsNegHours->hide();
+}
+
+void ControlTab_ViewEditTeamWindow::on_pushButton_NoProjSelected_clicked()
+{
+    ui->oopsNoProjSelected->hide();
+}
+
+void ControlTab_ViewEditTeamWindow::on_pushButton_NotOnTeam_clicked()
+{
+    ui->oopsNotOnTeam->hide();
+}
+
+void ControlTab_ViewEditTeamWindow::on_pushButton_TeamExists_clicked()
+{
+    ui->oopsTeamExists->hide();
+}
+
+void ControlTab_ViewEditTeamWindow::on_pushButton_TeamNameLen_clicked()
+{
+    ui->oopsTeamNameLen->hide();
+}
+
+void ControlTab_ViewEditTeamWindow::on_pushButton_TooManyProj_clicked()
+{
+    ui->oopsTooManyProj->hide();
+}
