@@ -79,7 +79,7 @@ void ControlTab_NewEmployee::on_pushButton_addEmployee_clicked() {
         bool fieldError = false;
 
         // Check that salary is properly formatted
-        if (!salary.contains(QRegularExpression("^[0-9]+$"))) {
+        if (!salary.contains(QRegularExpression("^[0-9]+$")) && !salary.contains(QRegularExpression("\\d+\\.\\d+"))) {
             fieldError = true;
             QMessageBox::information(this, "Error", "Error: Salary improperly formatted.");
         }

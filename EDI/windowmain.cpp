@@ -129,6 +129,7 @@ void WindowMain::on_pushButton_vieweditemployee_2_clicked()
         viewEditEmployeeWindow -> set_fields(fields, fields);
         viewEditEmployeeWindow -> set_view_position(userPosition);
         viewEditEmployeeWindow -> set_edit_mode_lock();
+        viewEditEmployeeWindow -> grab_password();
         viewEditEmployeeWindow->set_db_table_refs(ui->tableWidget_db_3, ui->tableWidget_db_4);
         viewEditEmployeeWindow -> show();
     }

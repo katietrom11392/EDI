@@ -33,6 +33,7 @@ public:
     void set_edit_mode_lock();                          // Locks the user out of being able to edit based on their position.
     void set_db_table_refs(QTableWidget *employeeTable, QTableWidget *teamTable);
     void resetEmployeeTable();
+    void grab_password();
 
 
 
