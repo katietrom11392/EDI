@@ -1,7 +1,7 @@
 QT       += core gui sql multimedia
 QT       += charts
 
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+greaterThan(QT_MAJOR_VERSION, 4): QT += widgets multimedia
 
 CONFIG += c++11
 CONFIG -= debug_and_release debug_and_release_target
@@ -11,6 +11,7 @@ CONFIG -= debug_and_release debug_and_release_target
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    controltab_newemployee.cpp \
     controltab_vieweditemployee.cpp \
     controltab_vieweditteamwindow.cpp \
     databaseconnection.cpp \
@@ -24,6 +25,7 @@ SOURCES += \
     windownewcompany.cpp
 
 HEADERS += \
+    controltab_newemployee.h \
     controltab_vieweditemployee.h \
     controltab_vieweditteamwindow.h \
     databaseconnection.h \
@@ -36,6 +38,7 @@ HEADERS += \
     windownewcompany.h
 
 FORMS += \
+    controltab_newemployee.ui \
     controltab_vieweditemployee.ui \
     controltab_vieweditteamwindow.ui \
     newteam.ui \

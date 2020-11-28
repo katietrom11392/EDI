@@ -156,7 +156,10 @@ void ControlTab_ViewEditEmployee::on_pushButton_return_clicked() {
             fieldError = true;
         }
 
-        if (!salary.contains(QRegularExpression("^[0-9]+$"))) {
+        // Ensure that the salary field is formatted properly
+        std::cout << salary.toStdString().c_str() << std::endl;
+        if (!salary.contains(QRegularExpression("^[0-9]+$")) && !salary.contains(QRegularExpression("\\d+\\.\\d+"))) {
+        //if (!salary.contains(QRegularExpression("^[0-9]+$"))) {
             QMessageBox::information(this, "Error", "Error: Salary improperly formatted.");
             fieldError = true;
         }
@@ -345,4 +348,27 @@ void ControlTab_ViewEditEmployee::resetEmployeeTable(){
         }
         col = 0;
     }
+}
+
+/****************************************************************************************************************************
+ * Grabs a plain text version of the password for editing.
+*****************************************************************************************************************************/
+void ControlTab_ViewEditEmployee::grab_password() {
+
+    if (!editModeLocked) {
+        QSqlQuery qPassword(QSqlDatabase::database("ve"));
+        QString plainTextPassword;
+        qPassword.prepare("SELECT Password FROM Employee WHERE EmployeeID = ?");
+        qPassword.addBindValue(originalFields.at(0));
+        qPassword.exec();
+
+        while (qPassword.next()) {
+            std::cout << qPassword.size() << std::endl;
+            std::cout << qPassword.value(0).toString().toStdString() << std::endl;
+            QString pass = qPassword.value(0).toString();
+            fields.replace(fields.size() - 1, pass);
+            ui -> lineEdit_password -> setText(pass);
+        }
+    }
+
 }

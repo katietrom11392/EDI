@@ -548,7 +548,7 @@ border-radius: 15px;</string>
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>823</width>
+        <width>825</width>
         <height>459</height>
        </rect>
       </property>
@@ -801,7 +801,7 @@ border-radius: 15px;</string>
       </layout>
      </widget>
     </widget>
-    <widget class="QPushButton" name="pushButton_addEmployee_13">
+    <widget class="QPushButton" name="pushButton_newEmployee">
      <property name="geometry">
       <rect>
        <x>660</x>
