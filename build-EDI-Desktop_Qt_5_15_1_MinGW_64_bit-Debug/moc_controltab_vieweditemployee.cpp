@@ -22,8 +22,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_ControlTab_ViewEditEmployee_t {
-    QByteArrayData data[6];
-    char stringdata0[160];
+    QByteArrayData data[8];
+    char stringdata0[228];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -37,14 +37,18 @@ QT_MOC_LITERAL(1, 28, 30), // "on_pushButton_editMode_clicked"
 QT_MOC_LITERAL(2, 59, 0), // ""
 QT_MOC_LITERAL(3, 60, 33), // "on_pushButton_saveChanges_cli..."
 QT_MOC_LITERAL(4, 94, 28), // "on_pushButton_return_clicked"
-QT_MOC_LITERAL(5, 123, 36) // "on_pushButton_restoreDefault_..."
+QT_MOC_LITERAL(5, 123, 36), // "on_pushButton_restoreDefault_..."
+QT_MOC_LITERAL(6, 160, 33), // "on_pushButton_insertShift_cli..."
+QT_MOC_LITERAL(7, 194, 33) // "on_pushButton_deleteShift_cli..."
 
     },
     "ControlTab_ViewEditEmployee\0"
     "on_pushButton_editMode_clicked\0\0"
     "on_pushButton_saveChanges_clicked\0"
     "on_pushButton_return_clicked\0"
-    "on_pushButton_restoreDefault_clicked"
+    "on_pushButton_restoreDefault_clicked\0"
+    "on_pushButton_insertShift_clicked\0"
+    "on_pushButton_deleteShift_clicked"
 };
 #undef QT_MOC_LITERAL
 
@@ -54,7 +58,7 @@ static const uint qt_meta_data_ControlTab_ViewEditEmployee[] = {
        8,       // revision
        0,       // classname
        0,    0, // classinfo
-       4,   14, // methods
+       6,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -62,12 +66,16 @@ static const uint qt_meta_data_ControlTab_ViewEditEmployee[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    0,   34,    2, 0x08 /* Private */,
-       3,    0,   35,    2, 0x08 /* Private */,
-       4,    0,   36,    2, 0x08 /* Private */,
-       5,    0,   37,    2, 0x08 /* Private */,
+       1,    0,   44,    2, 0x08 /* Private */,
+       3,    0,   45,    2, 0x08 /* Private */,
+       4,    0,   46,    2, 0x08 /* Private */,
+       5,    0,   47,    2, 0x08 /* Private */,
+       6,    0,   48,    2, 0x08 /* Private */,
+       7,    0,   49,    2, 0x08 /* Private */,
 
  // slots: parameters
+    QMetaType::Void,
+    QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
@@ -86,6 +94,8 @@ void ControlTab_ViewEditEmployee::qt_static_metacall(QObject *_o, QMetaObject::C
         case 1: _t->on_pushButton_saveChanges_clicked(); break;
         case 2: _t->on_pushButton_return_clicked(); break;
         case 3: _t->on_pushButton_restoreDefault_clicked(); break;
+        case 4: _t->on_pushButton_insertShift_clicked(); break;
+        case 5: _t->on_pushButton_deleteShift_clicked(); break;
         default: ;
         }
     }
@@ -121,13 +131,13 @@ int ControlTab_ViewEditEmployee::qt_metacall(QMetaObject::Call _c, int _id, void
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 4)
+        if (_id < 6)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 4;
+        _id -= 6;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 4)
+        if (_id < 6)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 4;
+        _id -= 6;
     }
     return _id;
 }

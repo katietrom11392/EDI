@@ -55,6 +55,7 @@ WindowMain::WindowMain(QWidget *parent) :
     series ->append(3,8);
     series ->append(7,4);
     series ->append(10,5);
+
     axisX->setRange(0, 20);     // sets the length of axis from 0-30
     axisY->setRange(0, 20);     // sets the length of axis from 0-30
 
@@ -63,14 +64,21 @@ WindowMain::WindowMain(QWidget *parent) :
     // uncomment once database queries are setup
     //int xvalue=0, yvalue=0;
 
+    if(ui->showLastSeven->isChecked()){
+
+        // code to generate and display the graph for the last seven days
+
+    }
+
+
     *series << QPoint(11,1) << QPointF(13,3)<< QPointF(17,6)<< QPointF(18,3)<< QPointF(20,2);
 
     QChart *chart = new QChart();
     chart->legend()->hide();
     chart->addSeries(series);
 
-    axisY->setTitleText("Tasks Completed");
-    axisX->setTitleText("Hours Worked");
+    axisY->setTitleText("Tasks Completed"); // yaxis
+    axisX->setTitleText("Hours Worked");   // xaxis
 
     chart->setTitle("Employee Productivity");
 

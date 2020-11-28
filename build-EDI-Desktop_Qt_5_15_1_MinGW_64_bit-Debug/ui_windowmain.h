@@ -77,6 +77,7 @@ public:
     QWidget *tab_analyze_2;
     QFrame *productivityLineGraph;
     QHBoxLayout *horizontalLayout;
+    QRadioButton *showLastSeven;
     QLabel *labelLogo;
     QLabel *labelEDI;
     QPushButton *pushButton_LogOut;
@@ -107,6 +108,16 @@ public:
     QLabel *bubbleOopsTooManyEmp;
     QLabel *label_oopsTooManyEmp;
     QPushButton *pushButton_tooManyEmp;
+    QWidget *oopsSearchEmpty;
+    QLabel *label_oopsSearchEmpty;
+    QLabel *bubbleOopsSearchEmpty;
+    QLabel *label_oopsSoloEdi_7;
+    QPushButton *pushButton_SearchEmpty;
+    QWidget *oopsTeamEmpty;
+    QLabel *label_oopsSoloEdi_9;
+    QLabel *bubbleOopsTeamEmpty;
+    QLabel *label_oopsTeamEmpty;
+    QPushButton *pushButton_TeamEmpty;
 
     void setupUi(QWidget *WindowMain)
     {
@@ -389,9 +400,13 @@ public:
         tab_analyze_2->setObjectName(QString::fromUtf8("tab_analyze_2"));
         productivityLineGraph = new QFrame(tab_analyze_2);
         productivityLineGraph->setObjectName(QString::fromUtf8("productivityLineGraph"));
-        productivityLineGraph->setGeometry(QRect(0, 20, 841, 501));
+        productivityLineGraph->setGeometry(QRect(0, 40, 841, 511));
         horizontalLayout = new QHBoxLayout(productivityLineGraph);
         horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
+        showLastSeven = new QRadioButton(tab_analyze_2);
+        showLastSeven->setObjectName(QString::fromUtf8("showLastSeven"));
+        showLastSeven->setGeometry(QRect(10, 10, 181, 31));
+        showLastSeven->setChecked(false);
         tabWidget->addTab(tab_analyze_2, QString());
         labelLogo = new QLabel(WindowMain);
         labelLogo->setObjectName(QString::fromUtf8("labelLogo"));
@@ -541,6 +556,54 @@ public:
         pushButton_tooManyEmp->setFont(font3);
         pushButton_tooManyEmp->setStyleSheet(QString::fromUtf8("background-color: transparent;\n"
 "border: none;"));
+        oopsSearchEmpty = new QWidget(WindowMain);
+        oopsSearchEmpty->setObjectName(QString::fromUtf8("oopsSearchEmpty"));
+        oopsSearchEmpty->setGeometry(QRect(0, 519, 141, 121));
+        label_oopsSearchEmpty = new QLabel(oopsSearchEmpty);
+        label_oopsSearchEmpty->setObjectName(QString::fromUtf8("label_oopsSearchEmpty"));
+        label_oopsSearchEmpty->setGeometry(QRect(10, 80, 31, 31));
+        label_oopsSearchEmpty->setPixmap(QPixmap(QString::fromUtf8(":/new/prefix1/ediSolo.png")));
+        label_oopsSearchEmpty->setScaledContents(true);
+        bubbleOopsSearchEmpty = new QLabel(oopsSearchEmpty);
+        bubbleOopsSearchEmpty->setObjectName(QString::fromUtf8("bubbleOopsSearchEmpty"));
+        bubbleOopsSearchEmpty->setGeometry(QRect(40, 10, 91, 71));
+        bubbleOopsSearchEmpty->setPixmap(QPixmap(QString::fromUtf8(":/new/prefix1/lBubble.png")));
+        bubbleOopsSearchEmpty->setScaledContents(true);
+        label_oopsSoloEdi_7 = new QLabel(oopsSearchEmpty);
+        label_oopsSoloEdi_7->setObjectName(QString::fromUtf8("label_oopsSoloEdi_7"));
+        label_oopsSoloEdi_7->setGeometry(QRect(42, 13, 81, 41));
+        label_oopsSoloEdi_7->setFont(font2);
+        label_oopsSoloEdi_7->setWordWrap(true);
+        pushButton_SearchEmpty = new QPushButton(oopsSearchEmpty);
+        pushButton_SearchEmpty->setObjectName(QString::fromUtf8("pushButton_SearchEmpty"));
+        pushButton_SearchEmpty->setGeometry(QRect(110, 10, 21, 16));
+        pushButton_SearchEmpty->setFont(font3);
+        pushButton_SearchEmpty->setStyleSheet(QString::fromUtf8("background-color: transparent;\n"
+"border: none;"));
+        oopsTeamEmpty = new QWidget(WindowMain);
+        oopsTeamEmpty->setObjectName(QString::fromUtf8("oopsTeamEmpty"));
+        oopsTeamEmpty->setGeometry(QRect(0, 519, 141, 121));
+        label_oopsSoloEdi_9 = new QLabel(oopsTeamEmpty);
+        label_oopsSoloEdi_9->setObjectName(QString::fromUtf8("label_oopsSoloEdi_9"));
+        label_oopsSoloEdi_9->setGeometry(QRect(10, 80, 31, 31));
+        label_oopsSoloEdi_9->setPixmap(QPixmap(QString::fromUtf8(":/new/prefix1/ediSolo.png")));
+        label_oopsSoloEdi_9->setScaledContents(true);
+        bubbleOopsTeamEmpty = new QLabel(oopsTeamEmpty);
+        bubbleOopsTeamEmpty->setObjectName(QString::fromUtf8("bubbleOopsTeamEmpty"));
+        bubbleOopsTeamEmpty->setGeometry(QRect(40, 10, 91, 71));
+        bubbleOopsTeamEmpty->setPixmap(QPixmap(QString::fromUtf8(":/new/prefix1/lBubble.png")));
+        bubbleOopsTeamEmpty->setScaledContents(true);
+        label_oopsTeamEmpty = new QLabel(oopsTeamEmpty);
+        label_oopsTeamEmpty->setObjectName(QString::fromUtf8("label_oopsTeamEmpty"));
+        label_oopsTeamEmpty->setGeometry(QRect(42, 13, 81, 41));
+        label_oopsTeamEmpty->setFont(font2);
+        label_oopsTeamEmpty->setWordWrap(true);
+        pushButton_TeamEmpty = new QPushButton(oopsTeamEmpty);
+        pushButton_TeamEmpty->setObjectName(QString::fromUtf8("pushButton_TeamEmpty"));
+        pushButton_TeamEmpty->setGeometry(QRect(110, 10, 21, 16));
+        pushButton_TeamEmpty->setFont(font3);
+        pushButton_TeamEmpty->setStyleSheet(QString::fromUtf8("background-color: transparent;\n"
+"border: none;"));
         tabWidget->raise();
         labelLogo->raise();
         labelEDI->raise();
@@ -552,10 +615,12 @@ public:
         oopsSearchFilter->raise();
         oopsTooManyEmp->raise();
         oopsTooManyTeams->raise();
+        oopsSearchEmpty->raise();
+        oopsTeamEmpty->raise();
 
         retranslateUi(WindowMain);
 
-        tabWidget->setCurrentIndex(0);
+        tabWidget->setCurrentIndex(2);
 
 
         QMetaObject::connectSlotsByName(WindowMain);
@@ -627,6 +692,7 @@ public:
         radioButton_Team->setText(QCoreApplication::translate("WindowMain", "Team", nullptr));
         pushButton_Reset->setText(QCoreApplication::translate("WindowMain", "Reset", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(tab_control_2), QCoreApplication::translate("WindowMain", "Control", nullptr));
+        showLastSeven->setText(QCoreApplication::translate("WindowMain", "Last Week", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(tab_analyze_2), QCoreApplication::translate("WindowMain", "Analyze", nullptr));
         labelLogo->setText(QString());
         labelEDI->setText(QCoreApplication::translate("WindowMain", "EMPLOYEE DATABASE INTERFACE", nullptr));
@@ -653,6 +719,14 @@ public:
         bubbleOopsTooManyEmp->setText(QString());
         label_oopsTooManyEmp->setText(QCoreApplication::translate("WindowMain", "Too many employees selected.", nullptr));
         pushButton_tooManyEmp->setText(QCoreApplication::translate("WindowMain", "x", nullptr));
+        label_oopsSearchEmpty->setText(QString());
+        bubbleOopsSearchEmpty->setText(QString());
+        label_oopsSoloEdi_7->setText(QCoreApplication::translate("WindowMain", "Employee search field is empty.", nullptr));
+        pushButton_SearchEmpty->setText(QCoreApplication::translate("WindowMain", "x", nullptr));
+        label_oopsSoloEdi_9->setText(QString());
+        bubbleOopsTeamEmpty->setText(QString());
+        label_oopsTeamEmpty->setText(QCoreApplication::translate("WindowMain", "Team search field is empty.", nullptr));
+        pushButton_TeamEmpty->setText(QCoreApplication::translate("WindowMain", "x", nullptr));
     } // retranslateUi
 
 };
