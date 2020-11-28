@@ -14,13 +14,13 @@ EQ            = =
 
 CC            = gcc
 CXX           = g++
-DEFINES       = -DUNICODE -D_UNICODE -DWIN32 -DMINGW_HAS_SECURE_API=1 -DQT_QML_DEBUG -DQT_CHARTS_LIB -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_SQL_LIB -DQT_CORE_LIB -DQT_NEEDS_QMAIN
+DEFINES       = -DUNICODE -D_UNICODE -DWIN32 -DMINGW_HAS_SECURE_API=1 -DQT_QML_DEBUG -DQT_MULTIMEDIA_LIB -DQT_CHARTS_LIB -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_SQL_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB -DQT_NEEDS_QMAIN
 CFLAGS        = -fno-keep-inline-dllexport -g -Wall -Wextra -Wextra $(DEFINES)
 CXXFLAGS      = -fno-keep-inline-dllexport -g -std=gnu++11 -Wall -Wextra -Wextra -fexceptions -mthreads $(DEFINES)
-INCPATH       = -I..\EDI -I. -IC:\Qt\5.15.1\mingw81_64\include -IC:\Qt\5.15.1\mingw81_64\include\QtCharts -IC:\Qt\5.15.1\mingw81_64\include\QtWidgets -IC:\Qt\5.15.1\mingw81_64\include\QtGui -IC:\Qt\5.15.1\mingw81_64\include\QtANGLE -IC:\Qt\5.15.1\mingw81_64\include\QtSql -IC:\Qt\5.15.1\mingw81_64\include\QtCore -I. -I. -I/include -IC:\Qt\5.15.1\mingw81_64\mkspecs\win32-g++ 
+INCPATH       = -I..\EDI -I. -IC:\Qt\5.15.1\mingw81_64\include -IC:\Qt\5.15.1\mingw81_64\include\QtMultimedia -IC:\Qt\5.15.1\mingw81_64\include\QtCharts -IC:\Qt\5.15.1\mingw81_64\include\QtWidgets -IC:\Qt\5.15.1\mingw81_64\include\QtGui -IC:\Qt\5.15.1\mingw81_64\include\QtANGLE -IC:\Qt\5.15.1\mingw81_64\include\QtSql -IC:\Qt\5.15.1\mingw81_64\include\QtNetwork -IC:\Qt\5.15.1\mingw81_64\include\QtCore -I. -I. -I/include -IC:\Qt\5.15.1\mingw81_64\mkspecs\win32-g++ 
 LINKER      =        g++
 LFLAGS        =        -Wl,-subsystem,windows -mthreads
-LIBS        =        C:\Qt\5.15.1\mingw81_64\lib\libQt5Charts.a C:\Qt\5.15.1\mingw81_64\lib\libQt5Widgets.a C:\Qt\5.15.1\mingw81_64\lib\libQt5Gui.a C:\Qt\5.15.1\mingw81_64\lib\libQt5Sql.a C:\Qt\5.15.1\mingw81_64\lib\libQt5Core.a  -lmingw32 C:\Qt\5.15.1\mingw81_64\lib\libqtmain.a -LC:\openssl\lib -LC:\Utils\my_sql\mysql-5.7.25-winx64\lib -LC:\Utils\postgresql\pgsql\lib -lshell32 
+LIBS        =        C:\Qt\5.15.1\mingw81_64\lib\libQt5Multimedia.a C:\Qt\5.15.1\mingw81_64\lib\libQt5Charts.a C:\Qt\5.15.1\mingw81_64\lib\libQt5Widgets.a C:\Qt\5.15.1\mingw81_64\lib\libQt5Gui.a C:\Qt\5.15.1\mingw81_64\lib\libQt5Sql.a C:\Qt\5.15.1\mingw81_64\lib\libQt5Network.a C:\Qt\5.15.1\mingw81_64\lib\libQt5Core.a  -lmingw32 C:\Qt\5.15.1\mingw81_64\lib\libqtmain.a -LC:\openssl\lib -LC:\Utils\my_sql\mysql-5.7.25-winx64\lib -LC:\Utils\postgresql\pgsql\lib -lshell32 
 QMAKE         = C:\Qt\5.15.1\mingw81_64\bin\qmake.exe
 DEL_FILE      = del
 CHK_DIR_EXISTS= if not exist
@@ -95,7 +95,8 @@ OBJECTS       = controltab_vieweditemployee.o \
 		moc_windowmain.o \
 		moc_windownewcompany.o
 
-DIST          = sshConnectionCode ..\EDI\controltab_vieweditemployee.h \
+DIST          = pop.wav \
+		sshConnectionCode ..\EDI\controltab_vieweditemployee.h \
 		..\EDI\controltab_vieweditteamwindow.h \
 		..\EDI\databaseconnection.h \
 		..\EDI\newteam.h \
@@ -125,7 +126,7 @@ DESTDIR_TARGET = EDI.exe
 first: all
 all: Makefile  EDI.exe
 
-EDI.exe: C:/Qt/5.15.1/mingw81_64/lib/libQt5Charts.a C:/Qt/5.15.1/mingw81_64/lib/libQt5Widgets.a C:/Qt/5.15.1/mingw81_64/lib/libQt5Gui.a C:/Qt/5.15.1/mingw81_64/lib/libQt5Sql.a C:/Qt/5.15.1/mingw81_64/lib/libQt5Core.a C:/Qt/5.15.1/mingw81_64/lib/libqtmain.a ui_controltab_vieweditemployee.h ui_controltab_vieweditteamwindow.h ui_newteam.h ui_windowlogin.h ui_windowmain.h ui_windownewcompany.h $(OBJECTS) 
+EDI.exe: C:/Qt/5.15.1/mingw81_64/lib/libQt5Multimedia.a C:/Qt/5.15.1/mingw81_64/lib/libQt5Charts.a C:/Qt/5.15.1/mingw81_64/lib/libQt5Widgets.a C:/Qt/5.15.1/mingw81_64/lib/libQt5Gui.a C:/Qt/5.15.1/mingw81_64/lib/libQt5Sql.a C:/Qt/5.15.1/mingw81_64/lib/libQt5Network.a C:/Qt/5.15.1/mingw81_64/lib/libQt5Core.a C:/Qt/5.15.1/mingw81_64/lib/libqtmain.a ui_controltab_vieweditemployee.h ui_controltab_vieweditteamwindow.h ui_newteam.h ui_windowlogin.h ui_windowmain.h ui_windownewcompany.h $(OBJECTS) 
 	$(LINKER) $(LFLAGS) -o $(DESTDIR_TARGET) @object_script.EDI  $(LIBS)
 
 Makefile: ../EDI/EDI.pro C:/Qt/5.15.1/mingw81_64/mkspecs/win32-g++/qmake.conf C:/Qt/5.15.1/mingw81_64/mkspecs/features/spec_pre.prf \
@@ -283,6 +284,7 @@ Makefile: ../EDI/EDI.pro C:/Qt/5.15.1/mingw81_64/mkspecs/win32-g++/qmake.conf C:
 		C:/Qt/5.15.1/mingw81_64/mkspecs/features/qt_config.prf \
 		C:/Qt/5.15.1/mingw81_64/mkspecs/win32-g++/qmake.conf \
 		C:/Qt/5.15.1/mingw81_64/mkspecs/features/spec_post.prf \
+		.qmake.stash \
 		C:/Qt/5.15.1/mingw81_64/mkspecs/features/exclusive_builds.prf \
 		C:/Qt/5.15.1/mingw81_64/mkspecs/features/toolchain.prf \
 		C:/Qt/5.15.1/mingw81_64/mkspecs/features/default_pre.prf \
@@ -309,10 +311,12 @@ Makefile: ../EDI/EDI.pro C:/Qt/5.15.1/mingw81_64/mkspecs/win32-g++/qmake.conf C:
 		../EDI/ediSolo.qrc \
 		../EDI/logo.qrc \
 		../EDI/resourceExample.qrc \
+		C:/Qt/5.15.1/mingw81_64/lib/Qt5Multimedia.prl \
 		C:/Qt/5.15.1/mingw81_64/lib/Qt5Charts.prl \
 		C:/Qt/5.15.1/mingw81_64/lib/Qt5Widgets.prl \
 		C:/Qt/5.15.1/mingw81_64/lib/Qt5Gui.prl \
 		C:/Qt/5.15.1/mingw81_64/lib/Qt5Sql.prl \
+		C:/Qt/5.15.1/mingw81_64/lib/Qt5Network.prl \
 		C:/Qt/5.15.1/mingw81_64/lib/Qt5Core.prl \
 		C:/Qt/5.15.1/mingw81_64/lib/qtmain.prl
 	$(QMAKE) -o Makefile ..\EDI\EDI.pro -spec win32-g++ "CONFIG+=debug" "CONFIG+=qml_debug"
@@ -471,6 +475,7 @@ C:/Qt/5.15.1/mingw81_64/mkspecs/features/qt_functions.prf:
 C:/Qt/5.15.1/mingw81_64/mkspecs/features/qt_config.prf:
 C:/Qt/5.15.1/mingw81_64/mkspecs/win32-g++/qmake.conf:
 C:/Qt/5.15.1/mingw81_64/mkspecs/features/spec_post.prf:
+.qmake.stash:
 C:/Qt/5.15.1/mingw81_64/mkspecs/features/exclusive_builds.prf:
 C:/Qt/5.15.1/mingw81_64/mkspecs/features/toolchain.prf:
 C:/Qt/5.15.1/mingw81_64/mkspecs/features/default_pre.prf:
@@ -497,10 +502,12 @@ C:/Qt/5.15.1/mingw81_64/mkspecs/features/lex.prf:
 ../EDI/ediSolo.qrc:
 ../EDI/logo.qrc:
 ../EDI/resourceExample.qrc:
+C:/Qt/5.15.1/mingw81_64/lib/Qt5Multimedia.prl:
 C:/Qt/5.15.1/mingw81_64/lib/Qt5Charts.prl:
 C:/Qt/5.15.1/mingw81_64/lib/Qt5Widgets.prl:
 C:/Qt/5.15.1/mingw81_64/lib/Qt5Gui.prl:
 C:/Qt/5.15.1/mingw81_64/lib/Qt5Sql.prl:
+C:/Qt/5.15.1/mingw81_64/lib/Qt5Network.prl:
 C:/Qt/5.15.1/mingw81_64/lib/Qt5Core.prl:
 C:/Qt/5.15.1/mingw81_64/lib/qtmain.prl:
 qmake: FORCE
@@ -509,7 +516,7 @@ qmake: FORCE
 qmake_all: FORCE
 
 dist:
-	$(ZIP) EDI.zip $(SOURCES) $(DIST) ..\EDI\EDI.pro C:\Qt\5.15.1\mingw81_64\mkspecs\features\spec_pre.prf C:\Qt\5.15.1\mingw81_64\mkspecs\qdevice.pri C:\Qt\5.15.1\mingw81_64\mkspecs\features\device_config.prf C:\Qt\5.15.1\mingw81_64\mkspecs\common\sanitize.conf C:\Qt\5.15.1\mingw81_64\mkspecs\common\gcc-base.conf C:\Qt\5.15.1\mingw81_64\mkspecs\common\g++-base.conf C:\Qt\5.15.1\mingw81_64\mkspecs\common\angle.conf C:\Qt\5.15.1\mingw81_64\mkspecs\features\win32\windows_vulkan_sdk.prf C:\Qt\5.15.1\mingw81_64\mkspecs\common\windows-vulkan.conf C:\Qt\5.15.1\mingw81_64\mkspecs\common\g++-win32.conf C:\Qt\5.15.1\mingw81_64\mkspecs\common\windows-desktop.conf C:\Qt\5.15.1\mingw81_64\mkspecs\qconfig.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_3danimation.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_3danimation_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_3dcore.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_3dcore_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_3dextras.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_3dextras_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_3dinput.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_3dinput_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_3dlogic.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_3dlogic_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_3dquick.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_3dquick_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_3dquickanimation.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_3dquickanimation_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_3dquickextras.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_3dquickextras_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_3dquickinput.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_3dquickinput_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_3dquickrender.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_3dquickrender_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_3dquickscene2d.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_3dquickscene2d_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_3drender.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_3drender_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_accessibility_support_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_axbase.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_axbase_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_axcontainer.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_axcontainer_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_axserver.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_axserver_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_bluetooth.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_bluetooth_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_bootstrap_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_charts.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_charts_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_concurrent.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_concurrent_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_core.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_core_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_dbus.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_dbus_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_designer.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_designer_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_designercomponents_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_devicediscovery_support_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_edid_support_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_egl_support_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_eventdispatcher_support_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_fb_support_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_fontdatabase_support_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_gamepad.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_gamepad_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_gui.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_gui_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_help.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_help_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_location.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_location_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_multimedia.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_multimedia_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_multimediawidgets.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_multimediawidgets_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_network.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_network_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_nfc.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_nfc_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_opengl.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_opengl_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_openglextensions.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_openglextensions_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_packetprotocol_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_platformcompositor_support_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_positioning.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_positioning_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_positioningquick.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_positioningquick_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_printsupport.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_printsupport_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_qml.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_qml_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_qmldebug_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_qmldevtools_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_qmlmodels.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_qmlmodels_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_qmltest.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_qmltest_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_qmlworkerscript.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_qmlworkerscript_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_qtmultimediaquicktools_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_quick.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_quick_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_quickcontrols2.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_quickcontrols2_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_quickparticles_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_quickshapes_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_quicktemplates2.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_quicktemplates2_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_quickwidgets.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_quickwidgets_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_remoteobjects.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_remoteobjects_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_repparser.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_repparser_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_scxml.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_scxml_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_sensors.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_sensors_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_serialbus.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_serialbus_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_serialport.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_serialport_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_sql.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_sql_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_svg.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_svg_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_testlib.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_testlib_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_texttospeech.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_texttospeech_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_theme_support_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_uiplugin.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_uitools.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_uitools_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_vulkan_support_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_webchannel.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_webchannel_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_websockets.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_websockets_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_widgets.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_widgets_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_windowsuiautomation_support_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_winextras.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_winextras_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_xml.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_xml_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_xmlpatterns.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_xmlpatterns_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_zlib_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\features\qt_functions.prf C:\Qt\5.15.1\mingw81_64\mkspecs\features\qt_config.prf C:\Qt\5.15.1\mingw81_64\mkspecs\win32-g++\qmake.conf C:\Qt\5.15.1\mingw81_64\mkspecs\features\spec_post.prf C:\Qt\5.15.1\mingw81_64\mkspecs\features\exclusive_builds.prf C:\Qt\5.15.1\mingw81_64\mkspecs\features\toolchain.prf C:\Qt\5.15.1\mingw81_64\mkspecs\features\default_pre.prf C:\Qt\5.15.1\mingw81_64\mkspecs\features\win32\default_pre.prf C:\Qt\5.15.1\mingw81_64\mkspecs\features\resolve_config.prf C:\Qt\5.15.1\mingw81_64\mkspecs\features\default_post.prf C:\Qt\5.15.1\mingw81_64\mkspecs\features\qml_debug.prf C:\Qt\5.15.1\mingw81_64\mkspecs\features\precompile_header.prf C:\Qt\5.15.1\mingw81_64\mkspecs\features\warn_on.prf C:\Qt\5.15.1\mingw81_64\mkspecs\features\qt.prf C:\Qt\5.15.1\mingw81_64\mkspecs\features\resources_functions.prf C:\Qt\5.15.1\mingw81_64\mkspecs\features\resources.prf C:\Qt\5.15.1\mingw81_64\mkspecs\features\moc.prf C:\Qt\5.15.1\mingw81_64\mkspecs\features\win32\opengl.prf C:\Qt\5.15.1\mingw81_64\mkspecs\features\uic.prf C:\Qt\5.15.1\mingw81_64\mkspecs\features\qmake_use.prf C:\Qt\5.15.1\mingw81_64\mkspecs\features\file_copies.prf C:\Qt\5.15.1\mingw81_64\mkspecs\features\win32\windows.prf C:\Qt\5.15.1\mingw81_64\mkspecs\features\testcase_targets.prf C:\Qt\5.15.1\mingw81_64\mkspecs\features\exceptions.prf C:\Qt\5.15.1\mingw81_64\mkspecs\features\yacc.prf C:\Qt\5.15.1\mingw81_64\mkspecs\features\lex.prf ..\EDI\EDI.pro ..\EDI\ediSolo.qrc ..\EDI\logo.qrc ..\EDI\resourceExample.qrc C:\Qt\5.15.1\mingw81_64\lib\Qt5Charts.prl C:\Qt\5.15.1\mingw81_64\lib\Qt5Widgets.prl C:\Qt\5.15.1\mingw81_64\lib\Qt5Gui.prl C:\Qt\5.15.1\mingw81_64\lib\Qt5Sql.prl C:\Qt\5.15.1\mingw81_64\lib\Qt5Core.prl C:\Qt\5.15.1\mingw81_64\lib\qtmain.prl   ..\EDI\ediSolo.qrc ..\EDI\logo.qrc ..\EDI\resourceExample.qrc C:\Qt\5.15.1\mingw81_64\mkspecs\features\data\dummy.cpp ..\EDI\controltab_vieweditemployee.h ..\EDI\controltab_vieweditteamwindow.h ..\EDI\databaseconnection.h ..\EDI\newteam.h ..\EDI\qcalendar.h ..\EDI\schedule.h ..\EDI\shift.h ..\EDI\windowlogin.h ..\EDI\windowmain.h ..\EDI\windownewcompany.h  ..\EDI\controltab_vieweditemployee.cpp ..\EDI\controltab_vieweditteamwindow.cpp ..\EDI\databaseconnection.cpp ..\EDI\main.cpp ..\EDI\newteam.cpp ..\EDI\qcalendar.cpp ..\EDI\schedule.cpp ..\EDI\shift.cpp ..\EDI\windowlogin.cpp ..\EDI\windowmain.cpp ..\EDI\windownewcompany.cpp ..\EDI\controltab_vieweditemployee.ui ..\EDI\controltab_vieweditteamwindow.ui ..\EDI\newteam.ui ..\EDI\windowlogin.ui ..\EDI\windowmain.ui ..\EDI\windownewcompany.ui    
+	$(ZIP) EDI.zip $(SOURCES) $(DIST) ..\EDI\EDI.pro C:\Qt\5.15.1\mingw81_64\mkspecs\features\spec_pre.prf C:\Qt\5.15.1\mingw81_64\mkspecs\qdevice.pri C:\Qt\5.15.1\mingw81_64\mkspecs\features\device_config.prf C:\Qt\5.15.1\mingw81_64\mkspecs\common\sanitize.conf C:\Qt\5.15.1\mingw81_64\mkspecs\common\gcc-base.conf C:\Qt\5.15.1\mingw81_64\mkspecs\common\g++-base.conf C:\Qt\5.15.1\mingw81_64\mkspecs\common\angle.conf C:\Qt\5.15.1\mingw81_64\mkspecs\features\win32\windows_vulkan_sdk.prf C:\Qt\5.15.1\mingw81_64\mkspecs\common\windows-vulkan.conf C:\Qt\5.15.1\mingw81_64\mkspecs\common\g++-win32.conf C:\Qt\5.15.1\mingw81_64\mkspecs\common\windows-desktop.conf C:\Qt\5.15.1\mingw81_64\mkspecs\qconfig.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_3danimation.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_3danimation_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_3dcore.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_3dcore_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_3dextras.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_3dextras_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_3dinput.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_3dinput_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_3dlogic.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_3dlogic_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_3dquick.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_3dquick_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_3dquickanimation.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_3dquickanimation_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_3dquickextras.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_3dquickextras_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_3dquickinput.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_3dquickinput_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_3dquickrender.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_3dquickrender_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_3dquickscene2d.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_3dquickscene2d_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_3drender.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_3drender_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_accessibility_support_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_axbase.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_axbase_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_axcontainer.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_axcontainer_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_axserver.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_axserver_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_bluetooth.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_bluetooth_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_bootstrap_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_charts.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_charts_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_concurrent.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_concurrent_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_core.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_core_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_dbus.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_dbus_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_designer.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_designer_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_designercomponents_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_devicediscovery_support_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_edid_support_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_egl_support_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_eventdispatcher_support_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_fb_support_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_fontdatabase_support_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_gamepad.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_gamepad_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_gui.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_gui_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_help.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_help_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_location.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_location_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_multimedia.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_multimedia_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_multimediawidgets.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_multimediawidgets_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_network.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_network_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_nfc.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_nfc_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_opengl.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_opengl_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_openglextensions.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_openglextensions_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_packetprotocol_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_platformcompositor_support_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_positioning.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_positioning_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_positioningquick.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_positioningquick_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_printsupport.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_printsupport_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_qml.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_qml_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_qmldebug_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_qmldevtools_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_qmlmodels.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_qmlmodels_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_qmltest.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_qmltest_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_qmlworkerscript.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_qmlworkerscript_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_qtmultimediaquicktools_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_quick.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_quick_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_quickcontrols2.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_quickcontrols2_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_quickparticles_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_quickshapes_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_quicktemplates2.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_quicktemplates2_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_quickwidgets.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_quickwidgets_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_remoteobjects.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_remoteobjects_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_repparser.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_repparser_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_scxml.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_scxml_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_sensors.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_sensors_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_serialbus.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_serialbus_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_serialport.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_serialport_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_sql.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_sql_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_svg.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_svg_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_testlib.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_testlib_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_texttospeech.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_texttospeech_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_theme_support_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_uiplugin.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_uitools.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_uitools_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_vulkan_support_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_webchannel.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_webchannel_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_websockets.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_websockets_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_widgets.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_widgets_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_windowsuiautomation_support_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_winextras.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_winextras_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_xml.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_xml_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_xmlpatterns.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_xmlpatterns_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\modules\qt_lib_zlib_private.pri C:\Qt\5.15.1\mingw81_64\mkspecs\features\qt_functions.prf C:\Qt\5.15.1\mingw81_64\mkspecs\features\qt_config.prf C:\Qt\5.15.1\mingw81_64\mkspecs\win32-g++\qmake.conf C:\Qt\5.15.1\mingw81_64\mkspecs\features\spec_post.prf .qmake.stash C:\Qt\5.15.1\mingw81_64\mkspecs\features\exclusive_builds.prf C:\Qt\5.15.1\mingw81_64\mkspecs\features\toolchain.prf C:\Qt\5.15.1\mingw81_64\mkspecs\features\default_pre.prf C:\Qt\5.15.1\mingw81_64\mkspecs\features\win32\default_pre.prf C:\Qt\5.15.1\mingw81_64\mkspecs\features\resolve_config.prf C:\Qt\5.15.1\mingw81_64\mkspecs\features\default_post.prf C:\Qt\5.15.1\mingw81_64\mkspecs\features\qml_debug.prf C:\Qt\5.15.1\mingw81_64\mkspecs\features\precompile_header.prf C:\Qt\5.15.1\mingw81_64\mkspecs\features\warn_on.prf C:\Qt\5.15.1\mingw81_64\mkspecs\features\qt.prf C:\Qt\5.15.1\mingw81_64\mkspecs\features\resources_functions.prf C:\Qt\5.15.1\mingw81_64\mkspecs\features\resources.prf C:\Qt\5.15.1\mingw81_64\mkspecs\features\moc.prf C:\Qt\5.15.1\mingw81_64\mkspecs\features\win32\opengl.prf C:\Qt\5.15.1\mingw81_64\mkspecs\features\uic.prf C:\Qt\5.15.1\mingw81_64\mkspecs\features\qmake_use.prf C:\Qt\5.15.1\mingw81_64\mkspecs\features\file_copies.prf C:\Qt\5.15.1\mingw81_64\mkspecs\features\win32\windows.prf C:\Qt\5.15.1\mingw81_64\mkspecs\features\testcase_targets.prf C:\Qt\5.15.1\mingw81_64\mkspecs\features\exceptions.prf C:\Qt\5.15.1\mingw81_64\mkspecs\features\yacc.prf C:\Qt\5.15.1\mingw81_64\mkspecs\features\lex.prf ..\EDI\EDI.pro ..\EDI\ediSolo.qrc ..\EDI\logo.qrc ..\EDI\resourceExample.qrc C:\Qt\5.15.1\mingw81_64\lib\Qt5Multimedia.prl C:\Qt\5.15.1\mingw81_64\lib\Qt5Charts.prl C:\Qt\5.15.1\mingw81_64\lib\Qt5Widgets.prl C:\Qt\5.15.1\mingw81_64\lib\Qt5Gui.prl C:\Qt\5.15.1\mingw81_64\lib\Qt5Sql.prl C:\Qt\5.15.1\mingw81_64\lib\Qt5Network.prl C:\Qt\5.15.1\mingw81_64\lib\Qt5Core.prl C:\Qt\5.15.1\mingw81_64\lib\qtmain.prl   ..\EDI\ediSolo.qrc ..\EDI\logo.qrc ..\EDI\resourceExample.qrc C:\Qt\5.15.1\mingw81_64\mkspecs\features\data\dummy.cpp ..\EDI\controltab_vieweditemployee.h ..\EDI\controltab_vieweditteamwindow.h ..\EDI\databaseconnection.h ..\EDI\newteam.h ..\EDI\qcalendar.h ..\EDI\schedule.h ..\EDI\shift.h ..\EDI\windowlogin.h ..\EDI\windowmain.h ..\EDI\windownewcompany.h  ..\EDI\controltab_vieweditemployee.cpp ..\EDI\controltab_vieweditteamwindow.cpp ..\EDI\databaseconnection.cpp ..\EDI\main.cpp ..\EDI\newteam.cpp ..\EDI\qcalendar.cpp ..\EDI\schedule.cpp ..\EDI\shift.cpp ..\EDI\windowlogin.cpp ..\EDI\windowmain.cpp ..\EDI\windownewcompany.cpp ..\EDI\controltab_vieweditemployee.ui ..\EDI\controltab_vieweditteamwindow.ui ..\EDI\newteam.ui ..\EDI\windowlogin.ui ..\EDI\windowmain.ui ..\EDI\windownewcompany.ui    
 
 clean: compiler_clean 
 	-$(DEL_FILE) controltab_vieweditemployee.o controltab_vieweditteamwindow.o databaseconnection.o main.o newteam.o qcalendar.o schedule.o shift.o windowlogin.o windowmain.o windownewcompany.o qrc_ediSolo.o qrc_logo.o qrc_resourceExample.o moc_controltab_vieweditemployee.o moc_controltab_vieweditteamwindow.o moc_databaseconnection.o moc_newteam.o moc_qcalendar.o moc_windowlogin.o moc_windowmain.o moc_windownewcompany.o
@@ -535,6 +542,7 @@ compiler_rcc_clean:
 qrc_ediSolo.cpp: ../EDI/ediSolo.qrc \
 		C:/Qt/5.15.1/mingw81_64/bin/rcc.exe \
 		../EDI/rBubble.png \
+		../EDI/pop.wav \
 		../EDI/ediSolo.png \
 		../EDI/lBubble.png
 	C:\Qt\5.15.1\mingw81_64\bin\rcc.exe -name ediSolo ..\EDI\ediSolo.qrc -o qrc_ediSolo.cpp
@@ -851,9 +859,11 @@ moc_controltab_vieweditemployee.cpp: ../EDI/controltab_vieweditemployee.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtSql/QSqlQuery \
 		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/QTableView \
 		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/qtableview.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/QTableWidget \
+		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/qtablewidget.h \
 		moc_predefs.h \
 		C:/Qt/5.15.1/mingw81_64/bin/moc.exe
-	C:\Qt\5.15.1\mingw81_64\bin\moc.exe $(DEFINES) --include C:/Users/singh/Documents/GitHub/EDI/build-EDI-Desktop_Qt_5_15_1_MinGW_64_bit-Debug/moc_predefs.h -IC:/Qt/5.15.1/mingw81_64/mkspecs/win32-g++ -IC:/Users/singh/Documents/GitHub/EDI/EDI -IC:/Qt/5.15.1/mingw81_64/include -IC:/Qt/5.15.1/mingw81_64/include/QtCharts -IC:/Qt/5.15.1/mingw81_64/include/QtWidgets -IC:/Qt/5.15.1/mingw81_64/include/QtGui -IC:/Qt/5.15.1/mingw81_64/include/QtANGLE -IC:/Qt/5.15.1/mingw81_64/include/QtSql -IC:/Qt/5.15.1/mingw81_64/include/QtCore -I. -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++ -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/x86_64-w64-mingw32 -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/backward -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include-fixed -IC:/Qt/Tools/mingw810_64/x86_64-w64-mingw32/include ..\EDI\controltab_vieweditemployee.h -o moc_controltab_vieweditemployee.cpp
+	C:\Qt\5.15.1\mingw81_64\bin\moc.exe $(DEFINES) --include C:/Users/singh/Documents/GitHub/EDI/build-EDI-Desktop_Qt_5_15_1_MinGW_64_bit-Debug/moc_predefs.h -IC:/Qt/5.15.1/mingw81_64/mkspecs/win32-g++ -IC:/Users/singh/Documents/GitHub/EDI/EDI -IC:/Qt/5.15.1/mingw81_64/include -IC:/Qt/5.15.1/mingw81_64/include/QtMultimedia -IC:/Qt/5.15.1/mingw81_64/include/QtCharts -IC:/Qt/5.15.1/mingw81_64/include/QtWidgets -IC:/Qt/5.15.1/mingw81_64/include/QtGui -IC:/Qt/5.15.1/mingw81_64/include/QtANGLE -IC:/Qt/5.15.1/mingw81_64/include/QtSql -IC:/Qt/5.15.1/mingw81_64/include/QtNetwork -IC:/Qt/5.15.1/mingw81_64/include/QtCore -I. -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++ -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/x86_64-w64-mingw32 -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/backward -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include-fixed -IC:/Qt/Tools/mingw810_64/x86_64-w64-mingw32/include ..\EDI\controltab_vieweditemployee.h -o moc_controltab_vieweditemployee.cpp
 
 moc_controltab_vieweditteamwindow.cpp: ../EDI/controltab_vieweditteamwindow.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/QWidget \
@@ -1139,7 +1149,7 @@ moc_controltab_vieweditteamwindow.cpp: ../EDI/controltab_vieweditteamwindow.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtCore/QDir \
 		moc_predefs.h \
 		C:/Qt/5.15.1/mingw81_64/bin/moc.exe
-	C:\Qt\5.15.1\mingw81_64\bin\moc.exe $(DEFINES) --include C:/Users/singh/Documents/GitHub/EDI/build-EDI-Desktop_Qt_5_15_1_MinGW_64_bit-Debug/moc_predefs.h -IC:/Qt/5.15.1/mingw81_64/mkspecs/win32-g++ -IC:/Users/singh/Documents/GitHub/EDI/EDI -IC:/Qt/5.15.1/mingw81_64/include -IC:/Qt/5.15.1/mingw81_64/include/QtCharts -IC:/Qt/5.15.1/mingw81_64/include/QtWidgets -IC:/Qt/5.15.1/mingw81_64/include/QtGui -IC:/Qt/5.15.1/mingw81_64/include/QtANGLE -IC:/Qt/5.15.1/mingw81_64/include/QtSql -IC:/Qt/5.15.1/mingw81_64/include/QtCore -I. -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++ -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/x86_64-w64-mingw32 -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/backward -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include-fixed -IC:/Qt/Tools/mingw810_64/x86_64-w64-mingw32/include ..\EDI\controltab_vieweditteamwindow.h -o moc_controltab_vieweditteamwindow.cpp
+	C:\Qt\5.15.1\mingw81_64\bin\moc.exe $(DEFINES) --include C:/Users/singh/Documents/GitHub/EDI/build-EDI-Desktop_Qt_5_15_1_MinGW_64_bit-Debug/moc_predefs.h -IC:/Qt/5.15.1/mingw81_64/mkspecs/win32-g++ -IC:/Users/singh/Documents/GitHub/EDI/EDI -IC:/Qt/5.15.1/mingw81_64/include -IC:/Qt/5.15.1/mingw81_64/include/QtMultimedia -IC:/Qt/5.15.1/mingw81_64/include/QtCharts -IC:/Qt/5.15.1/mingw81_64/include/QtWidgets -IC:/Qt/5.15.1/mingw81_64/include/QtGui -IC:/Qt/5.15.1/mingw81_64/include/QtANGLE -IC:/Qt/5.15.1/mingw81_64/include/QtSql -IC:/Qt/5.15.1/mingw81_64/include/QtNetwork -IC:/Qt/5.15.1/mingw81_64/include/QtCore -I. -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++ -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/x86_64-w64-mingw32 -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/backward -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include-fixed -IC:/Qt/Tools/mingw810_64/x86_64-w64-mingw32/include ..\EDI\controltab_vieweditteamwindow.h -o moc_controltab_vieweditteamwindow.cpp
 
 moc_databaseconnection.cpp: ../EDI/databaseconnection.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/QMainWindow \
@@ -1420,7 +1430,7 @@ moc_databaseconnection.cpp: ../EDI/databaseconnection.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtSql/QSqlQuery \
 		moc_predefs.h \
 		C:/Qt/5.15.1/mingw81_64/bin/moc.exe
-	C:\Qt\5.15.1\mingw81_64\bin\moc.exe $(DEFINES) --include C:/Users/singh/Documents/GitHub/EDI/build-EDI-Desktop_Qt_5_15_1_MinGW_64_bit-Debug/moc_predefs.h -IC:/Qt/5.15.1/mingw81_64/mkspecs/win32-g++ -IC:/Users/singh/Documents/GitHub/EDI/EDI -IC:/Qt/5.15.1/mingw81_64/include -IC:/Qt/5.15.1/mingw81_64/include/QtCharts -IC:/Qt/5.15.1/mingw81_64/include/QtWidgets -IC:/Qt/5.15.1/mingw81_64/include/QtGui -IC:/Qt/5.15.1/mingw81_64/include/QtANGLE -IC:/Qt/5.15.1/mingw81_64/include/QtSql -IC:/Qt/5.15.1/mingw81_64/include/QtCore -I. -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++ -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/x86_64-w64-mingw32 -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/backward -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include-fixed -IC:/Qt/Tools/mingw810_64/x86_64-w64-mingw32/include ..\EDI\databaseconnection.h -o moc_databaseconnection.cpp
+	C:\Qt\5.15.1\mingw81_64\bin\moc.exe $(DEFINES) --include C:/Users/singh/Documents/GitHub/EDI/build-EDI-Desktop_Qt_5_15_1_MinGW_64_bit-Debug/moc_predefs.h -IC:/Qt/5.15.1/mingw81_64/mkspecs/win32-g++ -IC:/Users/singh/Documents/GitHub/EDI/EDI -IC:/Qt/5.15.1/mingw81_64/include -IC:/Qt/5.15.1/mingw81_64/include/QtMultimedia -IC:/Qt/5.15.1/mingw81_64/include/QtCharts -IC:/Qt/5.15.1/mingw81_64/include/QtWidgets -IC:/Qt/5.15.1/mingw81_64/include/QtGui -IC:/Qt/5.15.1/mingw81_64/include/QtANGLE -IC:/Qt/5.15.1/mingw81_64/include/QtSql -IC:/Qt/5.15.1/mingw81_64/include/QtNetwork -IC:/Qt/5.15.1/mingw81_64/include/QtCore -I. -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++ -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/x86_64-w64-mingw32 -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/backward -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include-fixed -IC:/Qt/Tools/mingw810_64/x86_64-w64-mingw32/include ..\EDI\databaseconnection.h -o moc_databaseconnection.cpp
 
 moc_newteam.cpp: ../EDI/newteam.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/QWidget \
@@ -1705,9 +1715,13 @@ moc_newteam.cpp: ../EDI/newteam.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/QTableWidget \
 		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/qtablewidget.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/qtableview.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtMultimedia/QSound \
+		C:/Qt/5.15.1/mingw81_64/include/QtMultimedia/qsound.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtMultimedia/qtmultimediaglobal.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtMultimedia/qtmultimedia-config.h \
 		moc_predefs.h \
 		C:/Qt/5.15.1/mingw81_64/bin/moc.exe
-	C:\Qt\5.15.1\mingw81_64\bin\moc.exe $(DEFINES) --include C:/Users/singh/Documents/GitHub/EDI/build-EDI-Desktop_Qt_5_15_1_MinGW_64_bit-Debug/moc_predefs.h -IC:/Qt/5.15.1/mingw81_64/mkspecs/win32-g++ -IC:/Users/singh/Documents/GitHub/EDI/EDI -IC:/Qt/5.15.1/mingw81_64/include -IC:/Qt/5.15.1/mingw81_64/include/QtCharts -IC:/Qt/5.15.1/mingw81_64/include/QtWidgets -IC:/Qt/5.15.1/mingw81_64/include/QtGui -IC:/Qt/5.15.1/mingw81_64/include/QtANGLE -IC:/Qt/5.15.1/mingw81_64/include/QtSql -IC:/Qt/5.15.1/mingw81_64/include/QtCore -I. -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++ -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/x86_64-w64-mingw32 -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/backward -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include-fixed -IC:/Qt/Tools/mingw810_64/x86_64-w64-mingw32/include ..\EDI\newteam.h -o moc_newteam.cpp
+	C:\Qt\5.15.1\mingw81_64\bin\moc.exe $(DEFINES) --include C:/Users/singh/Documents/GitHub/EDI/build-EDI-Desktop_Qt_5_15_1_MinGW_64_bit-Debug/moc_predefs.h -IC:/Qt/5.15.1/mingw81_64/mkspecs/win32-g++ -IC:/Users/singh/Documents/GitHub/EDI/EDI -IC:/Qt/5.15.1/mingw81_64/include -IC:/Qt/5.15.1/mingw81_64/include/QtMultimedia -IC:/Qt/5.15.1/mingw81_64/include/QtCharts -IC:/Qt/5.15.1/mingw81_64/include/QtWidgets -IC:/Qt/5.15.1/mingw81_64/include/QtGui -IC:/Qt/5.15.1/mingw81_64/include/QtANGLE -IC:/Qt/5.15.1/mingw81_64/include/QtSql -IC:/Qt/5.15.1/mingw81_64/include/QtNetwork -IC:/Qt/5.15.1/mingw81_64/include/QtCore -I. -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++ -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/x86_64-w64-mingw32 -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/backward -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include-fixed -IC:/Qt/Tools/mingw810_64/x86_64-w64-mingw32/include ..\EDI\newteam.h -o moc_newteam.cpp
 
 moc_qcalendar.cpp: ../EDI/qcalendar.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/QCalendarWidget \
@@ -1999,7 +2013,7 @@ moc_qcalendar.cpp: ../EDI/qcalendar.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtSql/QSqlQuery \
 		moc_predefs.h \
 		C:/Qt/5.15.1/mingw81_64/bin/moc.exe
-	C:\Qt\5.15.1\mingw81_64\bin\moc.exe $(DEFINES) --include C:/Users/singh/Documents/GitHub/EDI/build-EDI-Desktop_Qt_5_15_1_MinGW_64_bit-Debug/moc_predefs.h -IC:/Qt/5.15.1/mingw81_64/mkspecs/win32-g++ -IC:/Users/singh/Documents/GitHub/EDI/EDI -IC:/Qt/5.15.1/mingw81_64/include -IC:/Qt/5.15.1/mingw81_64/include/QtCharts -IC:/Qt/5.15.1/mingw81_64/include/QtWidgets -IC:/Qt/5.15.1/mingw81_64/include/QtGui -IC:/Qt/5.15.1/mingw81_64/include/QtANGLE -IC:/Qt/5.15.1/mingw81_64/include/QtSql -IC:/Qt/5.15.1/mingw81_64/include/QtCore -I. -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++ -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/x86_64-w64-mingw32 -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/backward -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include-fixed -IC:/Qt/Tools/mingw810_64/x86_64-w64-mingw32/include ..\EDI\qcalendar.h -o moc_qcalendar.cpp
+	C:\Qt\5.15.1\mingw81_64\bin\moc.exe $(DEFINES) --include C:/Users/singh/Documents/GitHub/EDI/build-EDI-Desktop_Qt_5_15_1_MinGW_64_bit-Debug/moc_predefs.h -IC:/Qt/5.15.1/mingw81_64/mkspecs/win32-g++ -IC:/Users/singh/Documents/GitHub/EDI/EDI -IC:/Qt/5.15.1/mingw81_64/include -IC:/Qt/5.15.1/mingw81_64/include/QtMultimedia -IC:/Qt/5.15.1/mingw81_64/include/QtCharts -IC:/Qt/5.15.1/mingw81_64/include/QtWidgets -IC:/Qt/5.15.1/mingw81_64/include/QtGui -IC:/Qt/5.15.1/mingw81_64/include/QtANGLE -IC:/Qt/5.15.1/mingw81_64/include/QtSql -IC:/Qt/5.15.1/mingw81_64/include/QtNetwork -IC:/Qt/5.15.1/mingw81_64/include/QtCore -I. -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++ -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/x86_64-w64-mingw32 -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/backward -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include-fixed -IC:/Qt/Tools/mingw810_64/x86_64-w64-mingw32/include ..\EDI\qcalendar.h -o moc_qcalendar.cpp
 
 moc_windowlogin.cpp: ../EDI/windowlogin.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/QMainWindow \
@@ -2281,6 +2295,10 @@ moc_windowlogin.cpp: ../EDI/windowlogin.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtCore/QByteArray \
 		C:/Qt/5.15.1/mingw81_64/include/QtCore/QDir \
 		C:/Qt/5.15.1/mingw81_64/include/QtSql/QSql \
+		C:/Qt/5.15.1/mingw81_64/include/QtMultimedia/QSound \
+		C:/Qt/5.15.1/mingw81_64/include/QtMultimedia/qsound.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtMultimedia/qtmultimediaglobal.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtMultimedia/qtmultimedia-config.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/QWidget \
 		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/QCalendarWidget \
 		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/qcalendarwidget.h \
@@ -2297,7 +2315,7 @@ moc_windowlogin.cpp: ../EDI/windowlogin.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/qtableview.h \
 		moc_predefs.h \
 		C:/Qt/5.15.1/mingw81_64/bin/moc.exe
-	C:\Qt\5.15.1\mingw81_64\bin\moc.exe $(DEFINES) --include C:/Users/singh/Documents/GitHub/EDI/build-EDI-Desktop_Qt_5_15_1_MinGW_64_bit-Debug/moc_predefs.h -IC:/Qt/5.15.1/mingw81_64/mkspecs/win32-g++ -IC:/Users/singh/Documents/GitHub/EDI/EDI -IC:/Qt/5.15.1/mingw81_64/include -IC:/Qt/5.15.1/mingw81_64/include/QtCharts -IC:/Qt/5.15.1/mingw81_64/include/QtWidgets -IC:/Qt/5.15.1/mingw81_64/include/QtGui -IC:/Qt/5.15.1/mingw81_64/include/QtANGLE -IC:/Qt/5.15.1/mingw81_64/include/QtSql -IC:/Qt/5.15.1/mingw81_64/include/QtCore -I. -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++ -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/x86_64-w64-mingw32 -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/backward -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include-fixed -IC:/Qt/Tools/mingw810_64/x86_64-w64-mingw32/include ..\EDI\windowlogin.h -o moc_windowlogin.cpp
+	C:\Qt\5.15.1\mingw81_64\bin\moc.exe $(DEFINES) --include C:/Users/singh/Documents/GitHub/EDI/build-EDI-Desktop_Qt_5_15_1_MinGW_64_bit-Debug/moc_predefs.h -IC:/Qt/5.15.1/mingw81_64/mkspecs/win32-g++ -IC:/Users/singh/Documents/GitHub/EDI/EDI -IC:/Qt/5.15.1/mingw81_64/include -IC:/Qt/5.15.1/mingw81_64/include/QtMultimedia -IC:/Qt/5.15.1/mingw81_64/include/QtCharts -IC:/Qt/5.15.1/mingw81_64/include/QtWidgets -IC:/Qt/5.15.1/mingw81_64/include/QtGui -IC:/Qt/5.15.1/mingw81_64/include/QtANGLE -IC:/Qt/5.15.1/mingw81_64/include/QtSql -IC:/Qt/5.15.1/mingw81_64/include/QtNetwork -IC:/Qt/5.15.1/mingw81_64/include/QtCore -I. -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++ -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/x86_64-w64-mingw32 -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/backward -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include-fixed -IC:/Qt/Tools/mingw810_64/x86_64-w64-mingw32/include ..\EDI\windowlogin.h -o moc_windowlogin.cpp
 
 moc_windowmain.cpp: ../EDI/windowmain.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/QWidget \
@@ -2620,18 +2638,22 @@ moc_windowmain.cpp: ../EDI/windowmain.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtCharts/qxyseries.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtCharts/QValueAxis \
 		C:/Qt/5.15.1/mingw81_64/include/QtCharts/qvalueaxis.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtMultimedia/QSound \
+		C:/Qt/5.15.1/mingw81_64/include/QtMultimedia/qsound.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtMultimedia/qtmultimediaglobal.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtMultimedia/qtmultimedia-config.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/QTableView \
 		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/qtableview.h \
 		../EDI/controltab_vieweditemployee.h \
-		../EDI/controltab_vieweditteamwindow.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/QTableWidget \
 		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/qtablewidget.h \
+		../EDI/controltab_vieweditteamwindow.h \
 		../EDI/newteam.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtCore/QString \
 		C:/Qt/5.15.1/mingw81_64/include/QtCore/QEventLoop \
 		moc_predefs.h \
 		C:/Qt/5.15.1/mingw81_64/bin/moc.exe
-	C:\Qt\5.15.1\mingw81_64\bin\moc.exe $(DEFINES) --include C:/Users/singh/Documents/GitHub/EDI/build-EDI-Desktop_Qt_5_15_1_MinGW_64_bit-Debug/moc_predefs.h -IC:/Qt/5.15.1/mingw81_64/mkspecs/win32-g++ -IC:/Users/singh/Documents/GitHub/EDI/EDI -IC:/Qt/5.15.1/mingw81_64/include -IC:/Qt/5.15.1/mingw81_64/include/QtCharts -IC:/Qt/5.15.1/mingw81_64/include/QtWidgets -IC:/Qt/5.15.1/mingw81_64/include/QtGui -IC:/Qt/5.15.1/mingw81_64/include/QtANGLE -IC:/Qt/5.15.1/mingw81_64/include/QtSql -IC:/Qt/5.15.1/mingw81_64/include/QtCore -I. -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++ -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/x86_64-w64-mingw32 -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/backward -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include-fixed -IC:/Qt/Tools/mingw810_64/x86_64-w64-mingw32/include ..\EDI\windowmain.h -o moc_windowmain.cpp
+	C:\Qt\5.15.1\mingw81_64\bin\moc.exe $(DEFINES) --include C:/Users/singh/Documents/GitHub/EDI/build-EDI-Desktop_Qt_5_15_1_MinGW_64_bit-Debug/moc_predefs.h -IC:/Qt/5.15.1/mingw81_64/mkspecs/win32-g++ -IC:/Users/singh/Documents/GitHub/EDI/EDI -IC:/Qt/5.15.1/mingw81_64/include -IC:/Qt/5.15.1/mingw81_64/include/QtMultimedia -IC:/Qt/5.15.1/mingw81_64/include/QtCharts -IC:/Qt/5.15.1/mingw81_64/include/QtWidgets -IC:/Qt/5.15.1/mingw81_64/include/QtGui -IC:/Qt/5.15.1/mingw81_64/include/QtANGLE -IC:/Qt/5.15.1/mingw81_64/include/QtSql -IC:/Qt/5.15.1/mingw81_64/include/QtNetwork -IC:/Qt/5.15.1/mingw81_64/include/QtCore -I. -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++ -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/x86_64-w64-mingw32 -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/backward -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include-fixed -IC:/Qt/Tools/mingw810_64/x86_64-w64-mingw32/include ..\EDI\windowmain.h -o moc_windowmain.cpp
 
 moc_windownewcompany.cpp: ../EDI/windownewcompany.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtCore/QDebug \
@@ -2914,7 +2936,7 @@ moc_windownewcompany.cpp: ../EDI/windownewcompany.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtSql/QSql \
 		moc_predefs.h \
 		C:/Qt/5.15.1/mingw81_64/bin/moc.exe
-	C:\Qt\5.15.1\mingw81_64\bin\moc.exe $(DEFINES) --include C:/Users/singh/Documents/GitHub/EDI/build-EDI-Desktop_Qt_5_15_1_MinGW_64_bit-Debug/moc_predefs.h -IC:/Qt/5.15.1/mingw81_64/mkspecs/win32-g++ -IC:/Users/singh/Documents/GitHub/EDI/EDI -IC:/Qt/5.15.1/mingw81_64/include -IC:/Qt/5.15.1/mingw81_64/include/QtCharts -IC:/Qt/5.15.1/mingw81_64/include/QtWidgets -IC:/Qt/5.15.1/mingw81_64/include/QtGui -IC:/Qt/5.15.1/mingw81_64/include/QtANGLE -IC:/Qt/5.15.1/mingw81_64/include/QtSql -IC:/Qt/5.15.1/mingw81_64/include/QtCore -I. -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++ -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/x86_64-w64-mingw32 -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/backward -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include-fixed -IC:/Qt/Tools/mingw810_64/x86_64-w64-mingw32/include ..\EDI\windownewcompany.h -o moc_windownewcompany.cpp
+	C:\Qt\5.15.1\mingw81_64\bin\moc.exe $(DEFINES) --include C:/Users/singh/Documents/GitHub/EDI/build-EDI-Desktop_Qt_5_15_1_MinGW_64_bit-Debug/moc_predefs.h -IC:/Qt/5.15.1/mingw81_64/mkspecs/win32-g++ -IC:/Users/singh/Documents/GitHub/EDI/EDI -IC:/Qt/5.15.1/mingw81_64/include -IC:/Qt/5.15.1/mingw81_64/include/QtMultimedia -IC:/Qt/5.15.1/mingw81_64/include/QtCharts -IC:/Qt/5.15.1/mingw81_64/include/QtWidgets -IC:/Qt/5.15.1/mingw81_64/include/QtGui -IC:/Qt/5.15.1/mingw81_64/include/QtANGLE -IC:/Qt/5.15.1/mingw81_64/include/QtSql -IC:/Qt/5.15.1/mingw81_64/include/QtNetwork -IC:/Qt/5.15.1/mingw81_64/include/QtCore -I. -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++ -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/x86_64-w64-mingw32 -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/backward -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include -IC:/Qt/Tools/mingw810_64/lib/gcc/x86_64-w64-mingw32/8.1.0/include-fixed -IC:/Qt/Tools/mingw810_64/x86_64-w64-mingw32/include ..\EDI\windownewcompany.h -o moc_windownewcompany.cpp
 
 compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
@@ -3827,7 +3849,27 @@ controltab_vieweditemployee.o: ../EDI/controltab_vieweditemployee.cpp ../EDI/con
 		C:/Qt/5.15.1/mingw81_64/include/QtSql/QSqlQuery \
 		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/QTableView \
 		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/qtableview.h \
-		ui_controltab_vieweditemployee.h
+		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/QTableWidget \
+		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/qtablewidget.h \
+		ui_controltab_vieweditemployee.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/QVariant \
+		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/QApplication \
+		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/qapplication.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/qdesktopwidget.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtGui/qguiapplication.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtGui/qinputmethod.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/QComboBox \
+		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/QLabel \
+		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/qlabel.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/QLineEdit \
+		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/qlineedit.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtGui/qtextcursor.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtGui/qtextformat.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/QPushButton \
+		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/qpushbutton.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/qabstractbutton.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/QTimeEdit \
+		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/qdatetimeedit.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o controltab_vieweditemployee.o ..\EDI\controltab_vieweditemployee.cpp
 
 controltab_vieweditteamwindow.o: ../EDI/controltab_vieweditteamwindow.cpp ../EDI/controltab_vieweditteamwindow.h \
@@ -4112,7 +4154,28 @@ controltab_vieweditteamwindow.o: ../EDI/controltab_vieweditteamwindow.cpp ../EDI
 		C:/Qt/5.15.1/mingw81_64/include/QtCore/QProcess \
 		C:/Qt/5.15.1/mingw81_64/include/QtCore/QByteArray \
 		C:/Qt/5.15.1/mingw81_64/include/QtCore/QDir \
-		ui_controltab_vieweditteamwindow.h
+		ui_controltab_vieweditteamwindow.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/QVariant \
+		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/QApplication \
+		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/qapplication.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/qdesktopwidget.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtGui/qguiapplication.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtGui/qinputmethod.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/QDoubleSpinBox \
+		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/qspinbox.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/QHeaderView \
+		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/qheaderview.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/QLabel \
+		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/qlabel.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/QLineEdit \
+		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/qlineedit.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtGui/qtextcursor.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtGui/qtextformat.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtGui/qpen.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtGui/qtextoption.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/QPushButton \
+		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/qpushbutton.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/qabstractbutton.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o controltab_vieweditteamwindow.o ..\EDI\controltab_vieweditteamwindow.cpp
 
 databaseconnection.o: ../EDI/databaseconnection.cpp ../EDI/databaseconnection.h \
@@ -4674,6 +4737,10 @@ main.o: ../EDI/main.cpp ../EDI/windowlogin.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtCore/QByteArray \
 		C:/Qt/5.15.1/mingw81_64/include/QtCore/QDir \
 		C:/Qt/5.15.1/mingw81_64/include/QtSql/QSql \
+		C:/Qt/5.15.1/mingw81_64/include/QtMultimedia/QSound \
+		C:/Qt/5.15.1/mingw81_64/include/QtMultimedia/qsound.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtMultimedia/qtmultimediaglobal.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtMultimedia/qtmultimedia-config.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/QWidget \
 		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/QCalendarWidget \
 		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/qcalendarwidget.h \
@@ -4978,7 +5045,28 @@ newteam.o: ../EDI/newteam.cpp ../EDI/newteam.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/QTableWidget \
 		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/qtablewidget.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/qtableview.h \
-		ui_newteam.h
+		C:/Qt/5.15.1/mingw81_64/include/QtMultimedia/QSound \
+		C:/Qt/5.15.1/mingw81_64/include/QtMultimedia/qsound.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtMultimedia/qtmultimediaglobal.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtMultimedia/qtmultimedia-config.h \
+		ui_newteam.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/QVariant \
+		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/QApplication \
+		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/qapplication.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/qdesktopwidget.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtGui/qguiapplication.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtGui/qinputmethod.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/QLabel \
+		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/qlabel.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/QLineEdit \
+		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/qlineedit.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtGui/qtextcursor.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtGui/qtextformat.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtGui/qpen.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtGui/qtextoption.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/QPushButton \
+		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/qpushbutton.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/qabstractbutton.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o newteam.o ..\EDI\newteam.cpp
 
 qcalendar.o: ../EDI/qcalendar.cpp ../EDI/qcalendar.h \
@@ -5558,6 +5646,10 @@ windowlogin.o: ../EDI/windowlogin.cpp ../EDI/windowlogin.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtCore/QByteArray \
 		C:/Qt/5.15.1/mingw81_64/include/QtCore/QDir \
 		C:/Qt/5.15.1/mingw81_64/include/QtSql/QSql \
+		C:/Qt/5.15.1/mingw81_64/include/QtMultimedia/QSound \
+		C:/Qt/5.15.1/mingw81_64/include/QtMultimedia/qsound.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtMultimedia/qtmultimediaglobal.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtMultimedia/qtmultimedia-config.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/QWidget \
 		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/QCalendarWidget \
 		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/qcalendarwidget.h \
@@ -5573,6 +5665,28 @@ windowlogin.o: ../EDI/windowlogin.cpp ../EDI/windowlogin.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/QTableView \
 		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/qtableview.h \
 		ui_windowlogin.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/QVariant \
+		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/QApplication \
+		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/qapplication.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/qdesktopwidget.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtGui/qguiapplication.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtGui/qinputmethod.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/QLabel \
+		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/qlabel.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/QLineEdit \
+		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/qlineedit.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtGui/qtextcursor.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtGui/qtextformat.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/QMenuBar \
+		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/qmenubar.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/qmenu.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/qaction.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/qactiongroup.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/QPushButton \
+		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/qpushbutton.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/qabstractbutton.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/QStatusBar \
+		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/qstatusbar.h \
 		../EDI/windowmain.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtCharts/QChart \
 		C:/Qt/5.15.1/mingw81_64/include/QtCharts/qchart.h \
@@ -5584,7 +5698,6 @@ windowlogin.o: ../EDI/windowlogin.cpp ../EDI/windowlogin.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtCharts/QAbstractAxis \
 		C:/Qt/5.15.1/mingw81_64/include/QtCharts/qabstractaxis.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtGui/QFont \
-		C:/Qt/5.15.1/mingw81_64/include/QtCore/QVariant \
 		C:/Qt/5.15.1/mingw81_64/include/QtCharts/QLegend \
 		C:/Qt/5.15.1/mingw81_64/include/QtCharts/qlegend.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/QGraphicsWidget \
@@ -5606,9 +5719,9 @@ windowlogin.o: ../EDI/windowlogin.cpp ../EDI/windowlogin.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtCharts/QValueAxis \
 		C:/Qt/5.15.1/mingw81_64/include/QtCharts/qvalueaxis.h \
 		../EDI/controltab_vieweditemployee.h \
-		../EDI/controltab_vieweditteamwindow.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/QTableWidget \
 		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/qtablewidget.h \
+		../EDI/controltab_vieweditteamwindow.h \
 		../EDI/newteam.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtCore/QEventLoop \
 		C:/Qt/5.15.1/mingw81_64/include/QtGui/QPalette
@@ -5935,16 +6048,47 @@ windowmain.o: ../EDI/windowmain.cpp ../EDI/windowmain.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtCharts/qxyseries.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtCharts/QValueAxis \
 		C:/Qt/5.15.1/mingw81_64/include/QtCharts/qvalueaxis.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtMultimedia/QSound \
+		C:/Qt/5.15.1/mingw81_64/include/QtMultimedia/qsound.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtMultimedia/qtmultimediaglobal.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtMultimedia/qtmultimedia-config.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/QTableView \
 		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/qtableview.h \
 		../EDI/controltab_vieweditemployee.h \
-		../EDI/controltab_vieweditteamwindow.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/QTableWidget \
 		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/qtablewidget.h \
+		../EDI/controltab_vieweditteamwindow.h \
 		../EDI/newteam.h \
 		C:/Qt/5.15.1/mingw81_64/include/QtCore/QString \
 		C:/Qt/5.15.1/mingw81_64/include/QtCore/QEventLoop \
 		ui_windowmain.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/QApplication \
+		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/qapplication.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/qdesktopwidget.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtGui/qguiapplication.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtGui/qinputmethod.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/QFrame \
+		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/QGridLayout \
+		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/qgridlayout.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/qlayout.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/qlayoutitem.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/qboxlayout.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/QHBoxLayout \
+		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/QHeaderView \
+		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/qheaderview.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/QLabel \
+		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/qlabel.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/QLineEdit \
+		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/qlineedit.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtGui/qtextcursor.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtGui/qtextformat.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/QPushButton \
+		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/qpushbutton.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/qabstractbutton.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/QRadioButton \
+		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/qradiobutton.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/QScrollArea \
+		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/QTabWidget \
 		C:/Qt/5.15.1/mingw81_64/include/QtCore/QTimer
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o windowmain.o ..\EDI\windowmain.cpp
 
@@ -6227,7 +6371,32 @@ windownewcompany.o: ../EDI/windownewcompany.cpp C:/Qt/5.15.1/mingw81_64/include/
 		C:/Qt/5.15.1/mingw81_64/include/QtCore/QByteArray \
 		C:/Qt/5.15.1/mingw81_64/include/QtCore/QDir \
 		C:/Qt/5.15.1/mingw81_64/include/QtSql/QSql \
-		ui_windownewcompany.h
+		ui_windownewcompany.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtCore/QVariant \
+		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/QApplication \
+		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/qapplication.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/qdesktopwidget.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtGui/qguiapplication.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtGui/qinputmethod.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/QLabel \
+		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/qlabel.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/QLineEdit \
+		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/qlineedit.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtGui/qtextcursor.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtGui/qtextformat.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtGui/qpen.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtGui/qtextoption.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/QMenuBar \
+		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/qmenubar.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/qmenu.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/qaction.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/qactiongroup.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/QPushButton \
+		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/qpushbutton.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/qabstractbutton.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/QStatusBar \
+		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/qstatusbar.h \
+		C:/Qt/5.15.1/mingw81_64/include/QtWidgets/QWidget
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o windownewcompany.o ..\EDI\windownewcompany.cpp
 
 qrc_ediSolo.o: qrc_ediSolo.cpp 

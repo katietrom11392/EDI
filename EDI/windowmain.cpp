@@ -69,9 +69,10 @@ WindowMain::WindowMain(QWidget *parent) :
         // code to generate and display the graph for the last seven days
 
     }
+    else{
 
 
-    *series << QPoint(11,1) << QPointF(13,3)<< QPointF(17,6)<< QPointF(18,3)<< QPointF(20,2);
+    //*series << QPoint(11,1) << QPointF(13,3)<< QPointF(17,6)<< QPointF(18,3)<< QPointF(20,2);
 
     QChart *chart = new QChart();
     chart->legend()->hide();
@@ -90,6 +91,8 @@ WindowMain::WindowMain(QWidget *parent) :
     QChartView *chartView = new QChartView(chart);
     chartView->setRenderHint(QPainter::Antialiasing);
     chartView->setParent(ui->productivityLineGraph);
+
+    }
 
     /***************************************************************************************************************/
     /******************************************* QT CHART END ******************************************************/
