@@ -100,6 +100,8 @@ private:
     void resetTeamTable();
     QSound *sound;
     QString curEmployee;
+    QString firstName, lastName, salary, teamName, numProjectsCompleted, numProjectsAssigned;
+    QVector<QString> completedProjects, assignedProjects;
 };
 
 

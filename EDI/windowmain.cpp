@@ -679,5 +679,51 @@ void WindowMain::on_pushButton_TeamEmpty_clicked()
 void WindowMain::setEmployee(QString employeeID){
     curEmployee = employeeID;
     ui->calendarWidget1_2->setEmployee(curEmployee);
+
+    QSqlQuery query(QSqlDatabase::database("three"));
+        QString firstName, lastName, salary, teamName, numProjectsCompleted, numProjectsAssigned;
+        QVector<QString> completedProjects, assignedProjects;
+
+        query.prepare("SELECT E.Name_First, E.Name_Last, E.Salary, T.TeamName FROM Employee E JOIN Team T ON E.Team = T.TeamID WHERE E.EmployeeID = :curID");
+        query.bindValue(":curID", curEmployee);
+        query.exec();
+
+        while(query.next()){
+            firstName = query.value(0).toString();
+            lastName = query.value(1).toString();
+            salary = query.value(2).toString();
+            teamName = query.value(3).toString();
+        }
+        query.clear();
+
+
+        query.prepare("SELECT T.ProjectsAssigned, T.ProjectsCompleted FROM Employee E JOIN Team T ON E.Team = T.TeamID WHERE E.EmployeeID = :curID");
+        query.bindValue(":curID", curEmployee);
+        query.exec();
+        while(query.next()){
+            numProjectsCompleted = query.value(0).toString();
+            numProjectsAssigned = query.value(1).toString();
+        }
+        query.clear();
+
+
+        query.prepare("SELECT P.ProjectName FROM Employee E JOIN Team T ON E.Team = T.TeamID JOIN Project P ON P.Team = T.TeamID WHERE E.EmployeeID = :curID AND P.ProjectStatus = 'Completed'");
+        query.bindValue(":curID", curEmployee);
+        query.exec();
+
+        while(query.next()){
+            completedProjects.push_back(query.value(0).toString());
+        }
+        query.clear();
+
+
+        query.prepare("SELECT P.ProjectName FROM Employee E JOIN Team T ON E.Team = T.TeamID JOIN Project P ON P.Team = T.TeamID WHERE E.EmployeeID = :curID AND P.ProjectStatus = 'Pending'");
+        query.bindValue(":curID", curEmployee);
+        query.exec();
+
+        while(query.next()){
+            assignedProjects.push_back(query.value(0).toString());
+        }
+        query.clear();
 }
 
