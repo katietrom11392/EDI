@@ -72,6 +72,8 @@ private slots:
 
     void on_calendarWidget1_2_clicked(const QDate &date);
 
+    void on_refreshcalbutton_clicked();
+
 private:
     Ui::WindowMain *ui;
     QSqlDatabase db3;

@@ -118,10 +118,10 @@ padding: 0 10;
     <widget class="QLabel" name="label_13">
      <property name="geometry">
       <rect>
-       <x>50</x>
-       <y>220</y>
-       <width>101</width>
-       <height>16</height>
+       <x>80</x>
+       <y>210</y>
+       <width>71</width>
+       <height>31</height>
       </rect>
      </property>
      <property name="font">
@@ -141,10 +141,10 @@ padding: 0 10;
     <widget class="QLabel" name="label_14">
      <property name="geometry">
       <rect>
-       <x>20</x>
-       <y>290</y>
-       <width>131</width>
-       <height>20</height>
+       <x>0</x>
+       <y>280</y>
+       <width>181</width>
+       <height>31</height>
       </rect>
      </property>
      <property name="font">
@@ -259,7 +259,7 @@ border-radius: 15px;</string>
        <rect>
         <x>150</x>
         <y>40</y>
-        <width>81</width>
+        <width>91</width>
         <height>16</height>
        </rect>
       </property>
@@ -325,10 +325,10 @@ border-radius: 15px;</string>
     <widget class="QLabel" name="label_15">
      <property name="geometry">
       <rect>
-       <x>40</x>
-       <y>360</y>
-       <width>111</width>
-       <height>20</height>
+       <x>30</x>
+       <y>340</y>
+       <width>151</width>
+       <height>31</height>
       </rect>
      </property>
      <property name="font">
@@ -381,6 +381,99 @@ border-radius: 15px;</string>
       <string>Settings</string>
      </property>
     </widget>
+    <widget class="QPushButton" name="refreshcalbutton">
+     <property name="geometry">
+      <rect>
+       <x>400</x>
+       <y>60</y>
+       <width>89</width>
+       <height>25</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Refresh</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="employeename">
+     <property name="geometry">
+      <rect>
+       <x>180</x>
+       <y>70</y>
+       <width>161</width>
+       <height>17</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Name</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="employeeteam">
+     <property name="geometry">
+      <rect>
+       <x>180</x>
+       <y>140</y>
+       <width>67</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>team</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="salary">
+     <property name="geometry">
+      <rect>
+       <x>190</x>
+       <y>220</y>
+       <width>111</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>salary</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="curprojects">
+     <property name="geometry">
+      <rect>
+       <x>200</x>
+       <y>280</y>
+       <width>101</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>currentproject</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="allproj">
+     <property name="geometry">
+      <rect>
+       <x>200</x>
+       <y>350</y>
+       <width>101</width>
+       <height>17</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>all projects</string>
+     </property>
+    </widget>
+    <zorder>label_11</zorder>
+    <zorder>label_12</zorder>
+    <zorder>label_13</zorder>
+    <zorder>label_14</zorder>
+    <zorder>widget_2</zorder>
+    <zorder>calendarWidget1_2</zorder>
+    <zorder>label_15</zorder>
+    <zorder>label_22</zorder>
+    <zorder>pushButton_LogOut_2</zorder>
+    <zorder>refreshcalbutton</zorder>
+    <zorder>employeename</zorder>
+    <zorder>employeeteam</zorder>
+    <zorder>curprojects</zorder>
+    <zorder>allproj</zorder>
+    <zorder>salary</zorder>
    </widget>
    <widget class="QWidget" name="tab_control_2">
     <attribute name="title">

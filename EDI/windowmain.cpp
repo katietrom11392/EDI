@@ -21,6 +21,22 @@ WindowMain::WindowMain(QWidget *parent) :
     ui->tableWidget_db_4->setStyleSheet("QTableView:item:selected {background-color: #F56525; color: #FFFFFF}\n"
                          "QTableView:item:selected:focus {background-color: #F56525;}");
 
+    //initialize calendar
+    ui->scheddate->setText(
+                QDate::currentDate().toString("dd.MM.yyyy")
+                );
+    ui->schedstart->setText(
+                ui->calendarWidget1_2->getStart(QDate::currentDate())
+                );
+    ui->schedend->setText(
+                ui->calendarWidget1_2->getEnd(QDate::currentDate())
+                );
+
+    double sal = 0;
+    // set sal to the employee's hourly wage
+    //sal = sal * ui->calendarWidget1_2->hrsScheduled();
+    ui->salary->setText(QString::number(sal));
+
     ui->oopsNoEmployee->hide();
     ui->oopsNoTeamSelected->hide();
     ui->oopsSearchFilter->hide();
@@ -499,6 +515,7 @@ void WindowMain::on_pushButton_tooManyTeams_clicked()
     ui->oopsTooManyTeams->hide();
 }
 
+// the event which updates the shift labels
 void WindowMain::on_calendarWidget1_2_clicked(const QDate &date)
 {
     ui->scheddate->setText(
@@ -510,4 +527,10 @@ void WindowMain::on_calendarWidget1_2_clicked(const QDate &date)
     ui->schedend->setText(
                 ui->calendarWidget1_2->getEnd(date)
                 );
+}
+
+// the event which updates the calendar
+void WindowMain::on_refreshcalbutton_clicked()
+{
+    ui->calendarWidget1_2->refresh();
 }
