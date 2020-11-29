@@ -63,7 +63,7 @@ padding: 0 10;
 }</string>
    </property>
    <property name="currentIndex">
-    <number>0</number>
+    <number>1</number>
    </property>
    <widget class="QWidget" name="tab_my_edi_2">
     <attribute name="title">
@@ -368,19 +368,6 @@ border-radius: 15px;</string>
       <set>Qt::AlignCenter</set>
      </property>
     </widget>
-    <widget class="QPushButton" name="pushButton_LogOut_2">
-     <property name="geometry">
-      <rect>
-       <x>730</x>
-       <y>10</y>
-       <width>112</width>
-       <height>32</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>Settings</string>
-     </property>
-    </widget>
     <widget class="QPushButton" name="refreshcalbutton">
      <property name="geometry">
       <rect>
@@ -467,7 +454,6 @@ border-radius: 15px;</string>
     <zorder>calendarWidget1_2</zorder>
     <zorder>label_15</zorder>
     <zorder>label_22</zorder>
-    <zorder>pushButton_LogOut_2</zorder>
     <zorder>refreshcalbutton</zorder>
     <zorder>employeename</zorder>
     <zorder>employeeteam</zorder>
@@ -1513,8 +1499,8 @@ border: none;</string>
   </customwidget>
  </customwidgets>
  <resources>
-  <include location="ediSolo.qrc"/>
   <include location="logo.qrc"/>
+  <include location="ediSolo.qrc"/>
  </resources>
  <connections/>
 </ui>

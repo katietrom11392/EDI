@@ -32,10 +32,6 @@ WindowMain::WindowMain(QWidget *parent) :
                 ui->calendarWidget1_2->getEnd(QDate::currentDate())
                 );
 
-    double sal = 0;
-    // set sal to the employee's hourly wage
-    //sal = sal * ui->calendarWidget1_2->hrsScheduled();
-    ui->salary->setText(QString::number(sal));
 
     ui->oopsNoEmployee->hide();
     ui->oopsNoTeamSelected->hide();
@@ -43,8 +39,6 @@ WindowMain::WindowMain(QWidget *parent) :
     ui->oopsTooManyEmp->hide();
     ui->oopsTooManyTeams->hide();
 }
-
-
 
 
 

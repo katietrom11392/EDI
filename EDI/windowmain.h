@@ -84,6 +84,8 @@ private:
     NewTeam *newTeam;
     void resetEmployeeTable();
     void resetTeamTable();
+    QString firstName, lastName, salary, teamName, numProjectsCompleted, numProjectsAssigned;
+    QVector<QString> completedProjects, assignedProjects;
 
 };
 
