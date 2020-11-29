@@ -655,11 +655,7 @@ border-radius: 15px;</string>
        <rect>
         <x>0</x>
         <y>0</y>
-<<<<<<< Updated upstream
         <width>825</width>
-=======
-        <width>822</width>
->>>>>>> Stashed changes
         <height>459</height>
        </rect>
       </property>
@@ -967,7 +963,6 @@ border-radius: 15px;</string>
      </property>
      <layout class="QHBoxLayout" name="horizontalLayout"/>
     </widget>
-<<<<<<< Updated upstream
     <widget class="QRadioButton" name="showLastSeven">
      <property name="geometry">
       <rect>
@@ -975,36 +970,14 @@ border-radius: 15px;</string>
        <y>10</y>
        <width>181</width>
        <height>31</height>
-=======
-    <widget class="QComboBox" name="comboBox">
-     <property name="geometry">
-      <rect>
-       <x>330</x>
-       <y>530</y>
-       <width>69</width>
-       <height>22</height>
-      </rect>
-     </property>
-    </widget>
-    <widget class="QRadioButton" name="lastWeek">
-     <property name="geometry">
-      <rect>
-       <x>740</x>
-       <y>530</y>
-       <width>82</width>
-       <height>17</height>
->>>>>>> Stashed changes
       </rect>
      </property>
      <property name="text">
       <string>Last Week</string>
      </property>
-<<<<<<< Updated upstream
      <property name="checked">
       <bool>false</bool>
      </property>
-=======
->>>>>>> Stashed changes
     </widget>
    </widget>
   </widget>

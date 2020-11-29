@@ -38,7 +38,6 @@ WindowMain::WindowMain(QWidget *parent) :
     /***************************************** QT CHART BEGIN ******************************************************/
     /***************************************************************************************************************/
 
-<<<<<<< Updated upstream
     QLineSeries *series = new QLineSeries();
 
     QValueAxis *axisX = new QValueAxis;
@@ -105,17 +104,6 @@ WindowMain::WindowMain(QWidget *parent) :
     QChartView *chartView = new QChartView(chart);
     chartView->setRenderHint(QPainter::Antialiasing);
     chartView->setParent(ui->productivityLineGraph);
-=======
-    QSqlQuery query_teams(QSqlDatabase::database("three"));
-    QString querytheteams;
-    querytheteams = "SELECT DISTINCT Team FROM Project";
-    query_teams.exec(querytheteams);
-
-    //Fill a new dropdown
-    while (query_teams.next()) {
-        ui->comboBox->addItem(query_teams.value(0).toString());
-    }
->>>>>>> Stashed changes
 
     }
 
@@ -655,7 +643,6 @@ void WindowMain::on_pushButton_tooManyTeams_clicked()
 
 
 
-<<<<<<< Updated upstream
 /*********************************************************************************************************
  * Calendar stuff in MyEdi Tab - Evan
 *********************************************************************************************************/
@@ -799,116 +786,4 @@ void WindowMain::on_pushButton_newEmployee_clicked() {
     newEmployeeWindow -> populate_position_comboBox(userPosition);
     newEmployeeWindow -> show();
 
-=======
-
-
-void WindowMain::on_comboBox_currentIndexChanged(const QString &arg1)
-{
-//    QString Team;
-    if (ui->comboBox->currentText() == "01"){
-            QMessageBox::information(this,"","01");
-            Team = "01";
-            DrawChart( Team, false );
-
-        }
-    else if (ui->comboBox->currentText() == "02"){
-            QMessageBox::information(this,"","02");
-            Team = "02";
-            DrawChart( Team, false );
-        }
-    else if (ui->comboBox->currentText() == "03"){
-            QMessageBox::information(this,"","03");
-            Team = "03";
-            DrawChart( Team, false );
-        }
-}
-
-
-void WindowMain::DrawChart(QString Team, bool last7) {
-    series = new QLineSeries();
-    QValueAxis *axisX = new QValueAxis;
-    QValueAxis *axisY = new QValueAxis;
-
-    // Change color of the plotted line
-    QPen pen(QRgb(0xfdb157));
-    pen.setWidth(5);
-    series->setPen(pen);
-
-    // Change color of axis lines
-    QPen axisPen(QRgb(0xd18952));
-    axisPen.setWidth(2);
-    axisX->setLinePen(axisPen);
-    axisX->setTickCount(10);
-    axisX->setMinorTickCount(1);
-
-    axisY->setLinePen(axisPen);
-    axisY->setTickCount(10);
-    axisY->setMinorTickCount(1);
-
-
-    // Turn off grid lines
-    axisX->setGridLineVisible(true);
-    axisY->setGridLineVisible(false);
-    axisY->setShadesPen(Qt::NoPen);
-    axisY->setShadesBrush(QBrush(QColor(0x99, 0xcc, 0xcc, 0x55)));
-    axisY->setShadesVisible(true);
-
-    //Make the SQL Query for all days
-    QSqlQuery query_HoursDays(QSqlDatabase::database("three"));
-    QString queryHoursDaysTable;
-    queryHoursDaysTable = "SELECT Days, SUM(NumHours) FROM Project  WHERE Team = '" + Team + "' and ProjectStatus = 'Completed' GROUP BY Days ORDER BY Days ASC";
-    query_HoursDays.exec(queryHoursDaysTable);
-
-    //Make the SQL Query for Last 7 Days
-    QSqlQuery query_HoursDays7(QSqlDatabase::database("three"));
-    QString queryHoursDaysTable7;
-    queryHoursDaysTable7 = "SELECT Days, SUM(NumHours) FROM Project  WHERE Team = '" + Team + "' and ProjectStatus = 'Completed' GROUP BY Days ORDER BY Days DESC LIMIT 7";
-    query_HoursDays7.exec(queryHoursDaysTable7);
-
-    if(last7 == false){
-        series->append(0,0);
-        while(query_HoursDays.next()) {
-            series->append(query_HoursDays.value(0).toInt(),query_HoursDays.value(1).toInt());
-        }
-    }
-    else {
-        while(query_HoursDays7.next()) {
-            series ->append(query_HoursDays7.value(0).toInt(),query_HoursDays7.value(1).toInt());
-        }
-        axisX->setTickCount(7);
-        axisY->setRange(0, 40);
-        axisY->setTickCount(8);
-    }
-
-    QChart *chart = new QChart();
-    chart->setTitle("Team " + Team + " Productivity");
-    chart->legend()->hide();
-    chart->addSeries(series);
-    axisY->setTitleText("Project Hours Completed"); // yaxis
-    axisX->setTitleText("Day # ");                  // xaxis
-
-    chart->addAxis(axisX, Qt::AlignBottom);
-    chart->addAxis(axisY, Qt::AlignLeft);
-    series->attachAxis(axisX);
-    series->attachAxis(axisY);
-
-    chartView = new QChartView(chart);
-    chartView->setRenderHint(QPainter::Antialiasing);
-    chartView->setParent(ui->productivityLineGraph);
-    chartView->show();
-}
-
-void WindowMain::on_lastWeek_toggled(bool checked)
-{
-    if (checked == true) {
-        last7 = true;
-        DrawChart( Team , checked);
-        QMessageBox::information(this,"","Last Week");
-    }
-    else if (checked == false) {
-        last7 = false;
-        DrawChart( Team , checked);
-        QMessageBox::information(this,"","All Time");
-    }
->>>>>>> Stashed changes
 }

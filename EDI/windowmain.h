@@ -82,7 +82,6 @@ private slots:
 
     void on_pushButton_tooManyTeams_clicked();
 
-<<<<<<< Updated upstream
     void on_calendarWidget1_2_clicked(const QDate &date);
 
 
@@ -94,13 +93,6 @@ private slots:
 
     void on_pushButton_newEmployee_clicked();
 
-=======
-    void on_comboBox_currentIndexChanged(const QString &arg1);
-
-    void DrawChart(QString Team, bool checked);
-
-    void on_lastWeek_toggled(bool checked);
->>>>>>> Stashed changes
 
 private:
     Ui::WindowMain *ui;
@@ -113,18 +105,10 @@ private:
     NewTeam *newTeam;
     void resetEmployeeTable();
     void resetTeamTable();
-<<<<<<< Updated upstream
     QSound *sound;
     QString curEmployee;
     QString firstName, lastName, salary, teamName, numProjectsCompleted, numProjectsAssigned;
     QVector<QString> completedProjects, assignedProjects;
-=======
-    QLineSeries *series;
-    QChartView *chartView;
-    QString Team;
-    bool last7;
-
->>>>>>> Stashed changes
 };
 
 

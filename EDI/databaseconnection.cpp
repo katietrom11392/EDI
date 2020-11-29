@@ -12,13 +12,8 @@ DatabaseConnection::DatabaseConnection(QWidget *parent) : QMainWindow(parent)
 QSqlDatabase DatabaseConnection::establishConnection(QString connectionName){
     db = QSqlDatabase::addDatabase("QMYSQL", connectionName);
     db.setHostName("");
-<<<<<<< Updated upstream
     db.setUserName("ediCEO370");
     db.setPassword("miguelCEO370");
-=======
-    db.setUserName("root");
-    db.setPassword("CtrlAltDlt55%%");
->>>>>>> Stashed changes
     db.setDatabaseName("EDI");
     return db;
 }
