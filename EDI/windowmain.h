@@ -93,6 +93,12 @@ private slots:
 
     void on_pushButton_newEmployee_clicked();
 
+    void on_comboBox_currentIndexChanged(const QString &arg1);
+
+    void DrawChart(QString Team, bool checked);
+
+    void on_lastWeek_toggled(bool checked);
+
 
 private:
     Ui::WindowMain *ui;
@@ -109,6 +115,10 @@ private:
     QString curEmployee;
     QString firstName, lastName, salary, teamName, numProjectsCompleted, numProjectsAssigned;
     QVector<QString> completedProjects, assignedProjects;
+    QLineSeries *series;
+    QChartView *chartView;
+    QString Team;
+    bool last7;
 };
 
 
