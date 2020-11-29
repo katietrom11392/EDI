@@ -90,17 +90,9 @@
     void QCalendar::refresh(){
         shift_events.clear();
         m_dates.clear();
-        getDates();
+        getDates(curEmployee);
     }
 
-    double QCalendar::hrsScheduled(){
-        double dosh = 0;
-        for (auto d : shift_events) {
-            dosh += d.end.toDouble() - d.start.toDouble();
-        }
-
-        return dosh;
-    }
 
     /***********************************************************************************************************
      * Paints/highlights the specified dates in the m_dates vector
