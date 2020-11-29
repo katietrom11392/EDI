@@ -63,7 +63,7 @@ padding: 0 10;
 }</string>
    </property>
    <property name="currentIndex">
-    <number>1</number>
+    <number>0</number>
    </property>
    <widget class="QWidget" name="tab_my_edi_2">
     <attribute name="title">
@@ -423,8 +423,8 @@ border-radius: 15px;</string>
     <widget class="QLabel" name="curprojects">
      <property name="geometry">
       <rect>
-       <x>200</x>
-       <y>280</y>
+       <x>140</x>
+       <y>310</y>
        <width>101</width>
        <height>31</height>
       </rect>
@@ -436,14 +436,40 @@ border-radius: 15px;</string>
     <widget class="QLabel" name="allproj">
      <property name="geometry">
       <rect>
-       <x>200</x>
-       <y>350</y>
+       <x>140</x>
+       <y>390</y>
        <width>101</width>
        <height>17</height>
       </rect>
      </property>
      <property name="text">
       <string>all projects</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="curprojpush">
+     <property name="geometry">
+      <rect>
+       <x>190</x>
+       <y>280</y>
+       <width>89</width>
+       <height>25</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>cur proj</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="allprojpush">
+     <property name="geometry">
+      <rect>
+       <x>190</x>
+       <y>350</y>
+       <width>89</width>
+       <height>25</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>all proj</string>
      </property>
     </widget>
     <zorder>label_11</zorder>
@@ -460,6 +486,8 @@ border-radius: 15px;</string>
     <zorder>curprojects</zorder>
     <zorder>allproj</zorder>
     <zorder>salary</zorder>
+    <zorder>curprojpush</zorder>
+    <zorder>allprojpush</zorder>
    </widget>
    <widget class="QWidget" name="tab_control_2">
     <attribute name="title">
@@ -977,7 +1005,7 @@ border-radius: 15px;</string>
     <rect>
      <x>90</x>
      <y>20</y>
-     <width>231</width>
+     <width>271</width>
      <height>16</height>
     </rect>
    </property>
@@ -1710,8 +1738,8 @@ border: none;</string>
   </customwidget>
  </customwidgets>
  <resources>
-  <include location="logo.qrc"/>
   <include location="ediSolo.qrc"/>
+  <include location="logo.qrc"/>
  </resources>
  <connections/>
 </ui>

@@ -22,6 +22,7 @@ WindowMain::WindowMain(QWidget *parent) :
                          "QTableView:item:selected:focus {background-color: #F56525;}");
 
 
+
     //initialize calendar
     ui->scheddate->setText(
                 QDate::currentDate().toString("dd.MM.yyyy")
@@ -706,7 +707,7 @@ void WindowMain::setEmployee(QString employeeID){
     ui->calendarWidget1_2->setEmployee(curEmployee);
 
     QSqlQuery query(QSqlDatabase::database("three"));
-        QString firstName, lastName, salary, teamName, numProjectsCompleted, numProjectsAssigned;
+        QString firstName, lastName, salary, teamName, numProjectsCompleted, numProjectsAssigned, assignedProjList, completedProjList;
         QVector<QString> completedProjects, assignedProjects;
 
         query.prepare("SELECT E.Name_First, E.Name_Last, E.Salary, T.TeamName FROM Employee E JOIN Team T ON E.Team = T.TeamID WHERE E.EmployeeID = :curID");
@@ -725,12 +726,14 @@ void WindowMain::setEmployee(QString employeeID){
         query.prepare("SELECT T.ProjectsAssigned, T.ProjectsCompleted FROM Employee E JOIN Team T ON E.Team = T.TeamID WHERE E.EmployeeID = :curID");
         query.bindValue(":curID", curEmployee);
         query.exec();
+        int loop = 0;
         while(query.next()){
             numProjectsCompleted = query.value(0).toString();
             numProjectsAssigned = query.value(1).toString();
+            loop++;
         }
+        std::cout << "It looped this many times: " << loop << std::endl;
         query.clear();
-
 
         query.prepare("SELECT P.ProjectName FROM Employee E JOIN Team T ON E.Team = T.TeamID JOIN Project P ON P.Team = T.TeamID WHERE E.EmployeeID = :curID AND P.ProjectStatus = 'Completed'");
         query.bindValue(":curID", curEmployee);
@@ -750,6 +753,24 @@ void WindowMain::setEmployee(QString employeeID){
             assignedProjects.push_back(query.value(0).toString());
         }
         query.clear();
+
+        while(! assignedProjects.empty()){
+            assignedProjList += " " + assignedProjects.front();
+            assignedProjects.pop_front();
+        }
+
+        while(! completedProjects.empty()){
+            completedProjList += " " + completedProjects.front();
+            completedProjects.pop_front();
+        }
+
+        ui->employeename->setText(firstName + " " + lastName);
+        ui->salary->setText(salary);
+        ui->employeeteam->setText(teamName);
+        ui->allprojpush->setText(numProjectsCompleted);
+        ui->allproj->setText(completedProjList);
+        ui->curprojpush->setText(numProjectsAssigned);
+        ui->curprojects->setText(assignedProjList);
 }
 
 
