@@ -8,6 +8,8 @@
 #include <QSqlDatabase>
 #include <QSqlQuery>
 #include <QMessageBox>
+#include <QSound>
+
 
 #include <QWidget>
 #include <QCalendarWidget>
@@ -47,6 +49,9 @@ private:
     Ui::WindowLogin *ui;
     WindowNewCompany *windownewcompany;
     QSqlDatabase db1;
+    QSound *sound;
+    QString employeeID;
+
 
 };
 #endif // WINDOWLOGIN_H

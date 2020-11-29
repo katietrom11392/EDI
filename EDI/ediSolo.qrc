@@ -3,5 +3,6 @@
         <file>ediSolo.png</file>
         <file>rBubble.png</file>
         <file>lBubble.png</file>
+        <file>pop.wav</file>
     </qresource>
 </RCC>

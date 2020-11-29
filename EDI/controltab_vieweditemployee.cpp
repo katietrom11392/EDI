@@ -42,6 +42,10 @@ void ControlTab_ViewEditEmployee::set_fields_disable(bool setTo) {
     ui -> comboBox_position -> setDisabled(setTo);
     ui -> lineEdit_username -> setDisabled(setTo);
     ui -> lineEdit_password -> setDisabled(setTo);
+    ui->pushButton_insertShift->setDisabled(setTo);
+    ui->pushButton_deleteShift->setDisabled(setTo);
+    ui->timeEdit_Start->setDisabled(setTo);
+    ui->timeEdit_End->setDisabled(setTo);
 }
 
 // ===================================
@@ -61,14 +65,18 @@ ControlTab_ViewEditEmployee::ControlTab_ViewEditEmployee(QWidget *parent) : QWid
     editMode = false;
     set_fields_disable(true);
     ui -> pushButton_saveChanges -> setDisabled(true);
-    ui -> pushButton_restoreDefault -> setDisabled(true);
+    ui -> pushButton_restoreDefault -> setDisabled(true); 
 }
 
+
+
+
 ControlTab_ViewEditEmployee::~ControlTab_ViewEditEmployee() {
-    //dbve.close();
-    //QSqlDatabase::removeDatabase("ve");
     delete ui;
 }
+
+
+
 
 void ControlTab_ViewEditEmployee::on_pushButton_editMode_clicked() {
     if (!editModeLocked) {
@@ -77,6 +85,10 @@ void ControlTab_ViewEditEmployee::on_pushButton_editMode_clicked() {
         ui -> pushButton_editMode -> setDisabled(editMode);
         ui -> pushButton_saveChanges -> setDisabled(!editMode);
         ui -> pushButton_restoreDefault -> setDisabled(!editMode);
+        ui->pushButton_insertShift->setDisabled(!editMode);
+        ui->pushButton_deleteShift->setDisabled(!editMode);
+        ui->timeEdit_Start->setDisabled(!editMode);
+        ui->timeEdit_End->setDisabled(!editMode);
     }
 }
 
@@ -99,7 +111,7 @@ void ControlTab_ViewEditEmployee::set_fields(QVector<QString> fieldsVector, QVec
     ui -> comboBox_position -> setCurrentIndex(positionIndex);
     ui -> lineEdit_username -> setText(fields.at(6));
     ui -> lineEdit_password -> setText(fields.at(7));
-
+    ui->calendarWidget->setEmployee(fields[0]);
 }
 
 
@@ -144,7 +156,10 @@ void ControlTab_ViewEditEmployee::on_pushButton_return_clicked() {
             fieldError = true;
         }
 
-        if (!salary.contains(QRegularExpression("^[0-9]+$"))) {
+        // Ensure that the salary field is formatted properly
+        std::cout << salary.toStdString().c_str() << std::endl;
+        if (!salary.contains(QRegularExpression("^[0-9]+$")) && !salary.contains(QRegularExpression("\\d+\\.\\d+"))) {
+        //if (!salary.contains(QRegularExpression("^[0-9]+$"))) {
             QMessageBox::information(this, "Error", "Error: Salary improperly formatted.");
             fieldError = true;
         }
@@ -221,6 +236,12 @@ void ControlTab_ViewEditEmployee::set_edit_mode_lock() {
     }
 }
 
+
+
+
+
+
+
 void ControlTab_ViewEditEmployee::on_pushButton_saveChanges_clicked() {
     editMode = !editMode;
     set_fields_disable(!editMode);
@@ -237,8 +258,117 @@ void ControlTab_ViewEditEmployee::on_pushButton_saveChanges_clicked() {
     fields.replace(5, ui -> comboBox_position -> currentText());
     fields.replace(6, ui -> lineEdit_username -> text());
     fields.replace(7, ui -> lineEdit_password -> text());
+    resetEmployeeTable();
 }
+
+
+
+
+
+
+
 
 void ControlTab_ViewEditEmployee::on_pushButton_restoreDefault_clicked() {
     set_fields(originalFields, originalFields);
+}
+
+
+
+void ControlTab_ViewEditEmployee::on_pushButton_insertShift_clicked()
+{
+    QDate *today = new QDate(QDate::currentDate());
+    QDate selected = ui->calendarWidget->selectedDate();
+    int sHour   = ui->timeEdit_Start->time().hour();
+    int sMinute = ui->timeEdit_Start->time().minute();
+    int eHour   = ui->timeEdit_End->time().hour();
+    int eMinute = ui->timeEdit_End->time().minute();
+
+    //first a valid day must be selected (the day has not passed)
+    if (selected.year() < today->year() || (selected.year() == today->year() && selected.month() < today->month()) ||
+            (selected.year() == today->year() && selected.month() == today->month() && selected.day() < today->day())){
+
+    }
+
+
+}
+
+void ControlTab_ViewEditEmployee::on_pushButton_deleteShift_clicked()
+{
+
+}
+
+
+
+
+
+/****************************************************************************************************************************
+ * set_db_table_refs(QTableWidget *employeeTable, QTableWidget *teamTable) : grants access to the Employee and Team
+ *     tables in the Control Tab
+*****************************************************************************************************************************/
+void ControlTab_ViewEditEmployee::set_db_table_refs(QTableWidget *employeeTable, QTableWidget *teamTable){
+    employeeDB = employeeTable;
+    teamDB = teamTable;
+}
+
+
+
+
+
+/****************************************************************************************************************************
+ * Details from the employee database are loaded into the QTableWidget that acts as the embedded MYSQL database for employees.
+ * To get this data a query is created that gets all the employees from the Employee table in the db, and loads them one by
+ * one into a newly created row for the QTableWidget employee embedded db.
+*****************************************************************************************************************************/
+void ControlTab_ViewEditEmployee::resetEmployeeTable(){
+
+    QSqlQuery query_getEmployeeRow(QSqlDatabase::database("three"));
+    QString employeeRowSqlString;
+    employeeRowSqlString = "SELECT EmployeeID, Name_Last, Name_First, Salary, SSN, Position_Code, Username, Password, Team FROM Employee";
+    query_getEmployeeRow.exec(employeeRowSqlString);
+
+    employeeDB->setRowCount(0);
+    int col = 0;
+
+    while (query_getEmployeeRow.next()) {
+        employeeDB->insertRow ( employeeDB->rowCount() );
+        int row = employeeDB->rowCount()-1;
+        while (col < 9){
+            if (col == 7){
+                QString password = query_getEmployeeRow.value(col).toString();
+                QString encryptedPassword = "";
+                for (auto letter : password){
+                    encryptedPassword.append("*");
+                }
+                employeeDB->setItem( row, col, new QTableWidgetItem(encryptedPassword));
+            }
+            else{
+                employeeDB->setItem( row, col, new QTableWidgetItem(query_getEmployeeRow.value(col).toString()));
+            }
+            col++;
+        }
+        col = 0;
+    }
+}
+
+/****************************************************************************************************************************
+ * Grabs a plain text version of the password for editing.
+*****************************************************************************************************************************/
+void ControlTab_ViewEditEmployee::grab_password() {
+
+    if (!editModeLocked) {
+        QSqlQuery qPassword(QSqlDatabase::database("ve"));
+        QString plainTextPassword;
+        qPassword.prepare("SELECT Password FROM Employee WHERE EmployeeID = ?");
+        qPassword.addBindValue(originalFields.at(0));
+        qPassword.exec();
+
+        while (qPassword.next()) {
+            std::cout << qPassword.size() << std::endl;
+            std::cout << qPassword.value(0).toString().toStdString() << std::endl;
+            QString pass = qPassword.value(0).toString();
+            fields.replace(fields.size() - 1, pass);
+            ui -> lineEdit_password -> setText(pass);
+        }
+    }
+
 }

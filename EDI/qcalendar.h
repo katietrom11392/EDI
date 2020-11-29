@@ -36,7 +36,7 @@ public:
    QString getStart(const QDate &date);
    QString getEnd(const QDate &date);
    void refresh();
-   double hrsScheduled();
+   void setEmployee(QString employee);
 
 protected:
    virtual void paintCell(QPainter *painter, const QRect &rect, const QDate &date) const;
@@ -59,10 +59,12 @@ private:
    QPen m_outlinePen;
    QBrush m_transparentBrush;
 
-   void getDates();
+   void getDates(QString employee);
 
    QSqlDatabase db4;
    QString thisDB;
+
+   QString curEmployee;
 };
 
 #endif // QCALENDAR_H

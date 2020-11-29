@@ -4,12 +4,22 @@
 #include <QWidget>
 #include <QCalendarWidget>
 #include <qcalendar.h>
+#include <QChart>
+#include <QtCharts/qchart.h>
+#include <QtCharts/QChartView>
+#include <QtCharts/QLineSeries>
+#include <QValueAxis>
+#include <QSound>
+
+using namespace QtCharts;
+
 
 #include <QTableView>
 #include <QDate>
 #include <QDebug>
 #include <controltab_vieweditemployee.h>
 #include <controltab_vieweditteamwindow.h>
+#include <controltab_newemployee.h>
 #include <newteam.h>
 #include <iostream>
 #include <QEventLoop>
@@ -40,13 +50,15 @@ public:
   
     void process(ControlTab_ViewEditTeamWindow *viewEditTeamWindow);
 
+    void setEmployee(QString employeeID);
+
+
 private slots:
     void on_pushButton_vieweditemployee_2_clicked();
 
     void on_tabWidget_currentChanged(int index);
 
     void on_pushButton_LogOut_clicked();
-
 
     void on_pushButton_SearchEmployee_clicked();
 
@@ -72,7 +84,15 @@ private slots:
 
     void on_calendarWidget1_2_clicked(const QDate &date);
 
+
     void on_refreshcalbutton_clicked();
+
+    void on_pushButton_SearchEmpty_clicked();
+
+    void on_pushButton_TeamEmpty_clicked();
+
+    void on_pushButton_newEmployee_clicked();
+
 
 private:
     Ui::WindowMain *ui;
@@ -81,12 +101,14 @@ private:
     QString userPosition;
     ControlTab_ViewEditEmployee *viewEditEmployeeWindow;
     ControlTab_ViewEditTeamWindow *viewEditTeamWindow;
+    ControlTab_NewEmployee *newEmployeeWindow;
     NewTeam *newTeam;
     void resetEmployeeTable();
     void resetTeamTable();
+    QSound *sound;
+    QString curEmployee;
     QString firstName, lastName, salary, teamName, numProjectsCompleted, numProjectsAssigned;
     QVector<QString> completedProjects, assignedProjects;
-
 };
 
 

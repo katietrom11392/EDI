@@ -13,13 +13,21 @@
        thisDB = this->parent()->objectName();
 
        db4 = dbc->establishConnection(thisDB);
-       //shift.date = QDate::currentDate();
-       getDates();
-       m_outlinePen.setColor(Qt::transparent);
-       //m_transparentBrush.setColor(QColor(245,101,37)); ORANGE
-       m_transparentBrush.setColor(QColor(79,226,103)); // GREEN
-       m_transparentBrush.setStyle(Qt::BDiagPattern);
     }
+
+
+
+
+    void QCalendar::setEmployee(QString employee){
+        curEmployee = employee;
+        getDates(curEmployee);
+        m_outlinePen.setColor(Qt::transparent);
+        //m_transparentBrush.setColor(QColor(245,101,37)); ORANGE
+        m_transparentBrush.setColor(QColor(79,226,103)); // GREEN
+        m_transparentBrush.setStyle(Qt::BDiagPattern);
+    }
+
+
 
 
 
@@ -116,7 +124,7 @@
      * and corresponding dates to hold the data. This data is accessed in our contrcutor for the calendar so
      * that it is loaded with the proper highlighting.
     ***********************************************************************************************************/
-    void QCalendar::getDates()
+    void QCalendar::getDates(QString employee)
     {
         QDate date;
         QString start;
@@ -124,9 +132,9 @@
         shiftEvent s;
 
         QSqlQuery query(QSqlDatabase::database(thisDB));
-        QString queryString;
-        queryString = "SELECT ShiftDate, StartHour, EndHour FROM Shift S JOIN Employee E ON E.EmployeeID = S.Employee WHERE S.Employee = 92";
-        query.exec(queryString);
+        query.prepare("SELECT ShiftDate, StartHour, EndHour FROM Shift S JOIN Employee E ON E.EmployeeID = S.Employee WHERE S.Employee = :id");
+        query.bindValue(":id", employee);
+        query.exec();
 
 
         while(query.next()) {
@@ -141,5 +149,4 @@
             shift_events.append(s);
             m_dates.append(date);
         }
-        //query.clear();
     }

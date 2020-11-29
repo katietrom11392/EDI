@@ -11,6 +11,7 @@
 #include <QTableWidget>
 #include <databaseconnection.h>
 #include <iostream>
+#include <QSound>
 
 namespace Ui {
 class ControlTab_ViewEditTeamWindow;
@@ -51,6 +52,26 @@ private slots:
     void on_pushButton_removeProj_clicked();
 
 
+    void on_pushButton_CannotRemove_clicked();
+
+    void on_pushButton_DuplicateProject_clicked();
+
+    void on_pushButton_EmployeeTaken_clicked();
+
+    void on_pushButton_InvalidID_clicked();
+
+    void on_pushButton_NegHours_clicked();
+
+    void on_pushButton_NoProjSelected_clicked();
+
+    void on_pushButton_NotOnTeam_clicked();
+
+    void on_pushButton_TeamExists_clicked();
+
+    void on_pushButton_TeamNameLen_clicked();
+
+    void on_pushButton_TooManyProj_clicked();
+
 private:
     Ui::ControlTab_ViewEditTeamWindow *ui;
     QSqlDatabase dbVet;
@@ -60,6 +81,7 @@ private:
 
     QTableWidget *employeeDB;
     QTableWidget *teamDB;
+    QSound *sound;
 };
 
 #endif // CONTROLTAB_VIEWEDITTEAMWINDOW_H

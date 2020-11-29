@@ -16,6 +16,7 @@ NewTeam::NewTeam(QWidget *parent) :
     ui->oopsIdOrName->hide();
     ui->oopsName->hide();
     ui->oopsMissingFields->hide();
+    sound = new QSound(":/new/prefix1/pop.wav");
 }
 
 
@@ -49,12 +50,25 @@ void NewTeam::on_pushButtonCreateTeam_clicked()
     // 2.
     if (teamID.length() == 0 || teamName.length() == 0){
         ui->oopsMissingFields->show();
+        sound->play();
+        ui->oopsId->hide();
+        ui->oopsIdOrName->hide();
+        ui->oopsName->hide();
     }
     else if (teamID.length() > 5 || teamName.length() > 30){
         if (teamID.length() > 5){
             ui->oopsId->show();
-        }else
+            sound->play();
+            ui->oopsIdOrName->hide();
+            ui->oopsName->hide();
+            ui->oopsMissingFields->hide();
+        }else{
             ui->oopsName->show();
+            sound->play();
+            ui->oopsId->hide();
+            ui->oopsIdOrName->hide();
+            ui->oopsMissingFields->hide();
+        }
     }
     else{ // 3.
         QSqlQuery query_checkDuplicateTeam(QSqlDatabase::database("k"));
@@ -65,6 +79,10 @@ void NewTeam::on_pushButtonCreateTeam_clicked()
 
         if (query_checkDuplicateTeam.size() > 0){
             ui->oopsIdOrName->show();
+            sound->play();
+            ui->oopsName->hide();
+            ui->oopsId->hide();
+            ui->oopsMissingFields->hide();
         }
         else{
             QSqlQuery query_createTeam(QSqlDatabase::database("k"));

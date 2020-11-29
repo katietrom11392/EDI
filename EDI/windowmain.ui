@@ -880,7 +880,7 @@ border-radius: 15px;</string>
       </layout>
      </widget>
     </widget>
-    <widget class="QPushButton" name="pushButton_addEmployee_13">
+    <widget class="QPushButton" name="pushButton_newEmployee">
      <property name="geometry">
       <rect>
        <x>660</x>
@@ -924,6 +924,33 @@ border-radius: 15px;</string>
     <attribute name="title">
      <string>Analyze</string>
     </attribute>
+    <widget class="QFrame" name="productivityLineGraph">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>40</y>
+       <width>841</width>
+       <height>511</height>
+      </rect>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout"/>
+    </widget>
+    <widget class="QRadioButton" name="showLastSeven">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>10</y>
+       <width>181</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Last Week</string>
+     </property>
+     <property name="checked">
+      <bool>false</bool>
+     </property>
+    </widget>
    </widget>
   </widget>
   <widget class="QLabel" name="labelLogo">
@@ -1479,6 +1506,188 @@ border: none;</string>
     </property>
    </widget>
   </widget>
+  <widget class="QWidget" name="oopsSearchEmpty" native="true">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>519</y>
+     <width>141</width>
+     <height>121</height>
+    </rect>
+   </property>
+   <widget class="QLabel" name="label_oopsSearchEmpty">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>80</y>
+      <width>31</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap resource="ediSolo.qrc">:/new/prefix1/ediSolo.png</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="bubbleOopsSearchEmpty">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>10</y>
+      <width>91</width>
+      <height>71</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap resource="ediSolo.qrc">:/new/prefix1/lBubble.png</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_oopsSoloEdi_7">
+    <property name="geometry">
+     <rect>
+      <x>42</x>
+      <y>13</y>
+      <width>81</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>11</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Employee search field is empty.</string>
+    </property>
+    <property name="wordWrap">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_SearchEmpty">
+    <property name="geometry">
+     <rect>
+      <x>110</x>
+      <y>10</y>
+      <width>21</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: transparent;
+border: none;</string>
+    </property>
+    <property name="text">
+     <string>x</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QWidget" name="oopsTeamEmpty" native="true">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>519</y>
+     <width>141</width>
+     <height>121</height>
+    </rect>
+   </property>
+   <widget class="QLabel" name="label_oopsSoloEdi_9">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>80</y>
+      <width>31</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap resource="ediSolo.qrc">:/new/prefix1/ediSolo.png</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="bubbleOopsTeamEmpty">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>10</y>
+      <width>91</width>
+      <height>71</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap resource="ediSolo.qrc">:/new/prefix1/lBubble.png</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_oopsTeamEmpty">
+    <property name="geometry">
+     <rect>
+      <x>42</x>
+      <y>13</y>
+      <width>81</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>11</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Team search field is empty.</string>
+    </property>
+    <property name="wordWrap">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_TeamEmpty">
+    <property name="geometry">
+     <rect>
+      <x>110</x>
+      <y>10</y>
+      <width>21</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: transparent;
+border: none;</string>
+    </property>
+    <property name="text">
+     <string>x</string>
+    </property>
+   </widget>
+  </widget>
   <zorder>tabWidget</zorder>
   <zorder>labelLogo</zorder>
   <zorder>labelEDI</zorder>
@@ -1490,6 +1699,8 @@ border: none;</string>
   <zorder>oopsSearchFilter</zorder>
   <zorder>oopsTooManyEmp</zorder>
   <zorder>oopsTooManyTeams</zorder>
+  <zorder>oopsSearchEmpty</zorder>
+  <zorder>oopsTeamEmpty</zorder>
  </widget>
  <customwidgets>
   <customwidget>
