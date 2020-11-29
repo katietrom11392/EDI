@@ -1727,9 +1727,12 @@ border: none;</string>
    </property>
   </widget>
   <widget class="QRadioButton" name="lastWeek">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
    <property name="geometry">
     <rect>
-     <x>760</x>
+     <x>480</x>
      <y>630</y>
      <width>82</width>
      <height>17</height>
@@ -1737,6 +1740,12 @@ border: none;</string>
    </property>
    <property name="text">
     <string>Last Week</string>
+   </property>
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="autoExclusive">
+    <bool>false</bool>
    </property>
   </widget>
   <zorder>tabWidget</zorder>

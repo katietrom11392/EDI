@@ -656,7 +656,10 @@ public:
         comboBox->setGeometry(QRect(400, 630, 69, 22));
         lastWeek = new QRadioButton(WindowMain);
         lastWeek->setObjectName(QString::fromUtf8("lastWeek"));
-        lastWeek->setGeometry(QRect(760, 630, 82, 17));
+        lastWeek->setEnabled(true);
+        lastWeek->setGeometry(QRect(480, 630, 82, 17));
+        lastWeek->setCheckable(true);
+        lastWeek->setAutoExclusive(false);
         tabWidget->raise();
         labelLogo->raise();
         labelEDI->raise();
