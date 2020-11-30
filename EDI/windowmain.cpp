@@ -735,18 +735,15 @@ void WindowMain::on_comboBox_currentIndexChanged(const QString &arg1)
 {
 //    QString Team;
     if (ui->comboBox->currentText() == "01"){
-            QMessageBox::information(this,"","01");
             Team = "01";
             DrawChart( Team, false );
 
         }
     else if (ui->comboBox->currentText() == "02"){
-            QMessageBox::information(this,"","02");
             Team = "02";
             DrawChart( Team, false );
         }
     else if (ui->comboBox->currentText() == "03"){
-            QMessageBox::information(this,"","03");
             Team = "03";
             DrawChart( Team, false );
         }

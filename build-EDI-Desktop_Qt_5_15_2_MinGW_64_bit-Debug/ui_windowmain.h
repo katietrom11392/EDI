@@ -85,7 +85,6 @@ public:
     QWidget *tab_analyze_2;
     QFrame *productivityLineGraph;
     QHBoxLayout *horizontalLayout;
-    QRadioButton *showLastSeven;
     QLabel *labelLogo;
     QLabel *labelEDI;
     QPushButton *pushButton_LogOut;
@@ -450,10 +449,6 @@ public:
         productivityLineGraph->setGeometry(QRect(0, 40, 841, 511));
         horizontalLayout = new QHBoxLayout(productivityLineGraph);
         horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
-        showLastSeven = new QRadioButton(tab_analyze_2);
-        showLastSeven->setObjectName(QString::fromUtf8("showLastSeven"));
-        showLastSeven->setGeometry(QRect(10, 10, 181, 31));
-        showLastSeven->setChecked(false);
         tabWidget->addTab(tab_analyze_2, QString());
         labelLogo = new QLabel(WindowMain);
         labelLogo->setObjectName(QString::fromUtf8("labelLogo"));
@@ -757,7 +752,6 @@ public:
         radioButton_Team->setText(QCoreApplication::translate("WindowMain", "Team", nullptr));
         pushButton_Reset->setText(QCoreApplication::translate("WindowMain", "Reset", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(tab_control_2), QCoreApplication::translate("WindowMain", "Control", nullptr));
-        showLastSeven->setText(QCoreApplication::translate("WindowMain", "Last Week", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(tab_analyze_2), QCoreApplication::translate("WindowMain", "Analyze", nullptr));
         labelLogo->setText(QString());
         labelEDI->setText(QCoreApplication::translate("WindowMain", "EMPLOYEE DATABASE INTERFACE", nullptr));
