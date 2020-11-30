@@ -63,7 +63,7 @@ padding: 0 10;
 }</string>
    </property>
    <property name="currentIndex">
-    <number>2</number>
+    <number>0</number>
    </property>
    <widget class="QWidget" name="tab_my_edi_2">
     <attribute name="title">
@@ -655,7 +655,7 @@ border-radius: 15px;</string>
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>822</width>
+        <width>823</width>
         <height>459</height>
        </rect>
       </property>
