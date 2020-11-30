@@ -96,7 +96,7 @@ padding: 0 10;
      <property name="geometry">
       <rect>
        <x>50</x>
-       <y>140</y>
+       <y>120</y>
        <width>101</width>
        <height>16</height>
       </rect>
@@ -119,7 +119,7 @@ padding: 0 10;
      <property name="geometry">
       <rect>
        <x>80</x>
-       <y>210</y>
+       <y>170</y>
        <width>71</width>
        <height>31</height>
       </rect>
@@ -142,8 +142,8 @@ padding: 0 10;
      <property name="geometry">
       <rect>
        <x>0</x>
-       <y>280</y>
-       <width>181</width>
+       <y>230</y>
+       <width>151</width>
        <height>31</height>
       </rect>
      </property>
@@ -326,8 +326,8 @@ border-radius: 15px;</string>
      <property name="geometry">
       <rect>
        <x>30</x>
-       <y>340</y>
-       <width>151</width>
+       <y>390</y>
+       <width>111</width>
        <height>31</height>
       </rect>
      </property>
@@ -398,7 +398,7 @@ border-radius: 15px;</string>
      <property name="geometry">
       <rect>
        <x>180</x>
-       <y>140</y>
+       <y>120</y>
        <width>67</width>
        <height>21</height>
       </rect>
@@ -410,8 +410,8 @@ border-radius: 15px;</string>
     <widget class="QLabel" name="salary">
      <property name="geometry">
       <rect>
-       <x>190</x>
-       <y>220</y>
+       <x>180</x>
+       <y>180</y>
        <width>111</width>
        <height>21</height>
       </rect>
@@ -420,37 +420,11 @@ border-radius: 15px;</string>
       <string>salary</string>
      </property>
     </widget>
-    <widget class="QLabel" name="curprojects">
-     <property name="geometry">
-      <rect>
-       <x>140</x>
-       <y>310</y>
-       <width>101</width>
-       <height>31</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>currentproject</string>
-     </property>
-    </widget>
-    <widget class="QLabel" name="allproj">
-     <property name="geometry">
-      <rect>
-       <x>140</x>
-       <y>390</y>
-       <width>101</width>
-       <height>17</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>all projects</string>
-     </property>
-    </widget>
     <widget class="QPushButton" name="curprojpush">
      <property name="geometry">
       <rect>
-       <x>190</x>
-       <y>280</y>
+       <x>150</x>
+       <y>230</y>
        <width>89</width>
        <height>25</height>
       </rect>
@@ -462,8 +436,8 @@ border-radius: 15px;</string>
     <widget class="QPushButton" name="allprojpush">
      <property name="geometry">
       <rect>
-       <x>190</x>
-       <y>350</y>
+       <x>150</x>
+       <y>390</y>
        <width>89</width>
        <height>25</height>
       </rect>
@@ -472,22 +446,29 @@ border-radius: 15px;</string>
       <string>all proj</string>
      </property>
     </widget>
-    <zorder>label_11</zorder>
-    <zorder>label_12</zorder>
-    <zorder>label_13</zorder>
-    <zorder>label_14</zorder>
-    <zorder>widget_2</zorder>
-    <zorder>calendarWidget1_2</zorder>
-    <zorder>label_15</zorder>
-    <zorder>label_22</zorder>
-    <zorder>refreshcalbutton</zorder>
-    <zorder>employeename</zorder>
-    <zorder>employeeteam</zorder>
-    <zorder>curprojects</zorder>
-    <zorder>allproj</zorder>
-    <zorder>salary</zorder>
-    <zorder>curprojpush</zorder>
-    <zorder>allprojpush</zorder>
+    <widget class="QTextBrowser" name="textBrowser1">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>270</y>
+       <width>331</width>
+       <height>101</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true"/>
+     </property>
+    </widget>
+    <widget class="QTextBrowser" name="textBrowser2">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>430</y>
+       <width>331</width>
+       <height>101</height>
+      </rect>
+     </property>
+    </widget>
    </widget>
    <widget class="QWidget" name="tab_control_2">
     <attribute name="title">
@@ -962,6 +943,54 @@ border-radius: 15px;</string>
       </rect>
      </property>
      <layout class="QHBoxLayout" name="horizontalLayout"/>
+    </widget>
+    <widget class="QComboBox" name="comboBox">
+     <property name="geometry">
+      <rect>
+       <x>370</x>
+       <y>10</y>
+       <width>69</width>
+       <height>22</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QRadioButton" name="lastWeek">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
+     <property name="geometry">
+      <rect>
+       <x>450</x>
+       <y>10</y>
+       <width>82</width>
+       <height>17</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Last Week</string>
+     </property>
+     <property name="checkable">
+      <bool>true</bool>
+     </property>
+     <property name="autoExclusive">
+      <bool>false</bool>
+     </property>
+    </widget>
+    <widget class="QLabel" name="label">
+     <property name="geometry">
+      <rect>
+       <x>290</x>
+       <y>10</y>
+       <width>58</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Team</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+     </property>
     </widget>
    </widget>
   </widget>
@@ -1700,38 +1729,6 @@ border: none;</string>
     </property>
    </widget>
   </widget>
-  <widget class="QComboBox" name="comboBox">
-   <property name="geometry">
-    <rect>
-     <x>400</x>
-     <y>630</y>
-     <width>69</width>
-     <height>22</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QRadioButton" name="lastWeek">
-   <property name="enabled">
-    <bool>true</bool>
-   </property>
-   <property name="geometry">
-    <rect>
-     <x>480</x>
-     <y>630</y>
-     <width>82</width>
-     <height>17</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Last Week</string>
-   </property>
-   <property name="checkable">
-    <bool>true</bool>
-   </property>
-   <property name="autoExclusive">
-    <bool>false</bool>
-   </property>
-  </widget>
   <zorder>tabWidget</zorder>
   <zorder>labelLogo</zorder>
   <zorder>labelEDI</zorder>
@@ -1745,8 +1742,6 @@ border: none;</string>
   <zorder>oopsTooManyTeams</zorder>
   <zorder>oopsSearchEmpty</zorder>
   <zorder>oopsTeamEmpty</zorder>
-  <zorder>comboBox</zorder>
-  <zorder>lastWeek</zorder>
  </widget>
  <customwidgets>
   <customwidget>

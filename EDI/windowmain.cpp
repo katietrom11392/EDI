@@ -1,6 +1,7 @@
 #include "windowmain.h"
 #include "ui_windowmain.h"
 #include <QTimer>
+#include <QTextBrowser>
 
 #include <iostream>
 
@@ -664,24 +665,14 @@ void WindowMain::setEmployee(QString employeeID){
         query.clear();
 
 
-        query.prepare("SELECT T.ProjectsAssigned, T.ProjectsCompleted FROM Employee E JOIN Team T ON E.Team = T.TeamID WHERE E.EmployeeID = :curID");
-        query.bindValue(":curID", curEmployee);
-        query.exec();
-        int loop = 0;
-        while(query.next()){
-            numProjectsCompleted = query.value(0).toString();
-            numProjectsAssigned = query.value(1).toString();
-            loop++;
-        }
-        std::cout << "It looped this many times: " << loop << std::endl;
-        query.clear();
-
         query.prepare("SELECT P.ProjectName FROM Employee E JOIN Team T ON E.Team = T.TeamID JOIN Project P ON P.Team = T.TeamID WHERE E.EmployeeID = :curID AND P.ProjectStatus = 'Completed'");
         query.bindValue(":curID", curEmployee);
         query.exec();
 
+        int completedProject = 0;
         while(query.next()){
             completedProjects.push_back(query.value(0).toString());
+            completedProject++;
         }
         query.clear();
 
@@ -690,28 +681,40 @@ void WindowMain::setEmployee(QString employeeID){
         query.bindValue(":curID", curEmployee);
         query.exec();
 
+        int assgnProject = 0;
         while(query.next()){
             assignedProjects.push_back(query.value(0).toString());
+            assgnProject++;
         }
         query.clear();
 
         while(! assignedProjects.empty()){
-            assignedProjList += " " + assignedProjects.front();
+            assignedProjList += assignedProjects.front() + "\n";
             assignedProjects.pop_front();
         }
 
         while(! completedProjects.empty()){
-            completedProjList += " " + completedProjects.front();
+            completedProjList += completedProjects.front() + "\n";
             completedProjects.pop_front();
         }
 
         ui->employeename->setText(firstName + " " + lastName);
         ui->salary->setText(salary);
         ui->employeeteam->setText(teamName);
-        ui->allprojpush->setText(numProjectsCompleted);
-        ui->allproj->setText(completedProjList);
-        ui->curprojpush->setText(numProjectsAssigned);
-        ui->curprojects->setText(assignedProjList);
+        ui->allprojpush->setText(QVariant(completedProject).toString());
+        ui->curprojpush->setText(QVariant(assgnProject).toString());
+
+        ui->textBrowser1->append(assignedProjList);
+        ui->textBrowser2->append(completedProjList);
+
+        QTextCursor cursor = ui -> textBrowser1 -> textCursor();
+        cursor.setPosition(0);
+        ui -> textBrowser1 -> setTextCursor(cursor);
+
+        cursor = ui -> textBrowser2 -> textCursor();
+        cursor.setPosition(0);
+        ui -> textBrowser2 -> setTextCursor(cursor);
+
 }
 
 
