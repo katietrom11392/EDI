@@ -112,10 +112,11 @@ void ControlTab_NewEmployee::on_pushButton_addEmployee_clicked() {
         if (!fieldError) {
             QSqlQuery query(QSqlDatabase::database("ne"));
 
-            query.prepare("INSERT INTO Employee (EmployeeID, Name_Last, Name_First, SSN, Position_Code, Username, Password) VALUES (?, ?, ?, ?, ?, ?, ?)");
+            query.prepare("INSERT INTO Employee (EmployeeID, Name_Last, Name_First, SSN, Position_Code, Username, Password) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
             query.addBindValue(employeeID);
             query.addBindValue(lastName);
             query.addBindValue(firstName);
+            query.addBindValue(salary);
             query.addBindValue(ssn);
             query.addBindValue(position);
             query.addBindValue(username);
